@@ -14,7 +14,7 @@ public class Room {
     public Room(String name, String desc) {
         this.name = name;
         this.desc = desc;
-        this.items = null;
+        this.items = new Inventory();
     }
     
 }

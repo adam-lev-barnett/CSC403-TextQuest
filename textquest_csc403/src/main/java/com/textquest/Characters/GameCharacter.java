@@ -7,17 +7,19 @@ public class GameCharacter {
     String desc;
     int health;
     Room room;
-    Inventory inventory = new Inventory();
+    Inventory inventory;
 
     public GameCharacter(String name, String desc, int health, Room room) {
         this.name = name;
         this.desc = desc;
         this.health = health;
         this.room = room;
+        inventory = new Inventory();
     }
 
-    public void addToInventory(String itemName, Item item) {
-        inventory.inventory.put(itemName, item);
+    public void addInventory(String itemName, Item item) {
+        inventory.put(itemName, item);
     }
 
+    
 }
