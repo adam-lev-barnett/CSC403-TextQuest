@@ -10,7 +10,8 @@ public class Player extends GameCharacter {
     
     public void traverse(String direction) {
         switch (direction) {
-            case 1:
+            case "North": 
+                Player.room = room.north;
         }
     }
 }
