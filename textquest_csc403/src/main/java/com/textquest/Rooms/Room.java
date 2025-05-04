@@ -5,10 +5,10 @@ import com.textquest.Inventory_and_Items.*;;
 public class Room {
     String name;
     String desc;
-    Room north;
-    Room south;
-    Room east;
-    Room west;
+    public Room north;
+    public Room south;
+    public Room east;
+    public Room west;
     Inventory items;
 
     public Room(String name, String desc) {

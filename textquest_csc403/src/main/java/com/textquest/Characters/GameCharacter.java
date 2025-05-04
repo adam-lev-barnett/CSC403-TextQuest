@@ -21,5 +21,14 @@ public class GameCharacter {
         inventory.put(itemName, item);
     }
 
+    public void removeFromInventory(String itemName) {
+        inventory.remove(itemName);
+    }
+
+    public void setRoom(Room newRoom) {
+        this.room = newRoom;
+    }
+
+
     
 }

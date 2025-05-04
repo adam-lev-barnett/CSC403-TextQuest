@@ -2,11 +2,10 @@ package com.textquest.Rooms;
 import com.textquest.*;
 import com.textquest.Inventory_and_Items.ItemCatalog;
 
-public final class GameMap {
-    Room lobby = new Room("Lobby", "The starting room");
-    Room outside = new Room("Outside", "Outside the mansion");
-
-    Room kitchen = new Room("Kitchen", "The kitchen");
+public class GameMap {
+    public static Room lobby = new Room("Lobby", "The starting room");
+    public static Room outside = new Room("Outside", "Outside the mansion");
+    public static Room kitchen = new Room("Kitchen", "The kitchen");
 
     //~ Connections
     public GameMap() {
