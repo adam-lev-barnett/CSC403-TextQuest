@@ -3,21 +3,21 @@ import com.textquest.*;
 import com.textquest.Inventory_and_Items.ItemCatalog;
 
 public class GameMap {
-    public static Room lobby = new Room("Lobby", "The starting room");
+    public static Room entrance = new Room("Carnival Entrance", "The entrance to the haunted carnival. The gateway to... something...");
     public static Room outside = new Room("Outside", "Outside the mansion");
     public static Room kitchen = new Room("Kitchen", "The kitchen");
 
     //~ Connections
     public GameMap() {
         //^ Lobby connections
-        lobby.south = outside;
-        lobby.east = kitchen;
+        entrance.south = outside;
+        entrance.east = kitchen;
 
         //^ Outside connections
-        outside.north = lobby;
+        outside.north = entrance;
 
         //^ Kitchen Connections
-        kitchen.west = lobby;
+        kitchen.west = entrance;
 
     //~ Room items
     

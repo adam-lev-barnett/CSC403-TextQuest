@@ -17,6 +17,10 @@ public class GameCharacter {
         inventory = new Inventory();
     }
 
+    public String name() {
+        return name;
+    }
+
     public void addInventory(String itemName, Item item) {
         inventory.put(itemName, item);
     }
@@ -29,6 +33,8 @@ public class GameCharacter {
         this.room = newRoom;
     }
 
-
+    public void speak(String words) {
+        System.out.println(name + ": " + words);
+    }
     
 }
