@@ -4,6 +4,6 @@ public class Words {
     
     public static void talk(String words) {
         System.out.println(words);
-        OutputPause.pause(500);
+        OutputPause.pause();
     }
 }

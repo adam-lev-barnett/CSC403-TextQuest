@@ -28,7 +28,7 @@ public class Player extends GameCharacter {
                 room = room.west;
                 break;
             default:
-                return;
+                System.out.println("You cannot go this direction.");
         }
     }
 }

@@ -4,9 +4,9 @@ package com.textquest.Utilities;
 
 public class OutputPause {
     
-    public static void pause(int s){
+    public static void pause(){
         try {
-            Thread.sleep(1500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

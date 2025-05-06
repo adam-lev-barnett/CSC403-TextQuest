@@ -9,6 +9,10 @@ public class Item {
         this.desc = desc;
     }
 
+    public String toString() {
+        return name + ": " + desc;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;
