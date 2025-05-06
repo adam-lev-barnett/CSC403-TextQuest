@@ -7,7 +7,7 @@ public class GameCharacter {
     String desc;
     int health;
     Room room;
-    Inventory inventory;
+    public Inventory inventory;
 
     public GameCharacter(String name, String desc, int health, Room room) {
         this.name = name;
@@ -17,7 +17,7 @@ public class GameCharacter {
         inventory = new Inventory();
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
@@ -31,6 +31,10 @@ public class GameCharacter {
 
     public void setRoom(Room newRoom) {
         this.room = newRoom;
+    }
+
+    public Room getRoom() {
+        return room;
     }
 
     public void speak(String words) {

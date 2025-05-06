@@ -1,6 +1,7 @@
 package com.textquest.Rooms;
 import com.textquest.*;
 import com.textquest.Inventory_and_Items.ItemCatalog;
+import com.textquest.Characters.*;
 
 public class GameMap {
     
@@ -27,8 +28,10 @@ public class GameMap {
         entrance.items.put("Cotton Candy (Poison)", ItemCatalog.cottonCandyPoison);
         entrance.items.put("Cotton Candy (Blessed)", ItemCatalog.cottonCandyBlessed);
 
-
-
+    //~ Room Puzzle DQs
+        
+    //~ Room Characters
+        
         
     
         //^ Kitchen inventory

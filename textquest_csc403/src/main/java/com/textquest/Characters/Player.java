@@ -31,4 +31,22 @@ public class Player extends GameCharacter {
                 System.out.println("You cannot go this direction.");
         }
     }
+
+    @Override
+    public void addInventory(String itemName, Item item) {
+        inventory.put(itemName, item);
+        System.out.println(item + "was added to inventory.");
+    }
+
+    @Override
+    public void removeFromInventory(String itemName) {
+        inventory.remove(itemName);
+        System.out.println(itemName + "was removed from inventory.");
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+
 }

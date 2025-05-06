@@ -10,7 +10,11 @@ public class Item {
     }
 
     public String toString() {
-        return name + ": " + desc;
+        return name;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     @Override
