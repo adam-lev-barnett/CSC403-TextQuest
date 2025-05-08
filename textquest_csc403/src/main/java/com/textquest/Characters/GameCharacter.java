@@ -1,6 +1,7 @@
 package com.textquest.Characters;
 import com.textquest.Inventory_and_Items.*;
 import com.textquest.Rooms.*;
+import com.textquest.InputOutput.*;
 
 public class GameCharacter {
     String name;
@@ -39,6 +40,10 @@ public class GameCharacter {
 
     public void speak(String words) {
         System.out.println(name + ": " + words);
+    }
+
+    public String speakResponse(String words) {
+        return InputScanner.strIn(this.name + ": " + "\"" + words + "\"");
     }
     
 }

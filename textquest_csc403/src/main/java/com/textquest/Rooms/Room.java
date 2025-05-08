@@ -22,5 +22,16 @@ public class Room {
     public void addPuzzle(PuzzleDQ puzzle) {
         puzzles.add(puzzle);
     }
+
+    public String toString() {
+        return name;
+    }
+
+    public void getAdjacentRooms() {
+        System.out.println("North: " + north);
+        System.out.println("South: " + south);
+        System.out.println("East: " + east);
+        System.out.println("West: " + west);
+    }
     
 }

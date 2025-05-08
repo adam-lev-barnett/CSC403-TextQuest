@@ -1,11 +1,13 @@
 package com.textquest.InputOutput;
 import java.util.Scanner;
+import com.textquest.Utilities.*;
 
 public class InputScanner {
     public static final Scanner scanner = new Scanner(System.in);
 
     public static String strIn(String prompt) {
         System.out.println(prompt);
+        OutputPause.pause(1000);
         return scanner.nextLine();
     }
 
