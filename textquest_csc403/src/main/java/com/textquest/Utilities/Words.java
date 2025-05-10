@@ -4,7 +4,7 @@ public class Words {
     
     public static void narrate(String words) {
         System.out.println(words);
-        OutputPause.pause(5500);
+        OutputPause.pause(3000);
     }
 
     public static void narrateBlock(String words) {
@@ -24,6 +24,10 @@ public class Words {
         System.out.println("--------------------------------------------------------------------------\n");
 
         System.out.println("TRAVERSAL");
+        System.out.println("• 'Directions' - Display the areas around you");
+        System.out.println("• 'Go (direction) - Travel to the area North, South, East, or West of you.");
+        System.out.println("--------------------------------------------------------------------------\n");
+
 
 
     }

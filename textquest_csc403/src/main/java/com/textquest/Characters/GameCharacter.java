@@ -45,5 +45,10 @@ public class GameCharacter {
     public String speakResponse(String words) {
         return InputScanner.strIn(this.name + ": " + "\"" + words + "\"");
     }
+
+    public String getDesc() {
+        return desc;
+    }
+
     
 }

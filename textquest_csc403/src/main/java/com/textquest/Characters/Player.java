@@ -8,9 +8,11 @@ import java.util.Scanner;
 
 
 public class Player extends GameCharacter {
+    boolean duckShirt;
 
     public Player(String name, String desc, int health, Room room) {
         super(name, desc, health, room);
+        boolean duckShirt = false;
     }
     
     public void traverse(String direction) {
@@ -47,6 +49,12 @@ public class Player extends GameCharacter {
     public Inventory getInventory() {
         return inventory;
     }
+
+    public void putOnDuckShirt() {
+        duckShirt = true;
+        desc += ("Clad in a brand new" + ItemCatalog.duckShirt);
+    }
+
 
 
 }

@@ -6,31 +6,38 @@ import com.textquest.Inventory_and_Items.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
 
+//~ Character creation 
+//~ 
+
 public class Main {
+    public static Player player = PlayerCreation.createPlayer();
+    public static boolean entranceGatesLocked = true;
 
     public static void main(String[] args) {
 
         //^ Game element initialization
         ItemCatalog itemCatalog = new ItemCatalog();
         itemCatalog.populateItems();
+
+        //~ Character creation 
         CharacterList charList = new CharacterList();
-        GameCharacter duckHead = charList.duckHead();
+
+        GameCharacter duckHead = charList.duckHead;
         
         //^ Game script: Player creation and opening
-        /* Player player = PlayerCreation.createPlayer();
-
         Words.narrate("Anyway, welcome " + player.getName() + ".");
         Words.narrate("Today, we're going on a little adventure.");
         Words.narrate("Are you ready?");
         Words.narrate("Buckle in!");
 
-        player.setRoom(GameMap.entrance); */
+        player.setRoom(GameMap.entrance);
 
         //^ Chapter 1: The entrance
         //& Characters in room: Duckhead
 
         Words.narrate("Where once was found fun is now a sprawl of decaying wooden ticket stalls and rusty turnstiles."); 
         Words.narrate("A crowd of ghosts gathers around a mysterious cotton candy cart.");
+        Words.narrate("The gift shop, while broken, looks lively - Everyone is dead, but capitalism is alive and well.");
         Words.narrate("Floating heads of mascots past wistfully bob to a discordant calliope with bloodstained mouths.");
         Words.narrate("From the lineup, a duck head with bloodshot eyes spots you, pauses, and slowly turns around.");
         String duckQ = duckHead.speakResponse("I'm not a real duck. Are you?");
@@ -53,10 +60,10 @@ public class Main {
         Words.narrate("• 'Punch Duckhead?'");
         Words.narrate("• Search the 'ticket stalls'?");
         Words.narrate("• Check out the 'gift shop'?");
-        Words.narrate("")
+        Words.narrate("• 'Give up'?");
 
 
-        //! Interpreter interpreter = new Interpreter(player);
-        //! interpreter.getAction();
+        Interpreter interpreter = new Interpreter(player);
+        interpreter.getAction();
     }
 }

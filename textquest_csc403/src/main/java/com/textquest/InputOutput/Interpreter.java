@@ -18,8 +18,9 @@ public class Interpreter {
         System.out.println("Enter a command: ");
 
         String command = action.nextLine();
-        while (command != "quit") {
-            String[] playerWords = command.split(command);
+        String[] playerWords = command.split(command);
+        while (!command.equals("give up")) {
+            playerWords = command.split(" ");
 
             //^ Traversal
             if (playerWords[0].equalsIgnoreCase("go")) {
@@ -54,6 +55,8 @@ public class Interpreter {
                 }
                 else System.out.println("There is no " + itemName + " in your inventory!");
             }
+            System.out.println("Enter a command: ");
+            command = action.nextLine();
         }
     }
     
