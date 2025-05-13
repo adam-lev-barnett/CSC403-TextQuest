@@ -6,23 +6,31 @@ import com.textquest.Inventory_and_Items.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
 
+import edu.princeton.cs.algs4.*;;
+
 //~ Character creation 
 //~ 
 
 public class Main {
     public static Player player = PlayerCreation.createPlayer();
     public static boolean entranceGatesLocked = true;
+    public static GameMap gameMap = new GameMap();
 
     public static void main(String[] args) {
 
+
+
         //^ Game element initialization
         ItemCatalog itemCatalog = new ItemCatalog();
-        itemCatalog.populateItems();
 
         //~ Character creation 
         CharacterList charList = new CharacterList();
 
-        GameCharacter duckHead = charList.duckHead;
+        GameCharacter duckHead = CharacterList.duckHead;
+
+        // StdAudioStereo.play("textquest_csc403/src/main/java/com/textquest/Horse God Master.wav");
+        itemCatalog.populateItems();
+
         
         //^ Game script: Player creation and opening
         Words.narrate("Anyway, welcome " + player.getName() + ".");
@@ -60,7 +68,7 @@ public class Main {
         Words.narrate("• 'Punch Duckhead?'");
         Words.narrate("• Search the 'ticket stalls'?");
         Words.narrate("• Check out the 'gift shop'?");
-        Words.narrate("• 'Give up'?");
+        Words.narrate("•'Give up'?");
 
 
         Interpreter interpreter = new Interpreter(player);

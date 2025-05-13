@@ -2,9 +2,9 @@ package com.textquest.Utilities;
 
 public class Words {
     
-    public static void narrate(String words) {
+    public static void narrate(String words) { // 500 for testing
         System.out.println(words);
-        OutputPause.pause(3000);
+        OutputPause.pause(500);
     }
 
     public static void narrateBlock(String words) {

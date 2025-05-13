@@ -27,6 +27,14 @@ public class GameMap {
         entrance.items.put("Cotton Candy (Eternal)", ItemCatalog.cottonCandyEternal);
         entrance.items.put("Cotton Candy (Poison)", ItemCatalog.cottonCandyPoison);
         entrance.items.put("Cotton Candy (Blessed)", ItemCatalog.cottonCandyBlessed);
+        entrance.items.put("Duck bill", ItemCatalog.duckBill);
+        entrance.items.put("Duck call", ItemCatalog.duckCall);
+        entrance.items.put("Candy necklace string", ItemCatalog.stringFromCandy);
+        entrance.items.put("Duck shirt", ItemCatalog.duckShirt);
+
+
+
+
 
     //~ Room Puzzle DQs
         

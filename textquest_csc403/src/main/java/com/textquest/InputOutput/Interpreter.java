@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 import com.textquest.Characters.*;
 import com.textquest.Inventory_and_Items.*;
+import java.lang.StringBuilder;
 
 public class Interpreter {
 
@@ -18,36 +19,44 @@ public class Interpreter {
         System.out.println("Enter a command: ");
 
         String command = action.nextLine();
-        String[] playerWords = command.split(command);
         while (!command.equals("give up")) {
-            playerWords = command.split(" ");
+            String[] playerWords = command.split(" ");
 
             //^ Traversal
             if (playerWords[0].equalsIgnoreCase("go")) {
                 player.traverse(playerWords[1]);
             }
 
+            //^ Self-checks
+            else if (playerWords[0].equalsIgnoreCase("description")) {
+                System.out.println(player.getDesc());
+            }
+
             //^ Inventory actions
 
             //& Pick up item: item moves from area inventory to player inventory
             else if (playerWords[0].equalsIgnoreCase("pick") && playerWords[1].equalsIgnoreCase("up")) {
-                String itemName = playerWords[2];
+                StringBuilder sbItemName = new StringBuilder(playerWords[2]);
                 for (int i = 3; i < playerWords.length; i++) {
-                    itemName += playerWords[i];
+                    sbItemName.append(" ").append(playerWords[i]);
                 }
+                String itemName = sbItemName.toString();
                 if (player.getRoom().items.containsKey(itemName)) {
                     player.getInventory().put(itemName, player.getRoom().items.get(itemName));
                     player.getRoom().items.remove(itemName);
+                    System.out.println(itemName + " has been added to your inventory");
+                    System.out.println("Your inventory: " + player.getInventory());
                 }
                 else System.out.println("There is no " + itemName + " to pick up!");
             }
 
             //& Drop item: item moves from player inventory to area inventory
             else if (playerWords[0].equalsIgnoreCase("drop")) {
-                String itemName = playerWords[1];
+                StringBuilder sbItemName = new StringBuilder(playerWords[1]);
                 for (int i = 2; i < playerWords.length; i++) {
-                    itemName += playerWords[i];
+                    sbItemName.append(" ").append(playerWords[i]);
                 }
+                String itemName = sbItemName.toString();
                 if (player.getInventory().containsKey(itemName)) {
                     Item droppedItem = player.getInventory().get(itemName);
                     player.getInventory().remove(itemName);
