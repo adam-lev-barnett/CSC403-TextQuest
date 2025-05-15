@@ -81,6 +81,7 @@ public class Interpreter {
                     String itemString = itemNameSB.toString();
                     if (player.getInventory().containsKey(itemString)) {
                         player.getRoom().getPuzzle().add(player.getInventory().get(itemString));
+                        player.getInventory().remove(itemString);
                     }
                     else if (itemNameParse[0].equalsIgnoreCase("undo")) {
                         player.inventory.addItem(itemString, player.getRoom().getPuzzle().pop()); // last added item goes back to inventory //^ using the deque!
