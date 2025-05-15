@@ -10,7 +10,7 @@ public class PuzzleList {
 
     // public PuzzleDQ duckQ = new PuzzleDQ(ItemCatalog.stringFromCandy, ItemCatalog.duckBill, ItemCatalog.duckCall);
 
-    public String duckPuzzle(PuzzleDQ submission) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
+    public static String duckPuzzle(PuzzleDQ submission) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
         if (submission.getSize() < 3) {
             CharacterList.duckHead.speak("QUACK! I am looking for three very specific items. This isn't - QUACK - even three non-specific items.");
             CharacterList.duckHead.speak("Come back when it's worth my time. QUACK!");

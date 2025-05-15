@@ -12,26 +12,14 @@ import com.textquest.Characters.*;
 */
 
 public class PuzzleDQ extends ArrayDeque<Item>{
-    ArrayDeque<Item> puzzle = new ArrayDeque<>();
-    public int items;
+    ArrayDeque<Item> puzzle;
 
-    public PuzzleDQ(Item... elements) {
-        for (Item item : elements) {
-            puzzle.add(item);
-        }
-        items = puzzle.size();
-    }
-
-    public boolean sizeCheck(PuzzleDQ other) {
-        if (other.size() != items) {
-            Words.narrate("You need to use more items.");
-            return false;
-        }
-        return true;
+    public PuzzleDQ() {
+        this.puzzle = new ArrayDeque<>();
     }
 
     public int getSize() {
-        return items;
+        return this.size();
     }
 
 

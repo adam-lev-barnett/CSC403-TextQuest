@@ -18,8 +18,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
         //^ Game element initialization
         ItemCatalog itemCatalog = new ItemCatalog();
 
@@ -68,8 +66,8 @@ public class Main {
         Words.narrate("• 'Punch Duckhead?'");
         Words.narrate("• Search the 'ticket stalls'?");
         Words.narrate("• Check out the 'gift shop'?");
+        Words.narrate("• Solve the puzzle? ('solve puzzle')");
         Words.narrate("•'Give up'?");
-
 
         Interpreter interpreter = new Interpreter(player);
         interpreter.getAction();

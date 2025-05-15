@@ -1,6 +1,7 @@
 package com.textquest.Rooms;
 import com.textquest.*;
 import com.textquest.Inventory_and_Items.ItemCatalog;
+import com.textquest.Inventory_and_Items.PuzzleDQ;
 import com.textquest.Characters.*;
 
 public class GameMap {
@@ -23,20 +24,17 @@ public class GameMap {
 
     //~ Room items
         //^ Carnival Entrance inventory
-        entrance.items.put("Bloody Toy Fairy Wand", ItemCatalog.toyFairyWand);
-        entrance.items.put("Cotton Candy (Eternal)", ItemCatalog.cottonCandyEternal);
-        entrance.items.put("Cotton Candy (Poison)", ItemCatalog.cottonCandyPoison);
-        entrance.items.put("Cotton Candy (Blessed)", ItemCatalog.cottonCandyBlessed);
-        entrance.items.put("Duck bill", ItemCatalog.duckBill);
-        entrance.items.put("Duck call", ItemCatalog.duckCall);
-        entrance.items.put("Candy necklace string", ItemCatalog.stringFromCandy);
-        entrance.items.put("Duck shirt", ItemCatalog.duckShirt);
-
-
-
-
+        entrance.items.addItem("Fairy wand", ItemCatalog.toyFairyWand);
+        entrance.items.addItem("Eternal cotton candy", ItemCatalog.cottonCandyEternal);
+        entrance.items.addItem("Poisoned cotton candy", ItemCatalog.cottonCandyPoison);
+        entrance.items.addItem("Blessed cotton candy", ItemCatalog.cottonCandyBlessed);
+        entrance.items.addItem("Duck bill", ItemCatalog.duckBill);
+        entrance.items.addItem("Duck call", ItemCatalog.duckCall);
+        entrance.items.addItem("String", ItemCatalog.stringFromCandy);
+        entrance.items.addItem("Duck shirt", ItemCatalog.duckShirt);
 
     //~ Room Puzzle DQs
+
         
     //~ Room Characters
         
@@ -44,10 +42,7 @@ public class GameMap {
     
         //^ Kitchen inventory
 
-        /* kitchen.items.put("Spatula", ItemCatalog.spatula);
-        kitchen.items.put("RuneBurger (Triangle)", ItemCatalog.runeBurger1);
-        kitchen.items.put("RuneBurger (Circle)", ItemCatalog.runeBurger2);
-        kitchen.items.put("RuneBurger (Square)", ItemCatalog.runeBurger3); */
+
 
 
     }

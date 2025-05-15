@@ -11,16 +11,13 @@ public class Room {
     public Room east;
     public Room west;
     public Inventory items;
-    public ArrayList<PuzzleDQ> puzzles;
+    public PuzzleDQ puzzle;
 
     public Room(String name, String desc) {
         this.name = name;
         this.desc = desc;
         this.items = new Inventory();
-    }
-
-    public void addPuzzle(PuzzleDQ puzzle) {
-        puzzles.add(puzzle);
+        this.puzzle = new PuzzleDQ();
     }
 
     public String toString() {
@@ -32,6 +29,14 @@ public class Room {
         System.out.println("South: " + south);
         System.out.println("East: " + east);
         System.out.println("West: " + west);
+    }
+
+    public PuzzleDQ getPuzzle() {
+        return puzzle;
+    }
+
+    public Inventory getItems() {
+        return items;
     }
     
 }
