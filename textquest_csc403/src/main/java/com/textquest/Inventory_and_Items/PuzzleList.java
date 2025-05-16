@@ -69,13 +69,14 @@ public class PuzzleList {
 
         submission.poll();
 
-        String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
-        while (!quack.equals("QUACK")) {
-            quack = InputScanner.strIn("\"QUACK\" like your unlife depends on it!");
-        }
+        // String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
+        // while (!quack.equals("QUACK")) {
+        //     quack = InputScanner.strIn("\"QUACK\" like your unlife depends on it!");
+        // }
         Words.narrate("Duckhead's mascot head begins to dissapate before your eyes... revealing...");
         Words.narrate("An actual, living duck. Not floating. Flying. Frantically flapping his mortal wings.");
-        CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + Main.player + "."); 
+        // CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + Main.player + "."); 
+        // CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + Main.testPlayer + "."); 
         CharacterList.duckHead.speak("Our souls were bound to this plane, which does not befit a duck.");
         CharacterList.duckHead.speak("We can now flee this wretched place.");
         CharacterList.duckHead.speak("Before we do, let us open the gates to the rest of the park as thanks for your kindness.");

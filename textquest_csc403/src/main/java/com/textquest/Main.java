@@ -12,7 +12,8 @@ import edu.princeton.cs.algs4.*;;
 //~ 
 
 public class Main {
-    public static Player player = PlayerCreation.createPlayer();
+    public static Player testPlayer = new Player("Bill", "A big duck", 3, GameMap.entrance);
+    // public static Player player = PlayerCreation.createPlayer();
     public static boolean entranceGatesLocked = true;
     public static GameMap gameMap = new GameMap();
 
@@ -31,12 +32,15 @@ public class Main {
 
         
         //^ Game script: Player creation and opening
-        Words.narrate("Anyway, welcome " + player.getName() + ".");
+        // Words.narrate("Anyway, welcome " + player.getName() + ".");
+        Words.narrate("Anyway, welcome " + testPlayer.getName() + ".");
         Words.narrate("Today, we're going on a little adventure.");
         Words.narrate("Are you ready?");
         Words.narrate("Buckle in!");
 
-        player.setRoom(GameMap.entrance);
+        // player.setRoom(GameMap.entrance);
+        testPlayer.setRoom(GameMap.entrance);
+
 
         //^ Chapter 1: The entrance
         //& Characters in room: Duckhead
@@ -69,7 +73,8 @@ public class Main {
         Words.narrate("• Solve the puzzle? ('solve puzzle')");
         Words.narrate("•'Give up'?");
 
-        Interpreter interpreter = new Interpreter(player);
+        // Interpreter interpreter = new Interpreter(player);
+        Interpreter interpreter = new Interpreter(testPlayer);
         interpreter.getAction();
     }
 }

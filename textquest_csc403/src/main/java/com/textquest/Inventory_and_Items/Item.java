@@ -28,7 +28,6 @@ public class Item {
         if (o == null) return false;
         if (this == o) return true;
         if (this.getClass() != o.getClass()) return false;
-        if (this.hashCode() != o.hashCode()) return false;
         Item other = (Item)o;
         return name.equalsIgnoreCase(other.name) && desc.equalsIgnoreCase(other.desc);
     }

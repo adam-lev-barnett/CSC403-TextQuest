@@ -22,5 +22,5 @@ public class PuzzleDQ extends ArrayDeque<Item>{
         return this.size();
     }
 
-
+    
 }
