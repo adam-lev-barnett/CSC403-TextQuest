@@ -7,10 +7,13 @@ import com.textquest.Main;
 public class PuzzleList {
 
     //! Was originally going to give the characters PuzzleDQs and pop both DQs at the same time to compare values, but then I'd have to repopulate the comparison DQs
-
+    //& Puzzles pop items one at a time so they don't have to iterate through everything if the puzzle is incorrect before the end
     // public PuzzleDQ duckQ = new PuzzleDQ(ItemCatalog.stringFromCandy, ItemCatalog.duckBill, ItemCatalog.duckCall);
+    //! How to return items to player???
 
     public static String duckPuzzle(PuzzleDQ submission) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
+        if (submission == null) throw new NullPointerException("Puzzle cannot be null");
+        
         if (submission.getSize() < 3) {
             CharacterList.duckHead.speak("QUACK! I am looking for three very specific items. This isn't - QUACK - even three non-specific items.");
             CharacterList.duckHead.speak("Come back when it's worth my time. QUACK!");
@@ -59,7 +62,7 @@ public class PuzzleList {
         Item item2 = submission.poll();
 
         //^ Correct second item
-        if (item2.equals(ItemCatalog.duckBill)) CharacterList.duckHead.speak("Oh, I see - QUACK - where you're going with this. You couldn't find string that hasn't been chewed on, though?");
+        if (item2.equals(ItemCatalog.duckBill)) CharacterList.duckHead.speak("Oh, I see - QUACK - where you're going with this. You couldn't find string that hasn't been chewed on, though?"); 
         
         else if (item1.equals(ItemCatalog.duckBill)) {
             Words.narrate("Duckhead quacks at you, his ghostly saliva hitting you square on the forehead.");
@@ -67,12 +70,41 @@ public class PuzzleList {
             return "call second";
         }
 
-        submission.poll();
+        //! Have to include shirt again unless using .contains
+        else if (item1.equals(ItemCatalog.duckShirt)) {
+            Words.narrate("Duckhead shrieks with laughter (at least you think it's laughter)...");
+            CharacterList.duckHead.speak("QUACK QUACK QUACK QUACK!!! You think that makes you a duck, numbskull?! Well, at least you heart them."); 
+            CharacterList.duckHead.speak("Might as well put that on.");
+            return "shirt"; 
+        }
 
-        // String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
-        // while (!quack.equals("QUACK")) {
-        //     quack = InputScanner.strIn("\"QUACK\" like your unlife depends on it!");
-        // }
+        else {
+            
+            if (item1.equals(ItemCatalog.duckShirt)) {
+                Words.narrate("Duckhead shrieks with laughter (at least you think it's laughter)...");
+                CharacterList.duckHead.speak("QUACK QUACK QUACK QUACK!!! You think that makes you a duck, numbskull?! Well, at least you heart them."); 
+                CharacterList.duckHead.speak("Might as well put that on.");
+                return "shirt"; 
+            }
+
+            Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
+            CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
+            return "idiot";
+        }
+
+        Item item3 = submission.poll();
+        if (!item3.equals(ItemCatalog.duckCall)) {
+
+
+            Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
+            CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
+            return "idiot";
+        }
+        //~ Ignore input request for testing
+            // String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
+            // while (!quack.equals("QUACK")) {
+            //     quack = InputScanner.strIn("\"QUACK\" like your unlife depends on it!");
+            // }
         Words.narrate("Duckhead's mascot head begins to dissapate before your eyes... revealing...");
         Words.narrate("An actual, living duck. Not floating. Flying. Frantically flapping his mortal wings.");
         // CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + Main.player + "."); 

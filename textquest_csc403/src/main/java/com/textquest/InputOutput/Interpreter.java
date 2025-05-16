@@ -1,5 +1,6 @@
 package com.textquest.InputOutput;
 
+import java.lang.IllegalArgumentException;
 import java.io.InputStream;
 import java.util.Scanner;
 import com.textquest.Characters.*;
@@ -20,8 +21,9 @@ public class Interpreter {
     }
 
     public void getAction() {
-        System.out.println("Enter a command: ");
+        // if (player == null) throw new IllegalArgumentException("Player must be instantiated");
 
+        System.out.println("Enter a command: ");
         String command = action.nextLine();
         while (!command.equals("give up")) {
             String[] playerWords = command.split(" ");
@@ -49,7 +51,7 @@ public class Interpreter {
                     player.getInventory().put(itemName, player.getRoom().items.get(itemName));
                     player.getRoom().getItems().remove(itemName);
                     System.out.println(itemName + " has been added to your inventory");
-                    System.out.println("Your inventory: " + player.getInventory());
+                    System.out.println(player.getInventory());
                 }
                 else System.out.println("There is no " + itemName + " to pick up!");
             }
@@ -74,32 +76,38 @@ public class Interpreter {
                 String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. Type \"undo\" to take back the last item.").split(" ");
                 //! While loop, conditional for if user enters nothing ""
                 while (!itemNameParse[0].equalsIgnoreCase("done")) {
-                    StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
-                    for (int i = 2; i < itemNameParse.length; i++) {
-                        itemNameSB.append(" " + itemNameParse[i]);
+
+                    if (itemNameParse[0].equalsIgnoreCase("undo")) {
+                        System.out.println("You haven't added anything yet!");
                     }
-                    String itemString = itemNameSB.toString();
-                    if (player.getInventory().containsKey(itemString)) {
-                        player.getRoom().getPuzzle().add(player.getInventory().get(itemString));
-                        player.getInventory().remove(itemString);
+                    else if (itemNameParse.length > 1) {
+                        StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
+                        for (int i = 2; i < itemNameParse.length; i++) {
+                            itemNameSB.append(" " + itemNameParse[i]);
+                        }
+                        String itemString = itemNameSB.toString();
+                        if (player.getInventory().containsKey(itemString)) {
+                            player.getRoom().getPuzzle().add(player.getInventory().get(itemString));
+                            player.getInventory().remove(itemString);
+                        }
+                        else if (itemNameParse[0].equalsIgnoreCase("undo")) {
+                            player.inventory.addItem(itemString, player.getRoom().getPuzzle().pop()); // last added item goes back to inventory //^ using the deque!
+                        }
+                        else {
+                            System.out.println(itemString + " is not in your inventory!");
+                        }
+                        System.out.println(player.getRoom().getPuzzle());
                     }
-                    else if (itemNameParse[0].equalsIgnoreCase("undo")) {
-                        player.inventory.addItem(itemString, player.getRoom().getPuzzle().pop()); // last added item goes back to inventory //^ using the deque!
-                    }
-                    else {
-                        System.out.println(itemString + " is not in your inventory!");
-                    }
-                    System.out.println(player.getRoom().getPuzzle());
-                    itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit.").split(" "); 
+                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit.").split(" "); 
                 }
                 if (player.getRoom().equals(GameMap.entrance)) {
                     PuzzleList.duckPuzzle(player.getRoom().getPuzzle());
                 }
-            }
+                else System.out.println("There is no puzzle in this room!");
 
+                }
             System.out.println("Enter a command: ");
             command = action.nextLine();
+            }
         }
     }
-    
-}

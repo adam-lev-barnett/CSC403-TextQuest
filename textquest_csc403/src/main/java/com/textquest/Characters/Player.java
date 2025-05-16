@@ -5,6 +5,7 @@ import com.textquest.Inventory_and_Items.*;
 import com.textquest.*;
 import com.textquest.InputOutput.*;
 import java.util.Scanner;
+import java.lang.NullPointerException;
 
 
 public class Player extends GameCharacter {
@@ -13,6 +14,7 @@ public class Player extends GameCharacter {
     public Player(String name, String desc, int health, Room room) {
         super(name, desc, health, room);
         boolean duckShirt = false;
+        if (room == null) throw new NullPointerException("Player room cannot be null"); 
     }
     
     public void traverse(String direction) {
