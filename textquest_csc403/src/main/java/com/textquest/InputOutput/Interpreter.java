@@ -29,7 +29,10 @@ public class Interpreter {
 
             //^ Traversal
             if (playerWords[0].equalsIgnoreCase("go")) {
-                player.traverse(playerWords[1]);
+                if (playerWords.length == 1) {
+                    System.out.println("Go where?");
+                }
+                else player.traverse(playerWords[1]);
             }
 
             //^ Self-checks
@@ -92,7 +95,10 @@ public class Interpreter {
                             System.out.println(player.getRoom().getPuzzle());
                             System.out.println(player.getInventory());
                         }
-                        
+                    }
+                    else if (itemNameParse[0].equalsIgnoreCase("leave")) {
+                        System.out.println("Come back soon!");
+                        break;
                     }
                     
                     else if (itemNameParse.length > 1) {
