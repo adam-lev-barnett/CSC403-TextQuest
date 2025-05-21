@@ -13,14 +13,14 @@ import com.textquest.Characters.*;
 */
 
 public class PuzzleDQ extends ArrayDeque<Item>{
-    ArrayDeque<Item> puzzle;
-
-    public PuzzleDQ() {
-        this.puzzle = new ArrayDeque<>();
-    }
 
     public int getSize() {
         return this.size();
+    }
+
+    public PuzzleDQ clone(PuzzleDQ toBeCloned) {
+        this.addAll(toBeCloned);
+        return this;
     }
 
     

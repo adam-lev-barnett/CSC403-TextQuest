@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.util.Scanner;
 import com.textquest.Characters.*;
 import com.textquest.Inventory_and_Items.*;
-import com.textquest.Inventory_and_Items.PuzzleList;
 import com.textquest.Rooms.GameMap;
 
 import java.lang.StringBuilder;
@@ -21,7 +20,7 @@ public class Interpreter {
     }
 
     public void getAction() {
-        // if (player == null) throw new IllegalArgumentException("Player must be instantiated");
+        if (player == null) throw new IllegalArgumentException("Player must be instantiated");
 
         System.out.println("Enter a command: ");
         String command = action.nextLine();
@@ -35,6 +34,10 @@ public class Interpreter {
 
             //^ Self-checks
             else if (playerWords[0].equalsIgnoreCase("description")) {
+                System.out.println(player.getDesc());
+            }
+
+            else if (playerWords[0].equalsIgnoreCase("name")) {
                 System.out.println(player.getDesc());
             }
 
@@ -72,14 +75,26 @@ public class Interpreter {
             }
 
             //^ Puzzles
+    //! "you haven't added anything yet" - done when items in dq
+    //! Can continue to add the same item after submission, but it doesn't accumulate in the dq
+
             else if (playerWords[0].equalsIgnoreCase("solve") && playerWords[1].equalsIgnoreCase("puzzle")) {
                 String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. Type \"undo\" to take back the last item.").split(" ");
                 //! While loop, conditional for if user enters nothing ""
                 while (!itemNameParse[0].equalsIgnoreCase("done")) {
 
                     if (itemNameParse[0].equalsIgnoreCase("undo")) {
+                        if (player.getRoom().getPuzzle().isEmpty()) { //& Fringe case: undo when there's nothing in the puzzle dq
                         System.out.println("You haven't added anything yet!");
+                        }
+                        else {
+                            player.inventory.addItem(player.getRoom().getPuzzle().pop()); // last added item goes back to inventory //^ using the deque!
+                            System.out.println(player.getRoom().getPuzzle());
+                            System.out.println(player.getInventory());
+                        }
+                        
                     }
+                    
                     else if (itemNameParse.length > 1) {
                         StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
                         for (int i = 2; i < itemNameParse.length; i++) {
@@ -87,11 +102,8 @@ public class Interpreter {
                         }
                         String itemString = itemNameSB.toString();
                         if (player.getInventory().containsKey(itemString)) {
-                            player.getRoom().getPuzzle().add(player.getInventory().get(itemString));
+                            player.getRoom().getPuzzle().push(player.getInventory().get(itemString));
                             player.getInventory().remove(itemString);
-                        }
-                        else if (itemNameParse[0].equalsIgnoreCase("undo")) {
-                            player.inventory.addItem(itemString, player.getRoom().getPuzzle().pop()); // last added item goes back to inventory //^ using the deque!
                         }
                         else {
                             System.out.println(itemString + " is not in your inventory!");
@@ -101,7 +113,10 @@ public class Interpreter {
                 itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit.").split(" "); 
                 }
                 if (player.getRoom().equals(GameMap.entrance)) {
-                    PuzzleList.duckPuzzle(player.getRoom().getPuzzle());
+                    PuzzleDQ playerPuzzleCopy = new PuzzleDQ();
+                    playerPuzzleCopy.clone(player.getRoom().getPuzzle());
+                    PuzzleList.duckPuzzle(playerPuzzleCopy, player);
+                    System.out.println(player.getInventory());
                 }
                 else System.out.println("There is no puzzle in this room!");
 

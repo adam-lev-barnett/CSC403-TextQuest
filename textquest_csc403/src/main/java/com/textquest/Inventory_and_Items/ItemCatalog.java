@@ -5,15 +5,15 @@ import java.util.HashSet;
 public class ItemCatalog {
     public static HashSet<Item> masterInventory = new HashSet<>();
 
-    public static Item toyFairyWand = new Item("Bloody Toy Fairy Wand", "Not magical, but still somehow dangerous in the wrong (or right?) hands.");
-    public static Item cottonCandyEternal = new Item("Cotton Candy (Eternal)", "A piece of the neverending and never-depleted pile of bright pink cotton candy.");
-    public static Item cottonCandyPoison = new Item("Cotton Candy (Poison)", "The radioactive glow of green sends a signal to your brain: \"Eating this won't end well for you. In what way? Feel free to find out.\"");
-    public static Item cottonCandyBlessed = new Item("Cotton Candy (Blessed)", "Radiant and gold. Cotton candy so beautiful - awe inspiring even - that you find yourself crying. A voice rises from inside you, seemingly from your heart: \"From The Demise, I was created as a balance. From The Entertaining I was cast out. Aid me, cursed one, and find my true home.\"");
-    public static Item duckBill = new Item("Latex duck bill", "If you're going to quack like a duck, you better look the part. There are small holes on the sides. You might be able to thread something through them to help secure it to your face.");
-    public static Item rope10 = new Item("Rope (nylon cord, 10 ft.)", "Left by some ghouls who tried to break into the gift shop many moons ago. What ended up happening to them? In any case, they forgot their rope.");
-    public static Item stringFromCandy = new Item("Candy necklace (remnants)", "Ah, to be young again and willing to eat your own jewelry. But you're dead! Besides, someone already ate this. At least they left the string.");
-    public static Item duckCall = new Item("Magic duck call", "Not your average duck call. It emits a mystical energy you can't quite comprehend, possibly having to do with the fact that you aren't a duck.");
-    public static Item duckShirt = new Item("I \u2665 \uD83E\uDD86s t-shirt", "For die-hard duck fans. Not a duck? You can still support ducks!");
+    public static Item toyFairyWand = new Item("Bloody Wand", "Bloody Toy Fairy Wand", "Not magical, but still somehow dangerous in the wrong (or right?) hands.");
+    public static Item cottonCandyEternal = new Item("Eternal Cotton Candy", "Cotton Candy (Eternal)", "A piece of the neverending and never-depleted pile of bright pink cotton candy.");
+    public static Item cottonCandyPoison = new Item("Poison Cotton Candy", "Cotton Candy (Poison)", "The radioactive glow of green sends a signal to your brain: \"Eating this won't end well for you. In what way? Feel free to find out.\"");
+    public static Item cottonCandyBlessed = new Item("Blessed Cotton Candy", "Cotton Candy (Blessed)", "Radiant and gold. Cotton candy so beautiful - awe inspiring even - that you find yourself crying. A voice rises from inside you, seemingly from your heart: \"From The Demise, I was created as a balance. From The Entertaining I was cast out. Aid me, cursed one, and find my true home.\"");
+    public static Item duckBill = new Item("duck bill", "Latex duck bill", "If you're going to quack like a duck, you better look the part. There are small holes on the sides. You might be able to thread something through them to help secure it to your face.");
+    public static Item rope10 = new Item("Rope", "Rope (nylon cord, 10 ft.)", "Left by some ghouls who tried to break into the gift shop many moons ago. What ended up happening to them? In any case, they forgot their rope.");
+    public static Item stringFromCandy = new Item("string", "Candy necklace (remnants)", "Ah, to be young again and willing to eat your own jewelry. But you're dead! Besides, someone already ate this. At least they left the string.");
+    public static Item duckCall = new Item("duck call", "Magic duck call", "Not your average duck call. It emits a mystical energy you can't quite comprehend, possibly having to do with the fact that you aren't a duck.");
+    public static Item duckShirt = new Item("duck shirt", "I \u2665 \uD83E\uDD86s t-shirt", "For die-hard duck fans. Not a duck? You can still support ducks!");
 
 
     // public static Item stick = new Item("Stick", "A basic stick, probably from a tree"); 

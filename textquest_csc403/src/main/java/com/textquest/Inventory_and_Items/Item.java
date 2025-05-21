@@ -1,16 +1,22 @@
 package com.textquest.Inventory_and_Items;
 
 public class Item {
+    String nickName; // Maintains easy user input while allowing more creativity and specificity upon printing the item
     public String name;
     String desc;
 
-    public Item(String name, String desc) {
+    public Item(String nickName, String name, String desc) {
         this.name = name;
         this.desc = desc;
+        this.nickName = nickName;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getNickName() {
+        return nickName;
     }
 
     public String toString() {

@@ -10,8 +10,10 @@ public class PuzzleList {
     //& Puzzles pop items one at a time so they don't have to iterate through everything if the puzzle is incorrect before the end
     // public PuzzleDQ duckQ = new PuzzleDQ(ItemCatalog.stringFromCandy, ItemCatalog.duckBill, ItemCatalog.duckCall);
     //! How to return items to player???
+    //! "you haven't added anything yet" - done when items in dq
+    //! Can continue to add the same item after submission, but it doesn't accumulate in the dq
 
-    public static String duckPuzzle(PuzzleDQ submission) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
+    public static String duckPuzzle(PuzzleDQ submission, Player player) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
         if (submission == null) throw new NullPointerException("Puzzle cannot be null");
         
         if (submission.getSize() < 3) {

@@ -24,14 +24,14 @@ public class GameMap {
 
     //~ Room items
         //^ Carnival Entrance inventory
-        entrance.items.addItem("Fairy wand", ItemCatalog.toyFairyWand);
-        entrance.items.addItem("Eternal cotton candy", ItemCatalog.cottonCandyEternal);
-        entrance.items.addItem("Poisoned cotton candy", ItemCatalog.cottonCandyPoison);
-        entrance.items.addItem("Blessed cotton candy", ItemCatalog.cottonCandyBlessed);
-        entrance.items.addItem("Duck bill", ItemCatalog.duckBill);
-        entrance.items.addItem("Duck call", ItemCatalog.duckCall);
-        entrance.items.addItem("String", ItemCatalog.stringFromCandy);
-        entrance.items.addItem("Duck shirt", ItemCatalog.duckShirt);
+        entrance.items.addItem(ItemCatalog.toyFairyWand);
+        entrance.items.addItem(ItemCatalog.cottonCandyEternal);
+        entrance.items.addItem(ItemCatalog.cottonCandyPoison);
+        entrance.items.addItem(ItemCatalog.cottonCandyBlessed);
+        entrance.items.addItem(ItemCatalog.duckBill);
+        entrance.items.addItem(ItemCatalog.duckCall);
+        entrance.items.addItem(ItemCatalog.stringFromCandy);
+        entrance.items.addItem(ItemCatalog.duckShirt);
 
     //~ Room Puzzle DQs
 
