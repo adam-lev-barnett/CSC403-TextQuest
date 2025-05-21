@@ -28,7 +28,7 @@ public class PuzzleList {
             return "too large";
         }
 
-        Item item1 = submission.poll();
+        Item item1 = submission.poll(); // Standard queue operation to remove and return head of queue (first item added to room's puzzleDQ)
 
         //^ Correct first item
         if (item1.equals(ItemCatalog.stringFromCandy)) CharacterList.duckHead.speak("Ew... Food garbage? What are you - QUACK - gonna do with that?");

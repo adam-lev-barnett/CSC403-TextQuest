@@ -8,6 +8,10 @@ public class Inventory extends HashMap<String, Item> {
         for (Item item : values()) System.out.println(item);
     }
 
+    public String printItemNicknames(){
+        return this.keySet().toString();
+    }
+
     public void addItem(Item item) {
         this.put(item.getNickName().toLowerCase(), item);
     }

@@ -27,7 +27,6 @@ public class Main {
 
         GameCharacter duckHead = CharacterList.duckHead;
 
-        // StdAudioStereo.play("textquest_csc403/src/main/java/com/textquest/Horse God Master.wav");
         itemCatalog.populateItems();
 
         
@@ -50,6 +49,9 @@ public class Main {
         Words.narrate("The gift shop, while broken, looks lively - Everyone is dead, but capitalism is alive and well.");
         Words.narrate("Floating heads of mascots past wistfully bob to a discordant calliope with bloodstained mouths.");
         Words.narrate("From the lineup, a duck head with bloodshot eyes spots you, pauses, and slowly turns around.");
+
+        //~ Comment out duck dialog for expedited testing
+        /* 
         String duckQ = duckHead.speakResponse("I'm not a real duck. Are you?");
         while (!duckQ.equalsIgnoreCase("yes") && !duckQ.equalsIgnoreCase("no")) {
             duckQ = duckHead.speakResponse("*QUACK* It's a \"yes\" or \"no\" question *QUACK*");
@@ -65,6 +67,8 @@ public class Main {
                 duckHead.speak("...");
                 break;
         }
+        */
+
         Words.narrate("What will you do?");
         Words.narrate("• Explore the 'cotton candy cart'?'");
         Words.narrate("• 'Punch Duckhead?'");
