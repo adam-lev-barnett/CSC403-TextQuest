@@ -14,17 +14,27 @@ public class PuzzleList {
     //! Can continue to add the same item after submission, but it doesn't accumulate in the dq
 
     public static String duckPuzzle(PuzzleDQ submission, Player player) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
+        
+        //! Null checks
         if (submission == null) throw new NullPointerException("Puzzle cannot be null");
+        if (player == null) throw new NullPointerException("Player cannot be null");
+        
         
         if (submission.getSize() < 3) {
             CharacterList.duckHead.speak("QUACK! I am looking for three very specific items. This isn't - QUACK - even three non-specific items.");
             CharacterList.duckHead.speak("Come back when it's worth my time. QUACK!");
+            while (!(submission.isEmpty())) {
+                player.getInventory().addItem(submission.pop());
+            }
             return "too small";
         }
 
         if (submission.getSize() > 3) {
             CharacterList.duckHead.speak("QUACK! I am looking for three very specific items... so this is too many items! QUACK! I don't get paid enough for this.");
             CharacterList.duckHead.speak("Come back when it's worth my time. QUACK!");
+            while (!(submission.isEmpty())) {
+                player.getInventory().addItem(submission.pop());
+            }
             return "too large";
         }
 
@@ -36,6 +46,10 @@ public class PuzzleList {
         else if (item1.equals(ItemCatalog.duckBill)) {
             Words.narrate("Duckhead looks at you with contempt; his oversized, cartoon-ish eyes glare at you, unblinking and patronizing.");
             CharacterList.duckHead.speak("Very funny, kid. But you ain't passing for a - QUACK - duck if you can't keep that beak on your face.");
+            while (!(submission.isEmpty())) {
+                player.getInventory().addItem(submission.pop());
+            }
+            player.getInventory().addItem(item1);
             return "bill first";
         }
 
@@ -44,20 +58,18 @@ public class PuzzleList {
             CharacterList.duckHead.speak("If you can't look the part, you shouldn't talk the talk."); 
             CharacterList.duckHead.speak("And if you shouldn't talk the talk, don't even try to walk the walk.");
             CharacterList.duckHead.speak("Because - well - QUACK - you've heard of a murder of crows, right? Ducks can murder too, especially when you don't belong...");
+            while (!(submission.isEmpty())) {
+                player.getInventory().addItem(submission.pop());
+            }
+            player.getInventory().addItem(item1);
             return "call first";
-        }
-        
-        //! Misleading item; changes character description when run in Main
-        else if (item1.equals(ItemCatalog.duckShirt)) {
-            Words.narrate("Duckhead shrieks with laughter (at least you think it's laughter)...");
-            CharacterList.duckHead.speak("QUACK QUACK QUACK QUACK!!! You think that makes you a duck, numbskull?! Well, at least you heart them."); 
-            CharacterList.duckHead.speak("Might as well put that on.");
-            return "shirt"; 
         }
 
         else {
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
+            player.getInventory().addItem(submission.pop());
+            player.getInventory().addItem(item1);
             return "idiot";
         }
 
@@ -66,31 +78,21 @@ public class PuzzleList {
         //^ Correct second item
         if (item2.equals(ItemCatalog.duckBill)) CharacterList.duckHead.speak("Oh, I see - QUACK - where you're going with this. You couldn't find string that hasn't been chewed on, though?"); 
         
-        else if (item1.equals(ItemCatalog.duckBill)) {
+        else if (item2.equals(ItemCatalog.duckCall)) {
             Words.narrate("Duckhead quacks at you, his ghostly saliva hitting you square on the forehead.");
             CharacterList.duckHead.speak("You're just going to hang that quacker around your neck? Just because you can talk the talk doesn't mean you can walk the walk.");
+            player.getInventory().addItem(submission.pop());
+            player.getInventory().addItem(item1);
+            player.getInventory().addItem(item2);
             return "call second";
         }
 
-        //! Have to include shirt again unless using .contains
-        else if (item1.equals(ItemCatalog.duckShirt)) {
-            Words.narrate("Duckhead shrieks with laughter (at least you think it's laughter)...");
-            CharacterList.duckHead.speak("QUACK QUACK QUACK QUACK!!! You think that makes you a duck, numbskull?! Well, at least you heart them."); 
-            CharacterList.duckHead.speak("Might as well put that on.");
-            return "shirt"; 
-        }
-
         else {
-            
-            if (item1.equals(ItemCatalog.duckShirt)) {
-                Words.narrate("Duckhead shrieks with laughter (at least you think it's laughter)...");
-                CharacterList.duckHead.speak("QUACK QUACK QUACK QUACK!!! You think that makes you a duck, numbskull?! Well, at least you heart them."); 
-                CharacterList.duckHead.speak("Might as well put that on.");
-                return "shirt"; 
-            }
-
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
+            player.getInventory().addItem(submission.pop());
+            player.getInventory().addItem(item1);
+            player.getInventory().addItem(item2);
             return "idiot";
         }
 
@@ -100,6 +102,12 @@ public class PuzzleList {
 
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
+            while (!(submission.isEmpty())) {
+                player.getInventory().addItem(submission.pop());
+            }
+            player.getInventory().addItem(item1);
+            player.getInventory().addItem(item2);
+            player.getInventory().addItem(item3);
             return "idiot";
         }
         //~ Ignore input request for testing

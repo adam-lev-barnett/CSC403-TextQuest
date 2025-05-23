@@ -1,15 +1,21 @@
 package com.textquest.Characters;
-import java.util.HashSet;
 
+import com.textquest.Inventory_and_Items.ItemCatalog;
 import com.textquest.Rooms.GameMap;
 
 
 public class CharacterList {
 
-    public final static GameCharacter duckHead = new GameCharacter
+    public static final GameCharacter duckHead = new GameCharacter
         ("Duckhead", 
         "A disembodied, floating head. Part of a large duck mascot costume. It has bloodshot eyes and a bit of dried blood around its mouth.", 
         5, 
         GameMap.entrance);
+
+        static {
+            duckHead.getInventory().addItem(ItemCatalog.duckShirt);
+        }
+    
+    private CharacterList() {}
 
     }

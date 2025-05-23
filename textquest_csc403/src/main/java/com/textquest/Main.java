@@ -6,7 +6,9 @@ import com.textquest.Inventory_and_Items.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
 
-import edu.princeton.cs.algs4.*;;
+import edu.princeton.cs.algs4.*;
+
+//! Add boolean solvedPuzzle so that the interpreter knows not to let you try the puzzle when there aren't items to use
 
 //~ Character creation 
 //~ 
@@ -20,15 +22,9 @@ public class Main {
     public static void main(String[] args) {
 
         //^ Game element initialization
-        ItemCatalog itemCatalog = new ItemCatalog();
 
         //~ Character creation 
-        CharacterList charList = new CharacterList();
-
         GameCharacter duckHead = CharacterList.duckHead;
-
-        itemCatalog.populateItems();
-
         
         //^ Game script: Player creation and opening
         // Words.narrate("Anyway, welcome " + player.getName() + ".");
@@ -70,12 +66,14 @@ public class Main {
         */
 
         Words.narrate("What will you do?");
-        Words.narrate("• Explore the 'cotton candy cart'?'");
-        Words.narrate("• 'Punch Duckhead?'");
-        Words.narrate("• Search the 'ticket stalls'?");
-        Words.narrate("• Check out the 'gift shop'?");
+        Words.narrate("• 'Talk to Duckhead'?");
         Words.narrate("• Solve the puzzle? ('solve puzzle')");
         Words.narrate("•'Give up'?");
+        System.out.println("");
+        System.out.println("At any time, you can also enter: ");
+        System.out.println("• 'Description'");
+        System.out.println("• 'Name'");
+
 
         // Interpreter interpreter = new Interpreter(player);
         Interpreter interpreter = new Interpreter(testPlayer);

@@ -2,6 +2,8 @@ package com.textquest.Inventory_and_Items;
 import java.util.HashMap;
 import java.lang.StringBuilder;
 
+//! Need to junit test for item equals and hashcode
+
 public class Inventory extends HashMap<String, Item> {
     
     public void printInventory() {
@@ -24,4 +26,5 @@ public class Inventory extends HashMap<String, Item> {
         }
         return items.toString();
     }
+    
 }

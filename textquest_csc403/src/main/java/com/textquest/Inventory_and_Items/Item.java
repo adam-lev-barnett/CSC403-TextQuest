@@ -29,20 +29,36 @@ public class Item {
 
     //^ Had to update hash function with equals when ignoring case. Decided on to-lower
 
-    @Override
+    @Override //& Equals is case insensitive to make user input more straightforward
     public boolean equals(Object o) { // Item retrieval is not case-sensitive
         if (o == null) return false;
         if (this == o) return true;
         if (this.getClass() != o.getClass()) return false;
         Item other = (Item)o;
-        return name.equalsIgnoreCase(other.name) && desc.equalsIgnoreCase(other.desc);
+        return name.equalsIgnoreCase(other.name) && desc.equalsIgnoreCase(other.desc) && nickName.equalsIgnoreCase(other.nickName);
     }
 
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = hash * 37 + name.toLowerCase().hashCode();
-        hash = hash * 37 + desc.toLowerCase().hashCode();
+        if (name == null) {
+            hash = hash * 37;
+        }
+        else {
+            hash = hash * 37 + name.toLowerCase().hashCode();
+        }
+        if (desc == null) {
+            hash = hash * 37;
+        }
+        else {
+            hash = hash * 37 + desc.toLowerCase().hashCode();
+        }
+        if (nickName == null) {
+            hash = hash * 37;
+        }
+        else {
+            hash = hash * 37 + nickName.toLowerCase().hashCode();
+        }
         return hash;
     }
 

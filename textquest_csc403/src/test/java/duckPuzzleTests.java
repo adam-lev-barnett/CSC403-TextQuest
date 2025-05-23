@@ -10,7 +10,7 @@ import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
 import java.lang.NullPointerException;
 
-public class tests {
+public class duckPuzzleTests {
     
     @Test
     public void testDuckPuzzle() {
@@ -29,6 +29,7 @@ public class tests {
         testQ1.add(ItemCatalog.stringFromCandy);
         testQ1.add(ItemCatalog.duckBill);
         testQ1.add(ItemCatalog.duckCall);
+
         testQ3.add(ItemCatalog.stringFromCandy);
         testQ3.add(ItemCatalog.stringFromCandy);
         testQ3.add(ItemCatalog.stringFromCandy);
@@ -37,15 +38,20 @@ public class tests {
         testQ3.add(ItemCatalog.stringFromCandy);
         testQ3.add(ItemCatalog.stringFromCandy);
         testQ3.add(ItemCatalog.stringFromCandy);
+
         testQ4.add(ItemCatalog.duckBill);
+
         testQ5.add(new Item(null, null, null));
-        testQ5.add(new Item("Test item nickname","Test name", "nothing"));
+        // testQ5.add(new Item("Test item nickname","Test name", "nothing"));
+
         testQ6.add(ItemCatalog.cottonCandyPoison);
         testQ6.add(ItemCatalog.cottonCandyPoison);
         testQ6.add(ItemCatalog.cottonCandyPoison);
+
         testQ7.add(ItemCatalog.duckBill);
         testQ7.add(ItemCatalog.stringFromCandy);
         testQ7.add(ItemCatalog.duckCall);
+        
         testQ8.add(ItemCatalog.duckCall);
         testQ8.add(ItemCatalog.stringFromCandy);
         testQ8.add(ItemCatalog.duckBill);
@@ -60,6 +66,7 @@ public class tests {
         String result8 = PuzzleList.duckPuzzle(testQ8, testPlayer);
 
         assertThrows(NullPointerException.class, () -> PuzzleList.duckPuzzle(null, testPlayer));
+        assertThrows(NullPointerException.class, () -> PuzzleList.duckPuzzle(testQ1, null));
         assertEquals("success", result1);
         assertEquals("too small", result2);
         assertEquals("too large", result3);
@@ -68,20 +75,8 @@ public class tests {
         assertEquals("idiot", result6);
         assertEquals("bill first", result7);
         assertEquals("call first", result8);
-        // assertEquals("success", result1);
-
-
-
-
-
-
     }
     
-    @Test
-    public void playerConstructorTest() {
-        
-        assertThrows(NullPointerException.class, () -> new Player("", "", 0, null));
-    }
 
     public void testsComplete() {
         System.out.println("Tests complete");

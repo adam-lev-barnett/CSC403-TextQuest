@@ -2,9 +2,6 @@ package com.textquest.Characters;
 
 import com.textquest.Rooms.Room;
 import com.textquest.Inventory_and_Items.*;
-import com.textquest.*;
-import com.textquest.InputOutput.*;
-import java.util.Scanner;
 import java.lang.NullPointerException;
 
 
@@ -19,23 +16,28 @@ public class Player extends GameCharacter {
     
     public void traverse(String direction) {
         switch (direction) {
-            case "North": 
-                room = room.north;
+            case "north": 
+                if (room.north == null) System.out.println("There's nothing that way.");
+                else room = room.north;
                 break;
-            case "South":
-                room = room.south;
+            case "south":
+                if (room.south == null) System.out.println("There's nothing that way.");
+                else room = room.south;
                 break;
-            case "East":
-                room = room.east;
+            case "east":
+                if (room.east == null) System.out.println("There's nothing that way.");
+                else room = room.east;
                 break;
-            case "West":
-                room = room.west;
+            case "west":
+                if (room.east == null) System.out.println("There's nothing that way.");
+                else room = room.west;
                 break;
             default:
                 System.out.println("You cannot go this direction.");
         }
     }
-
+    
+    //& Override from GameCharacter to display "Item was added to inventory" specifically for the player
     @Override
     public void addInventory(String itemName, Item item) {
         inventory.put(itemName, item);
@@ -54,7 +56,7 @@ public class Player extends GameCharacter {
 
     public void putOnDuckShirt() {
         duckShirt = true;
-        desc += ("Clad in a brand new" + ItemCatalog.duckShirt);
+        desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
     }
 
 

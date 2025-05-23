@@ -3,7 +3,7 @@ package com.textquest.Inventory_and_Items;
 import java.util.HashSet;
 
 public class ItemCatalog {
-    public static HashSet<Item> masterInventory = new HashSet<>();
+    public static final HashSet<Item> masterInventory = new HashSet<>();
 
     public static Item toyFairyWand = new Item("Bloody Wand", "Bloody Toy Fairy Wand", "Not magical, but still somehow dangerous in the wrong (or right?) hands.");
     public static Item cottonCandyEternal = new Item("Eternal Cotton Candy", "Cotton Candy (Eternal)", "A piece of the neverending and never-depleted pile of bright pink cotton candy.");
@@ -25,7 +25,7 @@ public class ItemCatalog {
     // public static Item runeBurger3 = new Item("Runeburger (Square)", "A mysterious meat patty with a square underneath. See what happens if you flip it!");
 
     
-    public void populateItems() {
+    static {
 
         //^ Entrance items
         masterInventory.add(toyFairyWand);

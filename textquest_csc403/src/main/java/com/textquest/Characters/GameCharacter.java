@@ -8,7 +8,7 @@ public class GameCharacter {
     String desc;
     int health;
     Room room;
-    public Inventory inventory;
+    public final Inventory inventory;
 
     public GameCharacter(String name, String desc, int health, Room room) {
         this.name = name;
@@ -20,6 +20,10 @@ public class GameCharacter {
 
     public String getName() {
         return name;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 
     public void addInventory(String itemName, Item item) {
@@ -48,6 +52,17 @@ public class GameCharacter {
 
     public String getDesc() {
         return desc;
+    }
+
+    public void giveItem(Item item, Player player) {
+        if (this.inventory.containsKey(item.getNickName())) {
+            if (player.getInventory().containsKey(item.getNickName())) this.speak("You already have this item, apparently!");
+            else if (!this.inventory.containsKey(item.getNickName())) this.speak("Whoops! Looks like I don't have this item to give!");
+            else {
+                inventory.remove(item.getNickName());
+                player.getInventory().addItem(item);
+            }
+        }
     }
 
     
