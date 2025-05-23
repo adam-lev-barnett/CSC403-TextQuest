@@ -38,9 +38,12 @@ public class PuzzleList {
         }
 
         Item item1 = submission.poll(); // Standard queue operation to remove and return head of queue (first item added to room's puzzleDQ)
+        Words.narrate("You hand him your " + item1.getNickName());
 
         //^ Correct first item
-        if (item1.equals(ItemCatalog.stringFromCandy)) CharacterList.duckHead.speak("Ew... Food garbage? What are you - QUACK - gonna do with that?");
+        if (item1.equals(ItemCatalog.stringFromCandy)) {
+            CharacterList.duckHead.speak("Ew... Food garbage? What are you - QUACK - gonna do with that?");
+        }
         
         else if (item1.equals(ItemCatalog.duckBill)) {
             Words.narrate("Duckhead looks at you with contempt; his oversized, cartoon-ish eyes glare at you, unblinking and patronizing.");
@@ -73,9 +76,13 @@ public class PuzzleList {
         }
 
         Item item2 = submission.poll();
+        Words.narrate("You hand him your " + item2.getNickName());
 
         //^ Correct second item
-        if (item2.equals(ItemCatalog.duckBill)) CharacterList.duckHead.speak("Oh, I see - QUACK - where you're going with this. You couldn't find string that hasn't been chewed on, though?"); 
+        if (item2.equals(ItemCatalog.duckBill)) {
+            CharacterList.duckHead.speak("Oh, I see - QUACK - where you're going with this.");
+            CharacterList.duckHead.speak(" You couldn't tie that on with string that hasn't been chewed on, though...?"); 
+        }
         
         else if (item2.equals(ItemCatalog.duckCall)) {
             Words.narrate("Duckhead quacks at you, his ghostly saliva hitting you square on the forehead.");
@@ -85,7 +92,6 @@ public class PuzzleList {
             player.getInventory().addItem(item2);
             return "call second";
         }
-
         else {
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
@@ -96,9 +102,8 @@ public class PuzzleList {
         }
 
         Item item3 = submission.poll();
+        Words.narrate("You hand him your " + item3.getNickName());
         if (!item3.equals(ItemCatalog.duckCall)) {
-
-
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
             while (!(submission.isEmpty())) {

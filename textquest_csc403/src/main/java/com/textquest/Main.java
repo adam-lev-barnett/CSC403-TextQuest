@@ -62,9 +62,9 @@ public class Main {
         */
 
         Words.narrate("What will you do?");
-        Words.narrate("• 'Talk to Duckhead'?");
-        Words.narrate("• Solve the puzzle? ('solve puzzle')");
-        Words.narrate("•'Give up'?");
+        System.out.println("• 'Talk to Duckhead'?");
+        System.out.println("• Solve the puzzle? ('solve puzzle')");
+        System.out.println("•'Give up'?");
         System.out.println("");
         System.out.println("At any time, you can also enter: ");
         System.out.println("• 'Description'");
