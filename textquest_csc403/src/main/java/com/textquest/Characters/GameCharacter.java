@@ -1,7 +1,11 @@
 package com.textquest.Characters;
 import com.textquest.Inventory_and_Items.*;
 import com.textquest.Rooms.*;
+
+import javax.swing.text.Utilities;
+
 import com.textquest.InputOutput.*;
+import com.textquest.Utilities.*;
 
 public class GameCharacter {
     String name;
@@ -44,6 +48,8 @@ public class GameCharacter {
 
     public void speak(String words) {
         System.out.println(name + ": " + words);
+        OutputPause.pause();
+
     }
 
     public String speakResponse(String words) {

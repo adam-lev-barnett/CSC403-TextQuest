@@ -1,25 +1,25 @@
 package com.textquest.Rooms;
-import com.textquest.Characters.*;
 import com.textquest.Inventory_and_Items.*;
-import java.util.ArrayList;
 
 //! Need to override hashcode
 
 public class Room {
     String name;
     String desc;
-    public Room north;
+    public Room north; 
     public Room south;
     public Room east;
     public Room west;
     public Inventory items;
     public final PuzzleDQ puzzle;
+    public boolean solvedPuzzle;
 
     public Room(String name, String desc) {
         this.name = name;
         this.desc = desc;
         this.items = new Inventory();
         this.puzzle = new PuzzleDQ();
+        this.solvedPuzzle = false;
     }
 
     public String toString() {
@@ -54,6 +54,10 @@ public class Room {
         }
         if (!(this.puzzle.containsAll(other.puzzle))) return false;
         return name.equals(other.name) && desc.equals(other.desc) && this.items.equals(other.items) && this.puzzle.equals(other.puzzle);
+    }
+
+    public void solvePuzzle() {
+        this.solvedPuzzle = true;
     }
 
     /* Equals accounting for adjacent rooms?

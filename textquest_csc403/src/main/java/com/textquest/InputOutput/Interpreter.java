@@ -23,7 +23,7 @@ public class Interpreter {
 
     public void getAction() {
         if (player == null) throw new IllegalArgumentException("Player must be instantiated");
-
+        System.out.println("");
         System.out.println("Enter a command: ");
         String command = action.nextLine();
         while (!command.equalsIgnoreCase("give up")) {
@@ -99,6 +99,7 @@ public class Interpreter {
                         Item droppedItem = player.getInventory().get(itemName);
                         player.getInventory().remove(itemName);
                         player.getRoom().getItems().put(itemName, droppedItem);
+                        System.out.println("You dropped " + itemName);
                     }
                     else System.out.println("There is no " + itemName + " in your inventory!");
                 }
@@ -136,64 +137,68 @@ public class Interpreter {
             else if (playerWords[0].equalsIgnoreCase("solve")) {
                 if (playerWords.length > 1 && playerWords[1].equalsIgnoreCase("puzzle")) {
                     if (player.getRoom().getPuzzle() != null) {
-                        String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. Type \"undo\" to take back the last item.").split(" ");
-                        //! While loop, conditional for if user enters nothing ""
-                        while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
-                            if (itemNameParse.length == 1) {
+                        if (player.getRoom().solvedPuzzle == false) {
+                            String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. Type \"undo\" to take back the last item.").split(" ");
+                            //! While loop, conditional for if user enters nothing ""
+                            while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
+                                if (itemNameParse.length == 1) {
 
-                                if (itemNameParse[0].equalsIgnoreCase("undo")) {
-                                    if (player.getRoom().getPuzzle().isEmpty()) { //& Fringe case: undo when there's nothing in the puzzle dq
-                                    System.out.println("You haven't added anything yet!");
+                                    if (itemNameParse[0].equalsIgnoreCase("undo")) {
+                                        if (player.getRoom().getPuzzle().isEmpty()) { //& Fringe case: undo when there's nothing in the puzzle dq
+                                        System.out.println("You haven't added anything yet!");
+                                        }
+                                        else {
+                                            player.inventory.addItem(player.getRoom().getPuzzle().pollLast()); // last added item (item in the back of the dq) goes back to user inventory
+                                        }
+                                    }
+
+                                    else if (itemNameParse[0].equalsIgnoreCase("restart")) {
+                                        while (!player.getRoom().getPuzzle().isEmpty()) {
+                                            player.inventory.addItem(player.getRoom().getPuzzle().pop());
+                                        }
+                                        System.out.println("All items have been returned to your inventory, and the puzzle is empty.");
+                                    }
+                                    else System.out.println("\"Use\" an item!");
+                                    System.out.println("Current puzzle order: " + player.getRoom().getPuzzle());
+                                    System.out.println("You can use: " + player.getInventory().printItemNicknames());
+                                }
+
+                                else if (itemNameParse[0].equals("use") && itemNameParse.length > 1) {
+                                    StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
+                                    for (int i = 2; i < itemNameParse.length; i++) {
+                                        itemNameSB.append(" " + itemNameParse[i]);
+                                    }
+                                    String itemString = itemNameSB.toString();
+                                    if (player.getInventory().containsKey(itemString)) {
+                                        player.getRoom().getPuzzle().add(player.getInventory().get(itemString)); // Add new items to the back of the dq to display puzzle order
+                                        player.getInventory().remove(itemString);
                                     }
                                     else {
-                                        player.inventory.addItem(player.getRoom().getPuzzle().pollLast()); // last added item (item in the back of the dq) goes back to user inventory
+                                        System.out.println(itemString + " is not in your inventory!");
                                     }
+                                    System.out.println(player.getRoom().getPuzzle());
+                                    System.out.println("You can use: " + player.getInventory().printItemNicknames());
                                 }
-
-                                else if (itemNameParse[0].equalsIgnoreCase("restart")) {
-                                    while (!player.getRoom().getPuzzle().isEmpty()) {
-                                        player.inventory.addItem(player.getRoom().getPuzzle().pop());
-                                    }
-                                    System.out.println("All items have been returned to your inventory, and the puzzle is empty.");
-                                }
-                                else System.out.println("\"Use\" an item!");
-                                System.out.println("Current puzzle order: " + player.getRoom().getPuzzle());
-                                System.out.println("You can use: " + player.getInventory().printItemNicknames());
+                                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\"").split(" "); 
                             }
 
-                            else if (itemNameParse[0].equals("use") && itemNameParse.length > 1) {
-                                StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
-                                for (int i = 2; i < itemNameParse.length; i++) {
-                                    itemNameSB.append(" " + itemNameParse[i]);
+                            if (itemNameParse[0].equalsIgnoreCase("done")) {
+                                if (player.getRoom().equals(GameMap.entrance)) {
+                                    PuzzleList.duckPuzzle(player.getRoom().getPuzzle(), player);
+                                    System.out.println(player.getInventory());
                                 }
-                                String itemString = itemNameSB.toString();
-                                if (player.getInventory().containsKey(itemString)) {
-                                    player.getRoom().getPuzzle().add(player.getInventory().get(itemString)); // Add new items to the back of the dq to display puzzle order
-                                    player.getInventory().remove(itemString);
-                                }
-                                else {
-                                    System.out.println(itemString + " is not in your inventory!");
-                                }
-                                System.out.println(player.getRoom().getPuzzle());
-                                System.out.println("You can use: " + player.getInventory().printItemNicknames());
                             }
-                            itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\"").split(" "); 
-                        }
-
-                        if (itemNameParse[0].equalsIgnoreCase("done")) {
-                            if (player.getRoom().equals(GameMap.entrance)) {
-                                PuzzleList.duckPuzzle(player.getRoom().getPuzzle(), player);
-                                System.out.println(player.getInventory());
+                            else if (itemNameParse[0].equalsIgnoreCase("leave")) {
+                                System.out.println("The puzzle still has your items. Please return at any time.");
                             }
                         }
-                        else if (itemNameParse[0].equalsIgnoreCase("leave")) {
-                            System.out.println("The puzzle still has your items. Please return at any time.");
-                        }
+                        else if (player.getRoom().solvedPuzzle == true) System.out.println("You've already solved this puzzle!");
                     }
                     else System.out.println("There is no puzzle in this room!");
-                    }
-                else System.out.println("Solve what?");
                 }
+                else System.out.println("Solve what?");
+            }
+            System.out.println("");
             System.out.println("Enter a command: ");
             command = action.nextLine();
             }

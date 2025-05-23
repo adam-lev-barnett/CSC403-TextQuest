@@ -2,11 +2,8 @@ package com.textquest;
 
 import com.textquest.Characters.*;
 import com.textquest.Rooms.*;
-import com.textquest.Inventory_and_Items.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
-
-import edu.princeton.cs.algs4.*;
 
 //! Add boolean solvedPuzzle so that the interpreter knows not to let you try the puzzle when there aren't items to use
 
@@ -24,7 +21,6 @@ public class Main {
         //^ Game element initialization
 
         //~ Character creation 
-        GameCharacter duckHead = CharacterList.duckHead;
         
         //^ Game script: Player creation and opening
         // Words.narrate("Anyway, welcome " + player.getName() + ".");

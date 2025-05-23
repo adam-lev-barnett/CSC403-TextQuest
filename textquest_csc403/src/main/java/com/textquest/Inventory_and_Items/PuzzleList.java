@@ -1,6 +1,5 @@
 package com.textquest.Inventory_and_Items;
 import com.textquest.Characters.*;
-import com.textquest.InputOutput.InputScanner;
 import com.textquest.Utilities.Words;
 import com.textquest.Main;
 
@@ -128,6 +127,8 @@ public class PuzzleList {
         Main.entranceGatesLocked = false;
         CharacterList.duckHead.speak("Fare thee - QUACK - well.");
         Words.narrate("The ducks fly free into the moonlight. If only you could do the same...");
+
+        player.getRoom().solvePuzzle();
 
         return "success";
 

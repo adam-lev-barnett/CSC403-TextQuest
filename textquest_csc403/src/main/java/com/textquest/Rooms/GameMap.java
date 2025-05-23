@@ -1,8 +1,5 @@
 package com.textquest.Rooms;
-import com.textquest.*;
 import com.textquest.Inventory_and_Items.ItemCatalog;
-import com.textquest.Inventory_and_Items.PuzzleDQ;
-import com.textquest.Characters.*;
 
 public class GameMap {
     
