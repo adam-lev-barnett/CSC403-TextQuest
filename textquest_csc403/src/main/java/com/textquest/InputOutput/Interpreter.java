@@ -8,7 +8,7 @@ import com.textquest.Rooms.GameMap;
 import com.textquest.Utilities.Words;
 
 import java.lang.StringBuilder;
-import edu.princeton.cs.algs4.StdAudioStereo;
+// import edu.princeton.cs.algs4.StdAudioStereo;
 
 //! Need to catch overindexing for 1-word inputs but no follow-ups (examples: "go ", "solve ")
 
@@ -105,7 +105,7 @@ public class Interpreter {
                 }
                 else {
                     System.out.println("Drop what? A phat beat? No problem!");
-                    StdAudioStereo.play("textquest_csc403/src/main/java/com/textquest/Phat beat.wav");
+                    // StdAudioStereo.play("textquest_csc403/src/main/java/com/textquest/Phat beat.wav");
                 }
             }
 
