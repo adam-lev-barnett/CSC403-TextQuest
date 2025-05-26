@@ -6,16 +6,18 @@ import com.textquest.Main;
 public class PuzzleList {
 
     //! Was originally going to give the characters PuzzleDQs and pop both DQs at the same time to compare values, but then I'd have to repopulate the comparison DQs
-    //& Puzzles pop items one at a time so they don't have to iterate through everything if the puzzle is incorrect before the end
+    //~ Reasons for ArrayDeque over ArrayList:
+    //& • Removal of items for comparisons is simpler and doesn't require keeping track of shifting indices
+    //& Puzzles pop items one at a time to avoid iterating through the entire PuzzleDQ and unnecessarily assigning everything to a variable if the puzzle is incorrect before reaching the last item
+    //&     • PuzzleDQ pops remaining items directly into the player's inventory with a while loop
+    //&     
     // public PuzzleDQ duckQ = new PuzzleDQ(ItemCatalog.stringFromCandy, ItemCatalog.duckBill, ItemCatalog.duckCall);
-    //! How to return items to player???
     //! "you haven't added anything yet" - done when items in dq
     //! Can continue to add the same item after submission, but it doesn't accumulate in the dq
 
     public static String duckPuzzle(PuzzleDQ submission, Player player) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
         
-        //! Null checks
-        if (submission == null) throw new NullPointerException("Puzzle cannot be null");
+        if (submission == null || submission.contains(null)) throw new NullPointerException("Puzzle and/or contents cannot be null");
         if (player == null) throw new NullPointerException("Player cannot be null");
         
         
@@ -38,16 +40,16 @@ public class PuzzleList {
         }
 
         Item item1 = submission.poll(); // Standard queue operation to remove and return head of queue (first item added to room's puzzleDQ)
-        Words.narrate("You hand him your " + item1.getNickName());
+        Words.narrate("Duckhead removes the first item from the puzzle: " + item1.getNickName());
 
         //^ Correct first item
         if (item1.equals(ItemCatalog.stringFromCandy)) {
-            CharacterList.duckHead.speak("Ew... Food garbage? What are you - QUACK - gonna do with that?");
+            CharacterList.duckHead.speak("Ew... Food garbage? What are you - QUACK - gonna do with that? I guess I'll accept it to see where you're going with this.");
         }
         
         else if (item1.equals(ItemCatalog.duckBill)) {
             Words.narrate("Duckhead looks at you with contempt; his oversized, cartoon-ish eyes glare at you, unblinking and patronizing.");
-            CharacterList.duckHead.speak("Very funny, kid. But you ain't passing for a - QUACK - duck if you can't keep that beak on your face.");
+            CharacterList.duckHead.speak("Very funny, kid. But you ain't passing for a - QUACK - duck if you can't find a way to keep that beak on your face.");
             while (!(submission.isEmpty())) {
                 player.getInventory().addItem(submission.pop());
             }
@@ -58,8 +60,6 @@ public class PuzzleList {
         else if (item1.equals(ItemCatalog.duckCall)) {
             Words.narrate("Duckhead looks at you with contempt; his oversized, cartoon-ish eyes glare at you, unblinking and patronizing.");
             CharacterList.duckHead.speak("If you can't look the part, you shouldn't talk the talk."); 
-            CharacterList.duckHead.speak("And if you shouldn't talk the talk, don't even try to walk the walk.");
-            CharacterList.duckHead.speak("Because - well - QUACK - you've heard of a murder of crows, right? Ducks can murder too, especially when you don't belong...");
             while (!(submission.isEmpty())) {
                 player.getInventory().addItem(submission.pop());
             }
@@ -76,11 +76,11 @@ public class PuzzleList {
         }
 
         Item item2 = submission.poll();
-        Words.narrate("You hand him your " + item2.getNickName());
+        Words.narrate("Duckhead removes the second item from the puzzle: " + item2.getNickName());
 
         //^ Correct second item
         if (item2.equals(ItemCatalog.duckBill)) {
-            CharacterList.duckHead.speak("Oh, I see - QUACK - where you're going with this.");
+            CharacterList.duckHead.speak("Oh, I see - QUACK - where you're going with this. You're going to use the string to keep the bill on your face.");
             CharacterList.duckHead.speak(" You couldn't tie that on with string that hasn't been chewed on, though...?"); 
         }
         
@@ -92,6 +92,7 @@ public class PuzzleList {
             player.getInventory().addItem(item2);
             return "call second";
         }
+
         else {
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
@@ -102,7 +103,7 @@ public class PuzzleList {
         }
 
         Item item3 = submission.poll();
-        Words.narrate("You hand him your " + item3.getNickName());
+        Words.narrate("Duckhead removes the third item from the puzzle: " + item3.getNickName());
         if (!item3.equals(ItemCatalog.duckCall)) {
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
@@ -114,6 +115,8 @@ public class PuzzleList {
             player.getInventory().addItem(item3);
             return "idiot";
         }
+
+        //^ Successful puzzle completion - items no longer in player inventory or puzzle deque
         //~ Ignore input request for testing
             // String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
             // while (!quack.equals("QUACK")) {
@@ -129,7 +132,8 @@ public class PuzzleList {
 
         Words.narrate("You see the other mascot heads dissolve, revealing ducks of all species. Their thankful quacks echoing throughout the park.");
         Words.narrate("They disperse and unlock the gates, allowing access to all areas of this hellish amusement park. What horrible secrets await?");
-        Main.entranceGatesLocked = false;
+        // In case there are more rooms, the following bool allows the player to access them only after solving the puzzle
+        // Main.entranceGatesLocked = false;
         CharacterList.duckHead.speak("Fare thee - QUACK - well.");
         Words.narrate("The ducks fly free into the moonlight. If only you could do the same...");
 

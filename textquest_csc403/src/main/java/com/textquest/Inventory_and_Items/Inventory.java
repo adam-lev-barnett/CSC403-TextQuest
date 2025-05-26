@@ -15,7 +15,8 @@ public class Inventory extends HashMap<String, Item> {
     }
 
     public void addItem(Item item) {
-        this.put(item.getNickName().toLowerCase(), item);
+        if (item == null) throw new NullPointerException("Cannot add null item to inventory.");
+        else this.put(item.getNickName().toLowerCase(), item);
     }
 
     @Override

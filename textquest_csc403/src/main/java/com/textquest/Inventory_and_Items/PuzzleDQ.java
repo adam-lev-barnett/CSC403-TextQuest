@@ -1,10 +1,7 @@
 package com.textquest.Inventory_and_Items;
 
 import java.util.ArrayDeque;
-import com.textquest.Utilities.*;
-import com.textquest.Rooms.*;
-import com.textquest.InputOutput.*;
-import com.textquest.Characters.*;
+
 
 /* 
  * Items can be added to or removed from the deque at any time, even after leaving an area. When the player indicates they have solved the puzzle

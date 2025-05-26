@@ -10,10 +10,10 @@ public class Player extends GameCharacter {
 
     public Player(String name, String desc, int health, Room room) {
         super(name, desc, health, room);
-        boolean duckShirt = false;
         if (room == null) throw new NullPointerException("Player room cannot be null"); 
     }
     
+    /* 
     public void traverse(String direction) {
         switch (direction) {
             case "north": 
@@ -35,7 +35,7 @@ public class Player extends GameCharacter {
             default:
                 System.out.println("You cannot go this direction.");
         }
-    }
+    } */
     
     //& Override from GameCharacter to display "Item was added to inventory" specifically for the player
     @Override

@@ -8,7 +8,6 @@ import com.textquest.Rooms.GameMap;
 import com.textquest.Utilities.Words;
 
 import java.lang.StringBuilder;
-// import edu.princeton.cs.algs4.StdAudioStereo;
 
 //! Need to catch overindexing for 1-word inputs but no follow-ups (examples: "go ", "solve ")
 
@@ -29,16 +28,16 @@ public class Interpreter {
         while (!command.equalsIgnoreCase("give up")) {
             String[] playerWords = command.split(" ");
 
-            //^ Traversal
+           /* //^ Traversal
             if (playerWords[0].equalsIgnoreCase("go")) { 
                 if (playerWords.length == 1) {
                     System.out.println("Go where?");
                 }
                 else player.traverse(playerWords[1].toLowerCase());
-            }
+            } */
 
             //^ Self-checks
-            else if (playerWords[0].equalsIgnoreCase("description")) {
+            if (playerWords[0].equalsIgnoreCase("description")) {
                 System.out.println(player.getDesc());
             }
 

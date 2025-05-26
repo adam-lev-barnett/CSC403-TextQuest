@@ -14,7 +14,7 @@ public class OutputPause {
 
     public static void pause(){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

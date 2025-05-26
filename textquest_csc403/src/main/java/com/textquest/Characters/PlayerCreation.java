@@ -1,7 +1,6 @@
 package com.textquest.Characters;
 
 import com.textquest.InputOutput.*;
-import com.textquest.Rooms.*;
 import com.textquest.Utilities.*;
 
 public class PlayerCreation {

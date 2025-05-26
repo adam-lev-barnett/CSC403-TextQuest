@@ -6,6 +6,7 @@ public class Item {
     String desc;
 
     public Item(String nickName, String name, String desc) {
+        if (nickName == null || name == null || desc == null) throw new NullPointerException("Item must have string nickName key and string name value."); 
         this.name = name;
         this.desc = desc;
         this.nickName = nickName;

@@ -1,9 +1,6 @@
 package com.textquest.Characters;
 import com.textquest.Inventory_and_Items.*;
 import com.textquest.Rooms.*;
-
-import javax.swing.text.Utilities;
-
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.*;
 
