@@ -1,5 +1,7 @@
 package com.textquest.Utilities;
 
+import com.textquest.Rooms.GameMap;
+
 public class Words {
     
     public static void narrate(String words) { // 500 for testing
@@ -35,6 +37,22 @@ public class Words {
         System.out.println("• 'Directions' - Display the areas around you");
         System.out.println("• 'Go (direction) - Travel to the area North, South, East, or West of you.");
         System.out.println("--------------------------------------------------------------------------\n");
+    }
 
+    public static void printValidActions() {
+        Words.narrate("What will you do?");
+        System.out.println("• 'Talk to Duckhead'?");
+        System.out.println("• Solve the puzzle? ('solve puzzle')");
+        System.out.println("• Pick up an item in the room? ('pick up <item name>')");
+        System.out.println(  "    • Available room items: " + GameMap.entrance.getRoomItems());
+        System.out.println("• 'Give up'?");
+        System.out.println("");
+        
+        // In-game input testing for getter methods
+        Words.narrate("At any time, you can also enter: ");
+        System.out.println("• 'Description' - Prints your character's description"); //& Player description changes when you put on your duck shirt! 
+        System.out.println("• 'Name' - Prints your character's name");
+        System.out.println("• 'DuckheadInventory' - Prints Duckhead's inventory");
+        System.out.println("• 'RoomInventory' - Prints room inventory");
     }
 }

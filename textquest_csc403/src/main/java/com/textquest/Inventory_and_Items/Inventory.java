@@ -4,39 +4,57 @@ import java.lang.StringBuilder;
 
 //! Need to junit test for item equals and hashcode
 
-public class Inventory extends HashMap<String, Item> {
+public class Inventory{
+    private final HashMap<String, Item> items = new HashMap<>();
     
     // Printing full sets takes O(N)
     
-    @Override
     public String toString() {
-        StringBuilder items = new StringBuilder("Current inventory: ");
-        for (Item item : this.values()) {
-            items.append(item.getName() + ", ");
+        StringBuilder items = new StringBuilder("");
+        if (this.items.isEmpty()) return "Currently, there are no items.";
+        for (Item item : this.items.values()) {
+            if (this.items.values().size() == 1) items.append(item.getName());
+            else items.append(item.getName() + "; ");
         }
         return items.toString();
     }
 
+    public HashMap<String, Item> getItems() {
+        return this.items;
+    }
+
     public void printInventory() {
-        for (Item item : values()) System.out.println(item);
+        for (Item item : this.items.values()) System.out.println(item);
     }
 
     // Prints list of usable string keys for easier user input
     public String printItemNicknames(){
-        return this.keySet().toString();
+        return this.items.keySet().toString();
+    }
+
+    public boolean hasItem(String itemNickname) {
+        return this.items.containsKey(itemNickname);
+    }
+
+    public Item getItem(String itemNickname) {
+        return this.items.get(itemNickname);
     }
 
     public void addItem(Item item) {
         if (item == null) throw new NullPointerException("Cannot add null item to inventory.");
         if (!(ItemCatalog.masterInventory.contains(item))) throw new IllegalArgumentException("Item must already exist in master item catalog to add to inventories");
-        if (this.containsKey(item.getNickName())) throw new IllegalArgumentException("Cannot add duplicate items or overwrite inventory values");
-        else this.put(item.getNickName().toLowerCase(), item);
+        this.items.put(item.getNickName(), item);
     }
 
-    public void removeItem(Item item) {
-        if (this.containsKey(item.getNickName())) this.remove(item.getNickName());
-        else System.out.println(item + " is not in your inventory!");
+    // Search for nickName String key instead of Item value because containsValue() would degrade the method to O(N)
+    public void removeItem(String itemNickname) {
+        if (this.items.containsKey(itemNickname)) {
+            this.items.remove(itemNickname);
+        }
+        else System.out.println(itemNickname + " is not in your inventory!");
     }
+
+
 
  
     

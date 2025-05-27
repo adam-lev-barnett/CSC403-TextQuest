@@ -15,15 +15,18 @@ public class duckPuzzleTests {
     
     @Test
     public void testDuckPuzzle() {
+
+        //! Inventory doesn't allow null items, or items not from ItemCatalog (see InventoryTest)
+
         Player testPlayer = new Player("TestPlayer", "test player", 0, GameMap.entrance);
         Player nullPlayer = null;
 
         PuzzleDQ testQ1 = new PuzzleDQ(); // correct dq
         PuzzleDQ testQ2 = new PuzzleDQ(); // size 0 dq
-        PuzzleDQ testQ3 = new PuzzleDQ(); // huge puzzle dq
+        PuzzleDQ testQ3 = new PuzzleDQ(); // Too big
         PuzzleDQ testQ4 = new PuzzleDQ(); // incomplete dq
         PuzzleDQ testNull = null; //null puzzle check
-        PuzzleDQ testQ5 = new PuzzleDQ(); // puzzle with items not from itemList
+        // PuzzleDQ testQ5 = new PuzzleDQ(); //! puzzle with items not from itemList - Inventory prevents this from happening; see InventoryTest
         PuzzleDQ testQ6 = new PuzzleDQ(); // dq of existing items but incorrect items
         PuzzleDQ testQ7 = new PuzzleDQ(); // Correct items, wrong order, bill first
         PuzzleDQ testQ8 = new PuzzleDQ(); // Correct items, wrong order, call first
@@ -35,22 +38,22 @@ public class duckPuzzleTests {
         testQ1.add(ItemCatalog.duckBill);
         testQ1.add(ItemCatalog.duckCall);
 
-        testQ3.add(ItemCatalog.stringFromCandy);
-        testQ3.add(ItemCatalog.stringFromCandy);
-        testQ3.add(ItemCatalog.stringFromCandy);
-        testQ3.add(ItemCatalog.stringFromCandy);
-        testQ3.add(ItemCatalog.stringFromCandy);
-        testQ3.add(ItemCatalog.stringFromCandy);
-        testQ3.add(ItemCatalog.stringFromCandy);
-        testQ3.add(ItemCatalog.stringFromCandy);
 
-        testQ4.add(ItemCatalog.duckBill);
+        testQ3.add(ItemCatalog.stringFromCandy);
+        testQ3.add(ItemCatalog.cottonCandyBlessed);
+        testQ3.add(ItemCatalog.cottonCandyEternal);
+        testQ3.add(ItemCatalog.cottonCandyPoison);
+        testQ3.add(ItemCatalog.duckBill);
+        testQ3.add(ItemCatalog.duckCall);
+        testQ3.add(ItemCatalog.duckShirt);
 
-        testQ5.add(new Item("Test item nickname","Test name", "nothing"));
+        testQ4.add(ItemCatalog.duckCall);
+
+        // testQ5.add(new Item("Test item nickname","Test name", "nothing"));
 
         testQ6.add(ItemCatalog.cottonCandyPoison);
-        testQ6.add(ItemCatalog.cottonCandyPoison);
-        testQ6.add(ItemCatalog.cottonCandyPoison);
+        testQ6.add(ItemCatalog.cottonCandyEternal);
+        testQ6.add(ItemCatalog.cottonCandyBlessed);
 
         testQ7.add(ItemCatalog.duckBill);
         testQ7.add(ItemCatalog.stringFromCandy);

@@ -39,7 +39,7 @@ public class Room {
         return puzzle;
     }
 
-    public Inventory getItems() {
+    public Inventory getRoomItems() {
         return items;
     }
 

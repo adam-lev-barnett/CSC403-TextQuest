@@ -27,12 +27,12 @@ public class GameCharacter {
         return inventory;
     }
 
-    public void addInventory(String itemName, Item item) {
-        inventory.put(itemName, item);
+    public void addInventory(Item item) {
+        inventory.addItem(item);
     }
 
     public void removeFromInventory(String itemName) {
-        inventory.remove(itemName);
+        inventory.removeItem(itemName);
     }
 
     // Traversal will be available in later versions
@@ -59,11 +59,11 @@ public class GameCharacter {
     }
 
     public void giveItem(Item item, Player player) {
-        if (this.inventory.containsKey(item.getNickName())) {
-            if (player.getInventory().containsKey(item.getNickName())) this.speak("You already have this item, apparently!");
-            else if (!this.inventory.containsKey(item.getNickName())) this.speak("Whoops! Looks like I don't have this item to give!");
+        if (this.inventory.hasItem(item.getNickName())) {
+            if (player.getInventory().hasItem(item.getNickName())) this.speak("You already have this item, apparently!");
+            else if (!this.inventory.hasItem(item.getNickName())) this.speak("Whoops! Looks like I don't have this item to give!");
             else {
-                inventory.remove(item.getNickName());
+                inventory.removeItem(item.getNickName());
                 player.getInventory().addItem(item);
             }
         }

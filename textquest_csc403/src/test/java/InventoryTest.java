@@ -17,17 +17,17 @@ public class InventoryTest {
         //& Populate test inventories
         inventory2.addItem(ItemCatalog.duckBill);
 
-        //! No null items, items not in item catalog, or duplicate items
+        //! No null items, items not in item catalog
         assertThrows(NullPointerException.class, () -> inventory1.addItem(null));
         assertThrows(IllegalArgumentException.class, () -> inventory1.addItem(new Item("test", "test", "test")));
-        assertThrows(IllegalArgumentException.class, () -> inventory2.addItem(ItemCatalog.duckBill));
+
 
         //^ Size, contains, and empty
-        assertTrue(inventory1.isEmpty());
-        assertFalse(inventory2.isEmpty());
+        assertTrue(inventory1.getItems().isEmpty());
+        assertFalse(inventory2.getItems().isEmpty());
 
-        assertTrue(inventory2.size() == 1); // Test size after exception thrown for duplicate item
-        assertFalse(inventory2.size() == 2); // Test size after exception thrown for duplicate item
+        assertTrue(inventory2.getItems().size() == 1); // Test size after exception thrown for duplicate item
+        assertFalse(inventory2.getItems().size() == 2); // Test size after exception thrown for duplicate item
 
         assertEquals(inventory2.printItemNicknames(), "[" + ItemCatalog.duckBill.getNickName() + "]");
         

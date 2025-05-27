@@ -23,6 +23,7 @@ public class Interpreter {
     public void getAction() {
         if (player == null) throw new IllegalArgumentException("Player must be instantiated");
         System.out.println("");
+        Words.printValidActions();
         System.out.println("Enter a command: ");
         String command = action.nextLine();
         while (!command.equalsIgnoreCase("give up")) {
@@ -61,7 +62,7 @@ public class Interpreter {
             }
 
             else if (playerWords[0].equalsIgnoreCase("roomInventory")) {
-                System.out.println(player.getRoom().getItems());
+                System.out.println(player.getRoom().getRoomItems());
             }
 
 
@@ -81,11 +82,11 @@ public class Interpreter {
                         sbItemName.append(" ").append(playerWords[i]);
                     }
                     String itemName = sbItemName.toString().toLowerCase();
-                    if (player.getRoom().getItems().containsKey(itemName)) {
-                        player.getInventory().put(itemName, player.getRoom().items.get(itemName));
-                        player.getRoom().getItems().remove(itemName);
-                        System.out.println(player.getInventory().get(itemName) + " has been added to your inventory");
-                        System.out.println(player.getInventory().get(itemName) + ": " + player.getInventory().get(itemName).getDesc());
+                    if (player.getRoom().getRoomItems().hasItem(itemName)) {
+                        player.getInventory().addItem(player.getRoom().items.getItem(itemName));
+                        player.getRoom().getRoomItems().removeItem(itemName);
+                        System.out.println(player.getInventory().getItem(itemName) + " has been added to your inventory");
+                        System.out.println(player.getInventory().getItem(itemName) + ": " + player.getInventory().getItem(itemName).getDesc());
                         System.out.println(player.getInventory());
                     }
                     else System.out.println("There is no " + itemName + " to pick up!");
@@ -100,10 +101,10 @@ public class Interpreter {
                         sbItemName.append(" ").append(playerWords[i]);
                     }
                     String itemName = sbItemName.toString().toLowerCase();
-                    if (player.getInventory().containsKey(itemName)) {
-                        Item droppedItem = player.getInventory().get(itemName);
-                        player.getInventory().remove(itemName);
-                        player.getRoom().getItems().put(itemName, droppedItem);
+                    if (player.getInventory().hasItem(itemName)) {
+                        Item droppedItem = player.getInventory().getItem(itemName);
+                        player.getInventory().removeItem(itemName);
+                        player.getRoom().getRoomItems().addItem(droppedItem);
                         System.out.println("You dropped: " + droppedItem);
                     }
                     else System.out.println("There is no " + itemName + " in your inventory!");
@@ -119,14 +120,14 @@ public class Interpreter {
 
                 if ((playerWords.length > 2) && (playerWords[1].equalsIgnoreCase("to") && (playerWords[2].equalsIgnoreCase("duckhead")))) {
                     CharacterList.duckHead.speak("I'm not - QUACK - gonna let you go very far unless you present me with three items in the correct order that'll show me you know how to quack with the best of us!");
-                    if (CharacterList.duckHead.getInventory().containsKey("duck shirt")) {
+                    if (CharacterList.duckHead.getInventory().hasItem("duck shirt")) {
                         CharacterList.duckHead.speak("But here's a little something to get you - QUACK - started.");
                         Words.narrate("Duckhead opens his beak to reveal a t-shirt. It reads \"I \u2665 \uD83E\uDD86s\"");
                         String putOnShirt = InputScanner.strIn("Do you put it on?");
                         while (!putOnShirt.equalsIgnoreCase("yes")) {
                             putOnShirt = InputScanner.strIn("I'm just going to keep asking you until you say \"yes\".");
                         }
-                        CharacterList.duckHead.giveItem(CharacterList.duckHead.getInventory().get("duck shirt"), player);
+                        CharacterList.duckHead.giveItem(CharacterList.duckHead.getInventory().getItem("duck shirt"), player);
                         player.putOnDuckShirt();
                     }
                     CharacterList.duckHead.speak("Now go find me those items! When you're ready, say \"solve puzzle\". Don't - QUACK - give up that shirt, though, or I'll call you an idiot!");
@@ -175,9 +176,9 @@ public class Interpreter {
                                         itemNameSB.append(" " + itemNameParse[i]);
                                     }
                                     String itemString = itemNameSB.toString();
-                                    if (player.getInventory().containsKey(itemString)) {
-                                        player.getRoom().getPuzzle().add(player.getInventory().get(itemString)); // Add new items to the back of the dq to display puzzle order
-                                        player.getInventory().remove(itemString);
+                                    if (player.getInventory().hasItem(itemString)) {
+                                        player.getRoom().getPuzzle().add(player.getInventory().getItem(itemString)); // Add new items to the back of the dq to display puzzle order
+                                        player.getInventory().removeItem(itemString);
                                     }
                                     else {
                                         System.out.println(itemString + " is not in your inventory!");
@@ -205,6 +206,7 @@ public class Interpreter {
                 else System.out.println("Solve what?");
             }
             System.out.println("");
+            // Words.printValidActions();
             System.out.println("Enter a command: ");
             command = action.nextLine();
             }
