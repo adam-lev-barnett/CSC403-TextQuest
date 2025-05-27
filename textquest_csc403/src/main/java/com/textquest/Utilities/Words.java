@@ -13,6 +13,14 @@ public class Words {
         OutputPause.pause(5500);
     }
 
+    public static void whoosh() {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        OutputPause.pause();
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        OutputPause.pause();
+        System.out.println("");
+    }
+
     public static void tutorial() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~ How to play ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Type in the following commands to perform their respective actions: \n");
@@ -27,8 +35,6 @@ public class Words {
         System.out.println("• 'Directions' - Display the areas around you");
         System.out.println("• 'Go (direction) - Travel to the area North, South, East, or West of you.");
         System.out.println("--------------------------------------------------------------------------\n");
-
-
 
     }
 }

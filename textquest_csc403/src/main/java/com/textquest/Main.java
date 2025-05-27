@@ -11,10 +11,10 @@ import com.textquest.Utilities.Words;
 //~ 
 
 public class Main {
-    public static Player testPlayer = new Player("Bill", "A big duck", 3, GameMap.entrance);
-    // public static Player player = PlayerCreation.createPlayer();
+    // public static Player testPlayer = new Player("Bill", "A big duck", 3, GameMap.entrance);
+    public static Player player = PlayerCreation.createPlayer();
     public static boolean entranceGatesLocked = true;
-    public static GameMap gameMap = new GameMap();
+    public static GameCharacter duckHead = CharacterList.duckHead;
 
     public static void main(String[] args) {
 
@@ -23,15 +23,13 @@ public class Main {
         //~ Character creation 
         
         //^ Game script: Player creation and opening
-        // Words.narrate("Anyway, welcome " + player.getName() + ".");
-        Words.narrate("Anyway, welcome " + testPlayer.getName() + ".");
+        Words.narrate("Anyway, welcome " + player.getName() + ".");
+        // Words.narrate("Anyway, welcome " + testPlayer.getName() + ".");
         Words.narrate("Today, we're going on a little adventure.");
         Words.narrate("Are you ready?");
         Words.narrate("Buckle in!");
 
-        // player.setRoom(GameMap.entrance);
-        testPlayer.setRoom(GameMap.entrance);
-
+        Words.whoosh();
 
         //^ Chapter 1: The entrance
         //& Characters in room: Duckhead
@@ -43,7 +41,7 @@ public class Main {
         Words.narrate("From the lineup, a duck head with bloodshot eyes spots you, pauses, and slowly turns around.");
 
         //~ Comment out duck dialog for expedited testing
-        /* 
+        
         String duckQ = duckHead.speakResponse("I'm not a real duck. Are you?");
         while (!duckQ.equalsIgnoreCase("yes") && !duckQ.equalsIgnoreCase("no")) {
             duckQ = duckHead.speakResponse("*QUACK* It's a \"yes\" or \"no\" question *QUACK*");
@@ -59,12 +57,12 @@ public class Main {
                 duckHead.speak("...");
                 break;
         }
-        */
+        
 
         Words.narrate("What will you do?");
         System.out.println("• 'Talk to Duckhead'?");
         System.out.println("• Solve the puzzle? ('solve puzzle')");
-        System.out.println("•'Give up'?");
+        System.out.println("• 'Give up'?");
         System.out.println("");
         System.out.println("At any time, you can also enter: ");
         System.out.println("• 'Description'");
@@ -72,7 +70,7 @@ public class Main {
 
 
         // Interpreter interpreter = new Interpreter(player);
-        Interpreter interpreter = new Interpreter(testPlayer);
+        Interpreter interpreter = new Interpreter(player);
         interpreter.getAction();
     }
 }

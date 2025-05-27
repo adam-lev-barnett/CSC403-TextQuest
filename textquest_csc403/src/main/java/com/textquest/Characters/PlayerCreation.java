@@ -1,6 +1,7 @@
 package com.textquest.Characters;
 
 import com.textquest.InputOutput.*;
+import com.textquest.Rooms.GameMap;
 import com.textquest.Utilities.*;
 
 public class PlayerCreation {
@@ -14,7 +15,7 @@ public class PlayerCreation {
         String playerDesc = InputScanner.strIn("Describe your character: ");
         OutputPause.pause(1000);
         System.out.println("I'm so sorry you look like that.");
-        return new Player(playerName, playerDesc, 10, null);
+        return new Player(playerName, playerDesc, 10, GameMap.entrance);
     }
 
 }

@@ -1,19 +1,17 @@
 package com.textquest.Inventory_and_Items;
 import com.textquest.Characters.*;
 import com.textquest.Utilities.Words;
-import com.textquest.Main;
+// import com.textquest.Main;
 
 public class PuzzleList {
+
+    private PuzzleList() {}
 
     //! Was originally going to give the characters PuzzleDQs and pop both DQs at the same time to compare values, but then I'd have to repopulate the comparison DQs
     //~ Reasons for ArrayDeque over ArrayList:
     //& • Removal of items for comparisons is simpler and doesn't require keeping track of shifting indices
-    //& Puzzles pop items one at a time to avoid iterating through the entire PuzzleDQ and unnecessarily assigning everything to a variable if the puzzle is incorrect before reaching the last item
-    //&     • PuzzleDQ pops remaining items directly into the player's inventory with a while loop
-    //&     
-    // public PuzzleDQ duckQ = new PuzzleDQ(ItemCatalog.stringFromCandy, ItemCatalog.duckBill, ItemCatalog.duckCall);
-    //! "you haven't added anything yet" - done when items in dq
-    //! Can continue to add the same item after submission, but it doesn't accumulate in the dq
+    //& • Puzzles pop items one at a time to avoid iterating through the entire PuzzleDQ and unnecessarily assigning everything to a variable if the puzzle is incorrect before reaching the last item
+    //& • PuzzleDQ pops remaining items directly into the player's inventory with a while loop (takes O(N) based on what's left in the PuzzleDQ)
 
     public static String duckPuzzle(PuzzleDQ submission, Player player) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
         
@@ -27,6 +25,7 @@ public class PuzzleList {
             while (!(submission.isEmpty())) {
                 player.getInventory().addItem(submission.pop());
             }
+            System.out.println("All items have been returned to your inventory.");
             return "too small";
         }
 
@@ -36,11 +35,12 @@ public class PuzzleList {
             while (!(submission.isEmpty())) {
                 player.getInventory().addItem(submission.pop());
             }
+            System.out.println("All items have been returned to your inventory.");
             return "too large";
         }
 
         Item item1 = submission.poll(); // Standard queue operation to remove and return head of queue (first item added to room's puzzleDQ)
-        Words.narrate("Duckhead removes the first item from the puzzle: " + item1.getNickName());
+        Words.narrate("Duckhead removes the first item from the puzzle: " + item1);
 
         //^ Correct first item
         if (item1.equals(ItemCatalog.stringFromCandy)) {
@@ -54,6 +54,7 @@ public class PuzzleList {
                 player.getInventory().addItem(submission.pop());
             }
             player.getInventory().addItem(item1);
+            System.out.println("All items have been returned to your inventory.");
             return "bill first";
         }
 
@@ -64,6 +65,7 @@ public class PuzzleList {
                 player.getInventory().addItem(submission.pop());
             }
             player.getInventory().addItem(item1);
+            System.out.println("All items have been returned to your inventory.");
             return "call first";
         }
 
@@ -72,6 +74,7 @@ public class PuzzleList {
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
             player.getInventory().addItem(submission.pop());
             player.getInventory().addItem(item1);
+            System.out.println("All items have been returned to your inventory.");
             return "idiot";
         }
 
@@ -90,6 +93,7 @@ public class PuzzleList {
             player.getInventory().addItem(submission.pop());
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
+            System.out.println("All items have been returned to your inventory.");
             return "call second";
         }
 
@@ -99,6 +103,7 @@ public class PuzzleList {
             player.getInventory().addItem(submission.pop());
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
+            System.out.println("All items have been returned to your inventory.");
             return "idiot";
         }
 
@@ -113,6 +118,7 @@ public class PuzzleList {
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
             player.getInventory().addItem(item3);
+            System.out.println("All items have been returned to your inventory.");
             return "idiot";
         }
 
@@ -124,8 +130,7 @@ public class PuzzleList {
             // }
         Words.narrate("Duckhead's mascot head begins to dissapate before your eyes... revealing...");
         Words.narrate("An actual, living duck. Not floating. Flying. Frantically flapping his mortal wings.");
-        // CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + Main.player + "."); 
-        // CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + Main.testPlayer + "."); 
+        // CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + this.player + "."); 
         CharacterList.duckHead.speak("Our souls were bound to this plane, which does not befit a duck.");
         CharacterList.duckHead.speak("We can now flee this wretched place.");
         CharacterList.duckHead.speak("Before we do, let us open the gates to the rest of the park as thanks for your kindness.");
@@ -137,6 +142,7 @@ public class PuzzleList {
         CharacterList.duckHead.speak("Fare thee - QUACK - well.");
         Words.narrate("The ducks fly free into the moonlight. If only you could do the same...");
 
+        // Confirms player solved puzzle - player no longer able to access room puzzle
         player.getRoom().solvePuzzle();
 
         return "success";

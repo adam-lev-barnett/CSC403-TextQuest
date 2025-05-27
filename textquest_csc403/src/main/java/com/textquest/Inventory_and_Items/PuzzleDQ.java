@@ -15,10 +15,7 @@ public class PuzzleDQ extends ArrayDeque<Item>{
         return this.size();
     }
 
-    public PuzzleDQ clone(PuzzleDQ toBeCloned) {
-        this.addAll(toBeCloned);
-        return this;
-    }
+    
 
     
 }

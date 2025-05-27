@@ -13,6 +13,7 @@ public class Player extends GameCharacter {
         if (room == null) throw new NullPointerException("Player room cannot be null"); 
     }
     
+    // Commenting out future features 
     /* 
     public void traverse(String direction) {
         switch (direction) {
@@ -36,28 +37,35 @@ public class Player extends GameCharacter {
                 System.out.println("You cannot go this direction.");
         }
     } */
-    
-    //& Override from GameCharacter to display "Item was added to inventory" specifically for the player
-    @Override
-    public void addInventory(String itemName, Item item) {
-        inventory.put(itemName, item);
-        System.out.println(item + "was added to inventory.");
-    }
 
-    @Override
-    public void removeFromInventory(String itemName) {
-        inventory.remove(itemName);
-        System.out.println(itemName + "was removed from inventory.");
+    public void putOnDuckShirt() {
+        duckShirt = true;
+        desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
     }
 
     public Inventory getInventory() {
         return inventory;
     }
 
-    public void putOnDuckShirt() {
-        duckShirt = true;
-        desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
+    public void printInventory() {
+        System.out.println("Your inventory: " + getInventory());
     }
+    
+    //& Use the following when you need to print what was added/removed to player inventory
+    public void addToInventory(Item item) {
+        inventory.addItem(item);
+        System.out.println(item + "was added to inventory.");
+    }
+
+    @Override
+    public void removeFromInventory(String itemName) {
+        inventory.removeItem(inventory.get(itemName));
+        System.out.println(itemName + "was removed from inventory.");
+    }
+
+
+
+
 
 
 

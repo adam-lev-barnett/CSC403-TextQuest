@@ -6,6 +6,7 @@ import com.textquest.Inventory_and_Items.*;
 public class Room {
     String name;
     String desc;
+    // Traversal will be available in later versions
     /* public Room north; 
     public Room south;
     public Room east;
@@ -14,7 +15,7 @@ public class Room {
     public final PuzzleDQ puzzle;
     public boolean solvedPuzzle;
 
-    public Room(String name, String desc) {
+    protected Room(String name, String desc) {
         this.name = name;
         this.desc = desc;
         this.items = new Inventory();
@@ -68,7 +69,7 @@ public class Room {
 
 
 
-    /* Equals accounting for adjacent rooms?
+    /* Equals accounting for adjacent rooms? -- ignore for now; only one room is available
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;

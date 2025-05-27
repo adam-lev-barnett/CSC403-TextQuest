@@ -5,11 +5,11 @@ import com.textquest.InputOutput.*;
 import com.textquest.Utilities.*;
 
 public class GameCharacter {
-    String name;
+    private final String name;
     String desc;
-    int health;
-    Room room;
-    public final Inventory inventory;
+    private final int health; // Health will be used in later versions
+    private Room room;
+    final Inventory inventory;
 
     public GameCharacter(String name, String desc, int health, Room room) {
         this.name = name;
@@ -35,9 +35,10 @@ public class GameCharacter {
         inventory.remove(itemName);
     }
 
-    public void setRoom(Room newRoom) {
+    // Traversal will be available in later versions
+    /* public void setRoom(Room newRoom) {
         this.room = newRoom;
-    }
+    } */
 
     public Room getRoom() {
         return room;

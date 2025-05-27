@@ -51,6 +51,11 @@ public class Interpreter {
 
 
             //^ Other checks
+            
+            else if (playerWords[0].equalsIgnoreCase("duckHeadDesc")) {
+                System.out.println(CharacterList.duckHead.getDesc());
+            }
+
             else if (playerWords[0].equalsIgnoreCase("duckHeadInventory")) {
                 System.out.println(CharacterList.duckHead.getInventory());
             }
@@ -79,7 +84,8 @@ public class Interpreter {
                     if (player.getRoom().getItems().containsKey(itemName)) {
                         player.getInventory().put(itemName, player.getRoom().items.get(itemName));
                         player.getRoom().getItems().remove(itemName);
-                        System.out.println(itemName + " has been added to your inventory");
+                        System.out.println(player.getInventory().get(itemName) + " has been added to your inventory");
+                        System.out.println(player.getInventory().get(itemName) + ": " + player.getInventory().get(itemName).getDesc());
                         System.out.println(player.getInventory());
                     }
                     else System.out.println("There is no " + itemName + " to pick up!");
@@ -98,7 +104,7 @@ public class Interpreter {
                         Item droppedItem = player.getInventory().get(itemName);
                         player.getInventory().remove(itemName);
                         player.getRoom().getItems().put(itemName, droppedItem);
-                        System.out.println("You dropped " + itemName);
+                        System.out.println("You dropped: " + droppedItem);
                     }
                     else System.out.println("There is no " + itemName + " in your inventory!");
                 }
@@ -123,9 +129,9 @@ public class Interpreter {
                         CharacterList.duckHead.giveItem(CharacterList.duckHead.getInventory().get("duck shirt"), player);
                         player.putOnDuckShirt();
                     }
-                    CharacterList.duckHead.speak("Now go find me those items! When you're ready, say \"solve puzzle\"");
+                    CharacterList.duckHead.speak("Now go find me those items! When you're ready, say \"solve puzzle\". Don't - QUACK - give up that shirt, though, or I'll call you an idiot!");
                     }
-                else System.out.println("The only way you can speak is if you \"talk to Duckhead.\"");
+                else System.out.println("The only way you can speak right now is if you \"talk to Duckhead.\"");
             }
 
             //^ Puzzles
@@ -140,6 +146,7 @@ public class Interpreter {
                             String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. Type \"undo\" to take back the last item.").split(" ");
                             //! While loop, conditional for if user enters nothing ""
                             while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
+                                // System.out.println("You can add: " + player.getInventory().printItemNicknames());
                                 if (itemNameParse.length == 1) {
 
                                     if (itemNameParse[0].equalsIgnoreCase("undo")) {
@@ -147,13 +154,13 @@ public class Interpreter {
                                         System.out.println("You haven't added anything yet!");
                                         }
                                         else {
-                                            player.inventory.addItem(player.getRoom().getPuzzle().pollLast()); // last added item (item in the back of the dq) goes back to user inventory
+                                            player.getInventory().addItem(player.getRoom().getPuzzle().pollLast()); // last added item (item in the back of the dq) goes back to user inventory
                                         }
                                     }
 
                                     else if (itemNameParse[0].equalsIgnoreCase("restart")) {
                                         while (!player.getRoom().getPuzzle().isEmpty()) {
-                                            player.inventory.addItem(player.getRoom().getPuzzle().pop());
+                                            player.getInventory().addItem(player.getRoom().getPuzzle().pop());
                                         }
                                         System.out.println("All items have been returned to your inventory, and the puzzle is empty.");
                                     }
