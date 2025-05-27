@@ -1,4 +1,6 @@
 package com.textquest.Inventory_and_Items;
+import java.util.Collections;
+import java.util.Map;
 import java.util.HashMap;
 import java.lang.StringBuilder;
 
@@ -19,8 +21,8 @@ public class Inventory{
         return items.toString();
     }
 
-    public HashMap<String, Item> getItems() {
-        return this.items;
+    public Map<String, Item> getItems() {
+        return Collections.unmodifiableMap(items);
     }
 
     public void printInventory() {

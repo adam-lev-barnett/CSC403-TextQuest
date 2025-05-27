@@ -191,7 +191,7 @@ public class Interpreter {
 
                             if (itemNameParse[0].equalsIgnoreCase("done")) {
                                 if (player.getRoom().equals(GameMap.entrance)) {
-                                    PuzzleList.duckPuzzle(player.getRoom().getPuzzle(), player);
+                                    Puzzles.duckPuzzle(player.getRoom().getPuzzle(), player);
                                     System.out.println(player.getInventory());
                                 }
                             }

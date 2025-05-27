@@ -3,9 +3,9 @@ import com.textquest.Characters.*;
 import com.textquest.Utilities.Words;
 // import com.textquest.Main;
 
-public class PuzzleList {
+public class Puzzles {
 
-    private PuzzleList() {}
+    private Puzzles() {}
 
     //! Was originally going to give the characters PuzzleDQs and pop both DQs at the same time to compare values, but then I'd have to repopulate the comparison DQs
     //~ Reasons for ArrayDeque over ArrayList:

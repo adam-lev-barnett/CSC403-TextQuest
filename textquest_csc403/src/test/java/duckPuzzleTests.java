@@ -2,7 +2,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.textquest.Main;
 import com.textquest.Characters.*;
 import com.textquest.Inventory_and_Items.*;
 import com.textquest.Rooms.GameMap;
@@ -76,20 +75,20 @@ public class duckPuzzleTests {
         testQ11.add(ItemCatalog.cottonCandyBlessed);
 
 
-        String result1 = PuzzleList.duckPuzzle(testQ1, testPlayer);
-        String result2 = PuzzleList.duckPuzzle(testQ2, testPlayer);
-        String result3 = PuzzleList.duckPuzzle(testQ3, testPlayer);
-        String result4 = PuzzleList.duckPuzzle(testQ4, testPlayer);
+        String result1 = Puzzles.duckPuzzle(testQ1, testPlayer);
+        String result2 = Puzzles.duckPuzzle(testQ2, testPlayer);
+        String result3 = Puzzles.duckPuzzle(testQ3, testPlayer);
+        String result4 = Puzzles.duckPuzzle(testQ4, testPlayer);
         // String result5 = PuzzleList.duckPuzzle(testQ5, testPlayer); -- Inventory test should throw illegal argument for adding item not in item catalog
-        String result6 = PuzzleList.duckPuzzle(testQ6, testPlayer);
-        String result7 = PuzzleList.duckPuzzle(testQ7, testPlayer);
-        String result8 = PuzzleList.duckPuzzle(testQ8, testPlayer);
-        String result9 = PuzzleList.duckPuzzle(testQ9, testPlayer);
-        String result10 = PuzzleList.duckPuzzle(testQ10, testPlayer);
-        String result11 = PuzzleList.duckPuzzle(testQ11, testPlayer);
+        String result6 = Puzzles.duckPuzzle(testQ6, testPlayer);
+        String result7 = Puzzles.duckPuzzle(testQ7, testPlayer);
+        String result8 = Puzzles.duckPuzzle(testQ8, testPlayer);
+        String result9 = Puzzles.duckPuzzle(testQ9, testPlayer);
+        String result10 = Puzzles.duckPuzzle(testQ10, testPlayer);
+        String result11 = Puzzles.duckPuzzle(testQ11, testPlayer);
 
-        assertThrows(NullPointerException.class, () -> PuzzleList.duckPuzzle(testNull, testPlayer)); //null 
-        assertThrows(NullPointerException.class, () -> PuzzleList.duckPuzzle(testQ1, nullPlayer)); // null player
+        assertThrows(NullPointerException.class, () -> Puzzles.duckPuzzle(testNull, testPlayer)); //null 
+        assertThrows(NullPointerException.class, () -> Puzzles.duckPuzzle(testQ1, nullPlayer)); // null player
         assertEquals("success", result1);
         assertEquals("too small", result2);
         assertEquals("too large", result3);
