@@ -1,9 +1,12 @@
 package com.textquest.Inventory_and_Items;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 public class ItemCatalog {
-    public static final HashSet<Item> masterInventory = new HashSet<>();
+    public static final Set<Item> internalInventory = new HashSet<>();
+    public static final Set<Item> masterInventory = Collections.unmodifiableSet(internalInventory);
 
     // Full item list - easy O(1) access for individual inventory population
     // No need for string keys because there's no user input
@@ -22,14 +25,14 @@ public class ItemCatalog {
     static {
         //^ Entrance items
         // masterInventory.add(toyFairyWand);
-        masterInventory.add(cottonCandyEternal);
-        masterInventory.add(cottonCandyPoison);
-        masterInventory.add(cottonCandyBlessed);
-        masterInventory.add(duckBill);
+        internalInventory.add(cottonCandyEternal);
+        internalInventory.add(cottonCandyPoison);
+        internalInventory.add(cottonCandyBlessed);
+        internalInventory.add(duckBill);
         // masterInventory.add(rope10);
-        masterInventory.add(stringFromCandy);
-        masterInventory.add(duckCall);
-        masterInventory.add(duckShirt);
+        internalInventory.add(stringFromCandy);
+        internalInventory.add(duckCall);
+        internalInventory.add(duckShirt);
     }
 
     private ItemCatalog() {}
