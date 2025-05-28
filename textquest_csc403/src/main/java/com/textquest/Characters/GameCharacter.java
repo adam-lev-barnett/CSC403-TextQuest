@@ -7,17 +7,18 @@ import com.textquest.Utilities.*;
 public class GameCharacter {
     private final String name;
     String desc;
-    private final int health; // Health will be used in later versions
+    // private final int health; // Health will be used in later versions
     private Room room;
     final Inventory inventory;
 
-    public GameCharacter(String name, String desc, int health, Room room) {
+    public GameCharacter(String name, String desc,Room room) {
         this.name = name;
         this.desc = desc;
-        this.health = health;
+        // this.health = health;
         this.room = room;
         inventory = new Inventory();
     }
+    
 
     public String getName() {
         return name;

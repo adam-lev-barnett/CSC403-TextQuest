@@ -16,21 +16,21 @@ public class duckPuzzleTests {
 
         //! Inventory doesn't allow null items, or items not from ItemCatalog (see InventoryTest)
 
-        Player testPlayer = new Player("TestPlayer", "test player", 0, GameMap.entrance);
+        Player testPlayer = new Player("TestPlayer", "test player", GameMap.entrance);
         Player nullPlayer = null;
 
-        PuzzleDQ testQ1 = new PuzzleDQ(); // correct dq
-        PuzzleDQ testQ2 = new PuzzleDQ(); // size 0 dq
-        PuzzleDQ testQ3 = new PuzzleDQ(); // Too big
-        PuzzleDQ testQ4 = new PuzzleDQ(); // incomplete dq
-        PuzzleDQ testNull = null; //null puzzle check
+        PuzzleDeque testQ1 = new PuzzleDeque(); // correct dq
+        PuzzleDeque testQ2 = new PuzzleDeque(); // size 0 dq
+        PuzzleDeque testQ3 = new PuzzleDeque(); // Too big
+        PuzzleDeque testQ4 = new PuzzleDeque(); // incomplete dq
+        PuzzleDeque testNull = null; //null puzzle check
         // PuzzleDQ testQ5 = new PuzzleDQ(); //! puzzle with items not from itemList - Inventory prevents this from happening; see InventoryTest
-        PuzzleDQ testQ6 = new PuzzleDQ(); // dq of existing items but incorrect items
-        PuzzleDQ testQ7 = new PuzzleDQ(); // Correct items, wrong order, bill first
-        PuzzleDQ testQ8 = new PuzzleDQ(); // Correct items, wrong order, call first
-        PuzzleDQ testQ9 = new PuzzleDQ(); // Incorrect second item
-        PuzzleDQ testQ10 = new PuzzleDQ(); // Incorrect second item, random item
-        PuzzleDQ testQ11 = new PuzzleDQ(); // First two items correct, last item incorrect
+        PuzzleDeque testQ6 = new PuzzleDeque(); // dq of existing items but incorrect items
+        PuzzleDeque testQ7 = new PuzzleDeque(); // Correct items, wrong order, bill first
+        PuzzleDeque testQ8 = new PuzzleDeque(); // Correct items, wrong order, call first
+        PuzzleDeque testQ9 = new PuzzleDeque(); // Incorrect second item
+        PuzzleDeque testQ10 = new PuzzleDeque(); // Incorrect second item, random item
+        PuzzleDeque testQ11 = new PuzzleDeque(); // First two items correct, last item incorrect
 
         testQ1.add(ItemCatalog.stringFromCandy);
         testQ1.add(ItemCatalog.duckBill);

@@ -8,7 +8,7 @@ public class PlayerTest {
     @Test
     public void testPlayerConstructor() {
 
-        assertThrows(NullPointerException.class, () -> new Player("test", "test", 10, null));
+        assertThrows(NullPointerException.class, () -> new Player("test", "test", null));
 
     }
 

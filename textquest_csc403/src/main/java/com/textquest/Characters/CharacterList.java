@@ -9,7 +9,6 @@ public class CharacterList {
     public static final GameCharacter duckHead = new GameCharacter
         ("Duckhead", 
         "A disembodied, floating head. Part of a large duck mascot costume. It has bloodshot eyes and a bit of dried blood around its mouth.", 
-        5, 
         GameMap.entrance);
 
         static {

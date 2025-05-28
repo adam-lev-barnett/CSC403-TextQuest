@@ -8,8 +8,8 @@ import java.lang.NullPointerException;
 public class Player extends GameCharacter {
     boolean duckShirt;
 
-    public Player(String name, String desc, int health, Room room) {
-        super(name, desc, health, room);
+    public Player(String name, String desc,Room room) {
+        super(name, desc, room);
         if (room == null) throw new NullPointerException("Player room cannot be null"); 
     }
     

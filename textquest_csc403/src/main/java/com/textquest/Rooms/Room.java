@@ -12,14 +12,14 @@ public class Room {
     public Room east;
     public Room west; */
     public Inventory items;
-    public final PuzzleDQ puzzle;
+    public final PuzzleDeque puzzle;
     public boolean solvedPuzzle;
 
     protected Room(String name, String desc) {
         this.name = name;
         this.desc = desc;
         this.items = new Inventory();
-        this.puzzle = new PuzzleDQ();
+        this.puzzle = new PuzzleDeque();
         this.solvedPuzzle = false;
     }
 
@@ -35,7 +35,7 @@ public class Room {
         System.out.println("West: " + west);
     } */
 
-    public PuzzleDQ getPuzzle() {
+    public PuzzleDeque getPuzzle() {
         return puzzle;
     }
 

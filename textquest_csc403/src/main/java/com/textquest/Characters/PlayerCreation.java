@@ -15,7 +15,7 @@ public class PlayerCreation {
         String playerDesc = InputScanner.strIn("Describe your character: ");
         OutputPause.pause(1000);
         System.out.println("I'm so sorry you look like that.");
-        return new Player(playerName, playerDesc, 10, GameMap.entrance);
+        return new Player(playerName, playerDesc, GameMap.entrance);
     }
 
 }

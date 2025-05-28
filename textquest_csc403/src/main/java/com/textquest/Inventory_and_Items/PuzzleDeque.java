@@ -9,10 +9,12 @@ import java.util.Collections;
  * Deque is chosen over an array due to item insertion and removal needing to be in constant time
 */
 
-public class PuzzleDQ {
-    ArrayDeque<Item> puzzleDeque;
+//! Deque is wrapped in PuzzleDeque so only certain methods are accessible
+
+public class PuzzleDeque {
+    private final ArrayDeque<Item> puzzleDeque;
     
-    public PuzzleDQ (){
+    public PuzzleDeque (){
         this.puzzleDeque = new ArrayDeque<>();
     }
 

@@ -13,7 +13,7 @@ public class Puzzles {
     //& • Puzzles pop items one at a time to avoid iterating through the entire PuzzleDQ and unnecessarily assigning everything to a variable if the puzzle is incorrect before reaching the last item
     //& • PuzzleDQ pops remaining items directly into the player's inventory with a while loop (takes O(N) based on what's left in the PuzzleDQ)
 
-    public static String duckPuzzle(PuzzleDQ submission, Player player) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
+    public static String duckPuzzle(PuzzleDeque submission, Player player) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
         
         if (submission == null || submission.contains(null)) throw new NullPointerException("Puzzle and/or contents cannot be null");
         if (player == null) throw new NullPointerException("Player cannot be null");
