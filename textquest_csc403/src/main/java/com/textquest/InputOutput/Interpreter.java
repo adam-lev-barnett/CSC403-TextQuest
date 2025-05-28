@@ -29,7 +29,7 @@ public class Interpreter {
         while (!command.equalsIgnoreCase("give up")) {
             String[] playerWords = command.split(" ");
 
-           /* //^ Traversal
+           /* //^ Traversal - Unavailable this version
             if (playerWords[0].equalsIgnoreCase("go")) { 
                 if (playerWords.length == 1) {
                     System.out.println("Go where?");
@@ -37,7 +37,7 @@ public class Interpreter {
                 else player.traverse(playerWords[1].toLowerCase());
             } */
 
-            //^ Self-checks
+            //^ Self-checks for testing
             if (playerWords[0].equalsIgnoreCase("description")) {
                 System.out.println(player.getDesc());
             }
@@ -51,7 +51,7 @@ public class Interpreter {
             }
 
 
-            //^ Other checks
+            //^ Other checks for testing
             
             else if (playerWords[0].equalsIgnoreCase("duckHeadDesc")) {
                 System.out.println(CharacterList.duckHead.getDesc());
@@ -136,16 +136,12 @@ public class Interpreter {
             }
 
             //^ Puzzles
-    //! "you haven't added anything yet" - done when items in dq
-    //! Can continue to add the same item after submission, but it doesn't accumulate in the dq
-    //& Adding "restart" to clear puzzledq and return everything to player inventory
 
             else if (playerWords[0].equalsIgnoreCase("solve")) {
                 if (playerWords.length > 1 && playerWords[1].equalsIgnoreCase("puzzle")) {
                     if (player.getRoom().getPuzzle() != null) {
                         if (player.getRoom().solvedPuzzle == false) {
                             String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. Type \"undo\" to take back the last item.").split(" ");
-                            //! While loop, conditional for if user enters nothing ""
                             while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
                                 // System.out.println("You can add: " + player.getInventory().printItemNicknames());
                                 if (itemNameParse.length == 1) {
@@ -166,8 +162,10 @@ public class Interpreter {
                                         System.out.println("All items have been returned to your inventory, and the puzzle is empty.");
                                     }
                                     else System.out.println("\"Use\" an item!");
-                                    System.out.println("Current puzzle order: " + player.getRoom().getPuzzle());
-                                    System.out.println("You can use: " + player.getInventory().printItemNicknames());
+                                    System.out.println(player.getRoom().getPuzzle());
+                                    System.out.print("You can use: "); 
+                                    player.getInventory().printItemNicknames();
+                                    System.out.println("");
                                 }
 
                                 else if (itemNameParse[0].equals("use") && itemNameParse.length > 1) {
@@ -184,7 +182,9 @@ public class Interpreter {
                                         System.out.println(itemString + " is not in your inventory!");
                                     }
                                     System.out.println(player.getRoom().getPuzzle());
-                                    System.out.println("You can use: " + player.getInventory().printItemNicknames());
+                                    System.out.print("You can use: "); 
+                                    player.getInventory().printItemNicknames();
+                                    System.out.println("");
                                 }
                                 itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\"").split(" "); 
                             }
@@ -206,7 +206,7 @@ public class Interpreter {
                 else System.out.println("Solve what?");
             }
             System.out.println("");
-            // Words.printValidActions();
+            Words.printValidActions();
             System.out.println("Enter a command: ");
             command = action.nextLine();
             }

@@ -99,6 +99,7 @@ public class duckPuzzleTests {
         assertEquals("call second", result9);
         assertEquals("idiot", result10);
         assertEquals("idiot", result11);
+
     }
 
     public void testsComplete() {

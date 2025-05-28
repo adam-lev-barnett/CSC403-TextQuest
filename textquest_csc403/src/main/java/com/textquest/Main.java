@@ -44,10 +44,10 @@ public class Main {
         }
         switch (duckQ.toLowerCase()) {
             case "yes":
-                duckHead.speak("Nice *QUACK* try, but I see who you really are.");
+                duckHead.speak("Nice *QUACK* try, but I see who you really are: " + player.getDesc());
                 break;
             case "no":
-                duckHead.speak("You're not *QUACK* going to make it much farther look- *QUACK* -ing like that.");
+                duckHead.speak("You're not *QUACK* going to make it much farther look- *QUACK* -ing like that: " + player.getDesc());
                 break;
             default:
                 duckHead.speak("...");

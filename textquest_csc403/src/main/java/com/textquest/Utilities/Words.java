@@ -6,7 +6,7 @@ public class Words {
     
     public static void narrate(String words) { // 500 for testing
         System.out.println(words);
-        OutputPause.pause(0);
+        OutputPause.pause(750);
     }
 
     public static void narrateBlock(String words) {
@@ -22,7 +22,7 @@ public class Words {
         OutputPause.pause();
         System.out.println("");
     }
-
+    /* Not in use yet
     public static void tutorial() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~ How to play ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Type in the following commands to perform their respective actions: \n");
@@ -38,6 +38,7 @@ public class Words {
         System.out.println("• 'Go (direction) - Travel to the area North, South, East, or West of you.");
         System.out.println("--------------------------------------------------------------------------\n");
     }
+        */
 
     public static void printValidActions() {
         Words.narrate("What will you do?");
@@ -49,10 +50,10 @@ public class Words {
         System.out.println("");
         
         // In-game input testing for getter methods
-        Words.narrate("At any time, you can also enter: ");
+        Words.narrate("For testing, you can also enter: ");
         System.out.println("• 'Description' - Prints your character's description"); //& Player description changes when you put on your duck shirt! 
         System.out.println("• 'Name' - Prints your character's name");
         System.out.println("• 'DuckheadInventory' - Prints Duckhead's inventory");
-        System.out.println("• 'RoomInventory' - Prints room inventory");
+        System.out.println("• 'RoomInventory' - Prints room inventory. You can 'pick up' any of these items to solve the puzzle.");
     }
 }

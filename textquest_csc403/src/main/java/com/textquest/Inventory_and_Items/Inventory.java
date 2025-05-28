@@ -21,6 +21,10 @@ public class Inventory{
         return items.toString();
     }
 
+    public boolean isEmpty() {
+        return this.items.isEmpty();
+    }
+
     public Map<String, Item> getItems() {
         return Collections.unmodifiableMap(items);
     }
@@ -30,8 +34,8 @@ public class Inventory{
     }
 
     // Prints list of usable string keys for easier user input
-    public String printItemNicknames(){
-        return this.items.keySet().toString();
+    public void printItemNicknames(){
+        System.out.println(this.items.keySet().toString());
     }
 
     public boolean hasItem(String itemNickname) {

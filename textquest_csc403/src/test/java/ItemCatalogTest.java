@@ -5,7 +5,10 @@ import com.textquest.Inventory_and_Items.*;
 public class ItemCatalogTest {
 
     @Test
-    public void noAddingToCatalogTest() {
+    public void noDirectAccessToCatalogTest() {
         assertThrows(UnsupportedOperationException.class, () -> ItemCatalog.masterInventory.add(new Item("test", "test", "test")));
+        assertThrows(UnsupportedOperationException.class, () -> ItemCatalog.masterInventory.remove(ItemCatalog.duckBill));
+        assertThrows(UnsupportedOperationException.class, () -> ItemCatalog.masterInventory.clear());
     }
+
 }

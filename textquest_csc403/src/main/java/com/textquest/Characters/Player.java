@@ -1,16 +1,20 @@
 package com.textquest.Characters;
 
 import com.textquest.Rooms.Room;
+import com.textquest.Utilities.Words;
 import com.textquest.Inventory_and_Items.*;
 import java.lang.NullPointerException;
 
 
 public class Player extends GameCharacter {
-    boolean duckShirt;
+    
+    boolean duckShirt; 
 
+    //& Player 
     public Player(String name, String desc,Room room) {
         super(name, desc, room);
-        if (room == null) throw new NullPointerException("Player room cannot be null"); 
+        if (room == null || name == null || desc == null) throw new NullPointerException("Player fields"); 
+        this.duckShirt = false;
     }
     
     // Commenting out future features 
@@ -40,7 +44,8 @@ public class Player extends GameCharacter {
 
     public void putOnDuckShirt() {
         duckShirt = true;
-        desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
+        // desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
+        Words.narrate("Your character description has changed.");
     }
 
     public Inventory getInventory() {
@@ -60,7 +65,6 @@ public class Player extends GameCharacter {
         printInventory();
     }
 
-    @Override
     public void removeFromInventory(String itemName) {
         this.inventory.removeItem(itemName);
         System.out.println(itemName + "was removed from inventory.");

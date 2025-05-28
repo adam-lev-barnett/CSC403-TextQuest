@@ -12,7 +12,7 @@ public class CharacterList {
         GameMap.entrance);
 
         static {
-            duckHead.getInventory().addItem(ItemCatalog.duckShirt);
+            duckHead.addToInventory(ItemCatalog.duckShirt);
         }
     
     private CharacterList() {}

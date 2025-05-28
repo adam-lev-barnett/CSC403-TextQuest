@@ -1,6 +1,6 @@
 package com.textquest.Inventory_and_Items;
 import java.util.ArrayDeque;
-import java.util.Collections;
+import java.lang.StringBuilder;
 
 
 /* 
@@ -48,7 +48,10 @@ public class PuzzleDeque {
 
     @Override
     public String toString() {
-        return puzzleDeque.toString();
+        if (this.puzzleDeque.isEmpty()) return "Puzzle is empty.";
+        StringBuilder sb = new StringBuilder("Current item order: ");
+        for (Item item : puzzleDeque) sb.append(item + ";");
+        return sb.toString();
     }
 
 
