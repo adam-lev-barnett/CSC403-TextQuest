@@ -1,6 +1,6 @@
 package com.textquest.Inventory_and_Items;
-
 import java.util.ArrayDeque;
+import java.util.Collections;
 
 
 /* 
@@ -9,13 +9,56 @@ import java.util.ArrayDeque;
  * Deque is chosen over an array due to item insertion and removal needing to be in constant time
 */
 
-public class PuzzleDQ extends ArrayDeque<Item>{
-
-    public int getSize() {
-        return this.size();
+public class PuzzleDQ {
+    ArrayDeque<Item> puzzleDeque;
+    
+    public PuzzleDQ (){
+        this.puzzleDeque = new ArrayDeque<>();
     }
 
-    
+    public void add(Item item) {
+        this.puzzleDeque.add(item);
+    }
+
+    public Item poll() {
+        return this.puzzleDeque.poll();
+    }
+
+    public Item pop() {
+        return this.puzzleDeque.pop();
+    }
+
+    public Item pollLast() {
+        return this.puzzleDeque.pollLast();
+    }
+
+    public int getSize() {
+        return this.puzzleDeque.size();
+    }
+
+    public boolean isEmpty() {
+        return this.puzzleDeque.isEmpty();
+    }
+
+    public boolean contains(Item item) {
+        return this.puzzleDeque.contains(item);
+    }
+
+    @Override
+    public String toString() {
+        return puzzleDeque.toString();
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     
 }
