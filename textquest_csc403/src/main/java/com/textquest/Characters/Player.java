@@ -8,13 +8,13 @@ import java.lang.NullPointerException;
 
 public class Player extends GameCharacter {
     
-    boolean duckShirt; 
+    private boolean duckShirt; 
 
     //& Player 
     public Player(String name, String desc,Room room) {
         super(name, desc, room);
         if (room == null || name == null || desc == null) throw new NullPointerException("Player fields"); 
-        this.duckShirt = false;
+        this.duckShirt = false; 
     }
     
     // Commenting out future features 
@@ -43,15 +43,18 @@ public class Player extends GameCharacter {
     } */
 
     public void putOnDuckShirt() {
-        duckShirt = true;
-        // desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
+        this.duckShirt = true;
+        desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
         Words.narrate("Your character description has changed.");
+    }
+
+    public boolean duckShirtStatus() {
+        return this.duckShirt;
     }
 
     public Inventory getInventory() {
         return inventory;
     }
-
 
     public void printInventory() {
         System.out.println("Your inventory: " + getInventory());
@@ -69,6 +72,7 @@ public class Player extends GameCharacter {
         this.inventory.removeItem(itemName);
         System.out.println(itemName + "was removed from inventory.");
     }
+
 
 
 

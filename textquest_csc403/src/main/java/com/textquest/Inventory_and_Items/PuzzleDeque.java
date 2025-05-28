@@ -19,6 +19,8 @@ public class PuzzleDeque {
     }
 
     public void add(Item item) {
+        if (item == null) throw new NullPointerException("Cannot add null item to puzzle");
+        if (!(ItemCatalog.masterInventory.contains(item))) throw new IllegalArgumentException("Item must already exist in master item catalog to add to inventories");
         this.puzzleDeque.add(item);
     }
 
@@ -50,7 +52,7 @@ public class PuzzleDeque {
     public String toString() {
         if (this.puzzleDeque.isEmpty()) return "Puzzle is empty.";
         StringBuilder sb = new StringBuilder("Current item order: ");
-        for (Item item : puzzleDeque) sb.append(item + ";");
+        for (Item item : puzzleDeque) sb.append(item + "; ");
         return sb.toString();
     }
 

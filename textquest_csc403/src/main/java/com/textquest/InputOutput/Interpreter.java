@@ -65,6 +65,12 @@ public class Interpreter {
                 System.out.println(player.getRoom().getRoomItems());
             }
 
+            //^ Show available actions
+
+            else if (playerWords[0].equalsIgnoreCase("help")) {
+                Words.printValidActions();
+            }
+
 
             //^ Inventory actions
 
@@ -85,9 +91,9 @@ public class Interpreter {
                     if (player.getRoom().getRoomItems().hasItem(itemName)) {
                         player.getInventory().addItem(player.getRoom().items.getItem(itemName));
                         player.getRoom().getRoomItems().removeItem(itemName);
-                        System.out.println(player.getInventory().getItem(itemName) + " has been added to your inventory");
-                        System.out.println(player.getInventory().getItem(itemName) + ": " + player.getInventory().getItem(itemName).getDesc());
-                        System.out.println(player.getInventory());
+                        Words.narrate(player.getInventory().getItem(itemName) + " has been added to your inventory");
+                        Words.narrate(player.getInventory().getItem(itemName) + " description: " + player.getInventory().getItem(itemName).getDesc());
+                        Words.narrate("Current inventory: " + player.getInventory());
                     }
                     else System.out.println("There is no " + itemName + " to pick up!");
                 }
@@ -141,11 +147,12 @@ public class Interpreter {
                 if (playerWords.length > 1 && playerWords[1].equalsIgnoreCase("puzzle")) {
                     if (player.getRoom().getPuzzle() != null) {
                         if (player.getRoom().solvedPuzzle == false) {
-                            String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. Type \"undo\" to take back the last item.").split(" ");
+                            Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
+                            String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
                             while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
-                                // System.out.println("You can add: " + player.getInventory().printItemNicknames());
+                                
+                                //^ Single-word puzzle actions (undo, restart)
                                 if (itemNameParse.length == 1) {
-
                                     if (itemNameParse[0].equalsIgnoreCase("undo")) {
                                         if (player.getRoom().getPuzzle().isEmpty()) { //& Fringe case: undo when there's nothing in the puzzle dq
                                         System.out.println("You haven't added anything yet!");
@@ -163,11 +170,11 @@ public class Interpreter {
                                     }
                                     else System.out.println("\"Use\" an item!");
                                     System.out.println(player.getRoom().getPuzzle());
-                                    System.out.print("You can use: "); 
-                                    player.getInventory().printItemNicknames();
+                                    Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
                                     System.out.println("");
                                 }
-
+                                
+                                //^ Using an item
                                 else if (itemNameParse[0].equals("use") && itemNameParse.length > 1) {
                                     StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
                                     for (int i = 2; i < itemNameParse.length; i++) {
@@ -182,31 +189,35 @@ public class Interpreter {
                                         System.out.println(itemString + " is not in your inventory!");
                                     }
                                     System.out.println(player.getRoom().getPuzzle());
-                                    System.out.print("You can use: "); 
-                                    player.getInventory().printItemNicknames();
+                                    Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
                                     System.out.println("");
                                 }
+
                                 itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\"").split(" "); 
                             }
-
+                            
+                            //^ Done with building puzzle deque and ready to solve the puzzle
                             if (itemNameParse[0].equalsIgnoreCase("done")) {
                                 if (player.getRoom().equals(GameMap.entrance)) {
                                     Puzzles.duckPuzzle(player.getRoom().getPuzzle(), player);
-                                    System.out.println(player.getInventory());
                                 }
+                                Words.narrate("There are no other rooms right now, so how can you not be at the entrance??");
                             }
+
                             else if (itemNameParse[0].equalsIgnoreCase("leave")) {
                                 System.out.println("The puzzle still has your items. Please return at any time.");
                             }
+
                         }
+                        // Can't solve the same puzzle twice
                         else if (player.getRoom().solvedPuzzle == true) System.out.println("You've already solved this puzzle!");
                     }
                     else System.out.println("There is no puzzle in this room!");
                 }
                 else System.out.println("Solve what?");
             }
+
             System.out.println("");
-            Words.printValidActions();
             System.out.println("Enter a command: ");
             command = action.nextLine();
             }

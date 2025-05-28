@@ -3,15 +3,16 @@ package com.textquest;
 import com.textquest.Characters.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
+import com.textquest.Rooms.*;
 
 //! Add boolean solvedPuzzle so that the interpreter knows not to let you try the puzzle when there aren't items to use
 
 public class Main {
     //^ Uncomment for testPlayer
-    // public static Player player = new Player("Bill", "A big duck", 3, GameMap.entrance);
+    public static Player player = new Player("Bill", "A big duck", GameMap.entrance);
 
-    //^ Create player from user input
-    public static Player player = PlayerCreation.createPlayer();
+    //^ Create player from user input - comment out for testing!
+    // public static Player player = PlayerCreation.createPlayer();
 
     public static boolean entranceGatesLocked = true;
     public static GameCharacter duckHead = CharacterList.duckHead;

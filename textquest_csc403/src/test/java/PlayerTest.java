@@ -1,5 +1,9 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+
 
 import org.junit.jupiter.api.Test;
 import com.textquest.Characters.*;
@@ -11,7 +15,7 @@ public class PlayerTest {
     Player testPlayer = new Player("name", "desc", GameMap.entrance);
 
     @Test
-    public void testPlayerConstructor() {
+    public void playerConstructorTest() {
         
         //! No players with null fields
         assertThrows(NullPointerException.class, () -> new Player("test", "test", null));
@@ -25,8 +29,27 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayerInventory() {
+    public void playerInventoryTest() {
         testPlayer.addToInventory(ItemCatalog.duckBill);
+        testPlayer.addToInventory(ItemCatalog.duckCall);
+        testPlayer.addToInventory(ItemCatalog.duckShirt);
+
+        assertTrue(testPlayer.getInventory().hasItem(ItemCatalog.duckBill.getNickName()));
+        assertTrue(testPlayer.getInventory().hasItem(ItemCatalog.duckCall.getNickName()));
+        assertTrue(testPlayer.getInventory().hasItem(ItemCatalog.duckShirt.getNickName()));
+
+        testPlayer.removeFromInventory(ItemCatalog.duckCall.getNickName());
+        assertFalse(testPlayer.getInventory().hasItem(ItemCatalog.duckCall.getNickName()));
+    }
+
+    @Test
+    public void duckShirtTest() {
+
+        assertFalse(testPlayer.duckShirtStatus());
+
+        testPlayer.putOnDuckShirt();
+
+        assertTrue(testPlayer.duckShirtStatus());
     }
 
 
