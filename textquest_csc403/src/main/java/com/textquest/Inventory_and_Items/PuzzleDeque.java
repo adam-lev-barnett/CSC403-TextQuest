@@ -5,11 +5,11 @@ import java.lang.StringBuilder;
 
 /* 
  * Items can be added to or removed from the deque at any time, even after leaving an area. When the player indicates they have solved the puzzle
- * the items are dequed and compared with the order in which they were supposed to be added
- * Deque is chosen over an array due to item insertion and removal needing to be in constant time
+ * For the puzzles (see puzzles) the items are dequeued and compared with the order in which they were supposed to be added
+ * Uses ArrayDeque over Queue to undo item insertion (from user input) in constant time
 */
 
-//! Deque is wrapped in PuzzleDeque so only certain methods are accessible
+//! ArrayDeque is wrapped in PuzzleDeque so only certain methods are accessible
 
 public class PuzzleDeque {
     private final ArrayDeque<Item> puzzleDeque;
@@ -28,11 +28,7 @@ public class PuzzleDeque {
         return this.puzzleDeque.poll();
     }
 
-    public Item pop() {
-        return this.puzzleDeque.pop();
-    }
-
-    public Item pollLast() {
+    public Item undo() {
         return this.puzzleDeque.pollLast();
     }
 
@@ -48,7 +44,6 @@ public class PuzzleDeque {
         return this.puzzleDeque.contains(item);
     }
 
-    @Override
     public String toString() {
         if (this.puzzleDeque.isEmpty()) return "Puzzle is empty.";
         StringBuilder sb = new StringBuilder("Current item order: ");
@@ -56,16 +51,26 @@ public class PuzzleDeque {
         return sb.toString();
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    /* @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        if (this == o) return true;
+        if (!(this.getClass() == o.getClass())) return false;
+        PuzzleDeque other = (PuzzleDeque)o;
+        if ((this.puzzleDeque == null) ^ (other.puzzleDeque == null)) return false;
+        if (this.getSize() != other.getSize()) return false;
+        return this.puzzleDeque.equals(other.puzzleDeque); 
+        }
     
+    @Override
+    public int hashCode() {
+        int hash = 17;
+        if (this.puzzleDeque == null) hash = 37 * hash;
+        for (Item item : this.puzzleDeque) { // unnecessary null check for each item because puzzleDQ throws an error when trying to add null items
+            hash = 37 * hash + item.hashCode();
+        }
+        return hash;
+    } */
+
 }
+

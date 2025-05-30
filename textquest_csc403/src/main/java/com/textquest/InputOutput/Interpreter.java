@@ -158,13 +158,13 @@ public class Interpreter {
                                         System.out.println("You haven't added anything yet!");
                                         }
                                         else {
-                                            player.getInventory().addItem(player.getRoom().getPuzzle().pollLast()); // last added item (item in the back of the dq) goes back to user inventory
+                                            player.getInventory().addItem(player.getRoom().getPuzzle().undo()); // last added item (item in the back of the dq) goes back to user inventory
                                         }
                                     }
 
                                     else if (itemNameParse[0].equalsIgnoreCase("restart")) {
                                         while (!player.getRoom().getPuzzle().isEmpty()) {
-                                            player.getInventory().addItem(player.getRoom().getPuzzle().pop());
+                                            player.getInventory().addItem(player.getRoom().getPuzzle().poll());
                                         }
                                         System.out.println("All items have been returned to your inventory, and the puzzle is empty.");
                                     }

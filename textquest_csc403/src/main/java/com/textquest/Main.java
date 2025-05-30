@@ -5,10 +5,8 @@ import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
 import com.textquest.Rooms.*;
 
-//! Add boolean solvedPuzzle so that the interpreter knows not to let you try the puzzle when there aren't items to use
-
 public class Main {
-    //^ Uncomment for testPlayer
+    //^ Uncomment for testPlayer - Also see Pause class in Utilities for further testing efficiency
     public static Player player = new Player("Bill", "A big duck", GameMap.entrance);
 
     //^ Create player from user input - comment out for testing!
@@ -56,24 +54,7 @@ public class Main {
         }
         //~ End Duckhead dialog
 
-        // Words.narrate("What will you do?");
-        // System.out.println("• 'Talk to Duckhead'?");
-        // System.out.println("• Solve the puzzle? ('solve puzzle')");
-        // System.out.println("• Pick up an item in the room? ('pick up <item name>')");
-        // System.out.println(  "    • Available room items:" + GameMap.entrance.getRoomItems());
-        // System.out.println("• 'Give up'?");
-        // System.out.println("");
-        
-        // In-game input testing for getter methods
-        // Words.narrate("At any time, you can also enter: ");
-        // System.out.println("• 'Description' - Prints your character's description"); //& Player description changes when you put on your duck shirt! 
-        // System.out.println("• 'Name' - Prints your character's name");
-        // System.out.println("• 'DuckheadInventory' - Prints Duckhead's inventory");
-        // System.out.println("• 'RoomInventory' - Prints room inventory");
 
-        // Words.printValidActions();
-
-        // Interpreter interpreter = new Interpreter(player);
         Interpreter interpreter = new Interpreter(player);
         interpreter.getAction();
     }

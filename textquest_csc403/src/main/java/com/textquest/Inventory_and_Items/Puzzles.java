@@ -23,7 +23,7 @@ public class Puzzles {
             CharacterList.duckHead.speak("QUACK! I am looking for three very specific items. This isn't - QUACK - even three non-specific items.");
             CharacterList.duckHead.speak("Come back when it's worth my time. QUACK!");
             while (!(submission.isEmpty())) {
-                player.getInventory().addItem(submission.pop());
+                player.getInventory().addItem(submission.poll());
             }
             System.out.println("All items have been returned to your inventory.");
             return "too small";
@@ -33,7 +33,7 @@ public class Puzzles {
             CharacterList.duckHead.speak("QUACK! I am looking for three very specific items... so this is too many items! QUACK! I don't get paid enough for this.");
             CharacterList.duckHead.speak("Come back when it's worth my time. QUACK!");
             while (!(submission.isEmpty())) {
-                player.getInventory().addItem(submission.pop());
+                player.getInventory().addItem(submission.poll());
             }
             System.out.println("All items have been returned to your inventory.");
             return "too large";
@@ -51,7 +51,7 @@ public class Puzzles {
             Words.narrate("Duckhead looks at you with contempt; his oversized, cartoon-ish eyes glare at you, unblinking and patronizing.");
             CharacterList.duckHead.speak("Very funny, kid. But you ain't passing for a - QUACK - duck if you can't find a way to keep that beak on your face.");
             while (!(submission.isEmpty())) {
-                player.getInventory().addItem(submission.pop());
+                player.getInventory().addItem(submission.poll());
             }
             player.getInventory().addItem(item1);
             System.out.println("All items have been returned to your inventory.");
@@ -62,7 +62,7 @@ public class Puzzles {
             Words.narrate("Duckhead looks at you with contempt; his oversized, cartoon-ish eyes glare at you, unblinking and patronizing.");
             CharacterList.duckHead.speak("If you can't look the part, you shouldn't talk the talk."); 
             while (!(submission.isEmpty())) {
-                player.getInventory().addItem(submission.pop());
+                player.getInventory().addItem(submission.poll());
             }
             player.getInventory().addItem(item1);
             System.out.println("All items have been returned to your inventory.");
@@ -72,7 +72,7 @@ public class Puzzles {
         else {
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
-            player.getInventory().addItem(submission.pop());
+            player.getInventory().addItem(submission.poll());
             player.getInventory().addItem(item1);
             System.out.println("All items have been returned to your inventory.");
             return "idiot";
@@ -90,7 +90,7 @@ public class Puzzles {
         else if (item2.equals(ItemCatalog.duckCall)) {
             Words.narrate("Duckhead quacks at you, his ghostly saliva hitting you square on the forehead.");
             CharacterList.duckHead.speak("You're just going to hang that quacker around your neck? Just because you can talk the talk doesn't mean you can walk the walk.");
-            player.getInventory().addItem(submission.pop());
+            player.getInventory().addItem(submission.poll());
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
             System.out.println("All items have been returned to your inventory.");
@@ -100,7 +100,7 @@ public class Puzzles {
         else {
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
-            player.getInventory().addItem(submission.pop());
+            player.getInventory().addItem(submission.poll());
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
             System.out.println("All items have been returned to your inventory.");
@@ -112,9 +112,6 @@ public class Puzzles {
         if (!item3.equals(ItemCatalog.duckCall)) {
             Words.narrate("Duckhead looks at you in disbelief, as if he's thinking \"What an idiot.\"");
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
-            while (!(submission.isEmpty())) {
-                player.getInventory().addItem(submission.pop());
-            }
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
             player.getInventory().addItem(item3);

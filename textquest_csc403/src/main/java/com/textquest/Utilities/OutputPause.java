@@ -24,7 +24,7 @@ public class OutputPause {
     //^ Uncomment the following methods when testing
     public static void pause(){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

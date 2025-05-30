@@ -4,16 +4,18 @@ import com.textquest.Rooms.GameMap;
 
 public class Words {
     
-    public static void narrate(String words) { // 500 for testing
+    //! Set millis to 0 for testing
+    public static void narrate(String words) { 
         System.out.println(words);
-        OutputPause.pause(750);
+        OutputPause.pause();
     }
 
-    public static void narrateBlock(String words) {
-        System.out.print(words);
-        System.out.print("\n");
-        OutputPause.pause(5500);
-    }
+    // public static void narrateBlock(String words) {
+    //     System.out.print(words);
+    //     System.out.print("\n");
+    //     OutputPause.pause(5500);
+    // }
+    
 
     public static void whoosh() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

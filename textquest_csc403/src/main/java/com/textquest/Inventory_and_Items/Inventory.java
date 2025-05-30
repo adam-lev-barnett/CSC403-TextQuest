@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.HashMap;
 import java.lang.StringBuilder;
 
-//! Need to junit test for item equals and hashcode
 
 public class Inventory{
     private final HashMap<String, Item> items = new HashMap<>();

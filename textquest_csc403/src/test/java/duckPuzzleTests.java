@@ -78,7 +78,7 @@ public class duckPuzzleTests {
         String result2 = Puzzles.duckPuzzle(testQ2, testPlayer);
         String result3 = Puzzles.duckPuzzle(testQ3, testPlayer);
         String result4 = Puzzles.duckPuzzle(testQ4, testPlayer);
-        // String result5 = PuzzleList.duckPuzzle(testQ5, testPlayer); -- Inventory test should throw illegal argument for adding item not in item catalog
+        // String result5 = PuzzleList.duckPuzzle(testQ5, testPlayer); //! Inventory test should throw illegal argument for adding item not in item catalog
         String result6 = Puzzles.duckPuzzle(testQ6, testPlayer);
         String result7 = Puzzles.duckPuzzle(testQ7, testPlayer);
         String result8 = Puzzles.duckPuzzle(testQ8, testPlayer);

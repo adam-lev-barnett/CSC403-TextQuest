@@ -17,7 +17,7 @@ public class Player extends GameCharacter {
         this.duckShirt = false; 
     }
     
-    // Commenting out future features 
+    //& Traversal available in future versions 
     /* 
     public void traverse(String direction) {
         switch (direction) {
@@ -44,7 +44,7 @@ public class Player extends GameCharacter {
 
     public void putOnDuckShirt() {
         this.duckShirt = true;
-        desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
+        this.desc += (". You're wearing a brand new " + ItemCatalog.duckShirt);
         Words.narrate("Your character description has changed.");
     }
 
