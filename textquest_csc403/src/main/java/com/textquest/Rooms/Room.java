@@ -1,8 +1,6 @@
 package com.textquest.Rooms;
 import com.textquest.Inventory_and_Items.*;
 
-//! Need to override hashcode
-
 public class Room {
     String name;
     String desc;
@@ -42,6 +40,10 @@ public class Room {
 
     public Inventory getRoomInventory() {
         return inventory;
+    }
+
+    public boolean getSolvedPuzzle() {
+        return this.solvedPuzzle;
     }
 
     public void solvePuzzle() {

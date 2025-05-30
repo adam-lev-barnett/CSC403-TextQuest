@@ -3,7 +3,7 @@ import java.util.ArrayDeque;
 import java.lang.StringBuilder;
 
 
-//! ArrayDeque is wrapped in PuzzleDeque so only certain ArrayDeque methods are accessible
+//! ArrayDeque is wrapped in PuzzleDeque so only certain ArrayDeque methods are accessible, similar to Inventory
 
 public class PuzzleDeque {
     private final ArrayDeque<Item> puzzleDeque;

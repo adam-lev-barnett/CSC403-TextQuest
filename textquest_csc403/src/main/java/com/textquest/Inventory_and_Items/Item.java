@@ -28,9 +28,9 @@ public class Item {
         return desc;
     }
 
-    //^ Had to update hash function with equals when ignoring case. Decided on to-lower
+    // Had to update hash function with equals when ignoring case. Decided on to-lower -- It works!
 
-    @Override //& Equals is case insensitive to make user input more straightforward
+    @Override //& Equals is case insensitive to make user input more straightforward so they don't have to care about case
     public boolean equals(Object o) { // Item retrieval is not case-sensitive
         if (o == null) return false;
         if (this == o) return true;

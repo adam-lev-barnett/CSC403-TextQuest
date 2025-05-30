@@ -24,7 +24,7 @@ public class Words {
         OutputPause.pause();
         System.out.println("");
     }
-    /* Not in use yet
+    /* Future versions
     public static void tutorial() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~ How to play ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("Type in the following commands to perform their respective actions: \n");
@@ -50,6 +50,16 @@ public class Words {
         System.out.println(  "    • Available room items: " + GameMap.entrance.getRoomInventory());
         System.out.println("• 'Give up'?");
         System.out.println("");
+    }
+
+    public static void printValidActionsTest() {
+        Words.narrate("What will you do?");
+        System.out.println("• 'Talk to Duckhead'?");
+        System.out.println("• Solve the puzzle? ('solve puzzle')");
+        System.out.println("• Pick up an item in the room? ('pick up <item name>')");
+        System.out.println(  "    • Available room items: " + GameMap.entrance.getRoomInventory());
+        System.out.println("• 'Give up'?");
+        System.out.println("");
         
         // In-game input testing for getter methods
         Words.narrate("For testing, you can also enter: ");
@@ -58,4 +68,5 @@ public class Words {
         System.out.println("• 'DuckheadInventory' - Prints Duckhead's inventory");
         System.out.println("• 'RoomInventory' - Prints room inventory. You can 'pick up' any of these items to solve the puzzle.");
     }
+    
 }

@@ -10,7 +10,7 @@ public class Player extends GameCharacter {
     
     private boolean duckShirt; 
 
-    //& Player 
+    
     public Player(String name, String desc,Room room) {
         super(name, desc, room);
         if (room == null || name == null || desc == null) throw new NullPointerException("Player fields cannot be null"); 
@@ -52,9 +52,9 @@ public class Player extends GameCharacter {
         return this.duckShirt;
     }
 
-    public Inventory getInventory() {
-        return inventory;
-    }
+    // public Inventory getInventory() {
+    //     return inventory;
+    // }
 
     public void printInventory() {
         System.out.println("Your inventory: " + getInventory());

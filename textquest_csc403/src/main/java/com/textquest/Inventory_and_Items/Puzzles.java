@@ -130,7 +130,8 @@ public class Puzzles {
         }
 
         // Successful puzzle completion - items no longer in player inventory or puzzle deque
-        //~ Ignore input request for testing
+        
+        //~ Ignore the following input request for testing to avoid hangup while testing
             // String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
             // while (!quack.equals("QUACK")) {
             //     quack = InputScanner.strIn("\"QUACK\" like your unlife depends on it!");
