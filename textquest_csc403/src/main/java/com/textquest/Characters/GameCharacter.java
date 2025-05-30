@@ -6,7 +6,7 @@ import com.textquest.Utilities.*;
 
 // Recommended: create characters in CharacterList for easy organization
 //& Health will be used in later versions
-// Description left public 
+
 public class GameCharacter {
     private final String name;
     protected String desc;

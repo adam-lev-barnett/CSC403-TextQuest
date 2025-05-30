@@ -11,14 +11,15 @@ public class Room {
     public Room south;
     public Room east;
     public Room west; */
-    public Inventory items;
-    public final PuzzleDeque puzzle;
+    protected final Inventory inventory;
+    private final PuzzleDeque puzzle;
     public boolean solvedPuzzle;
 
-    protected Room(String name, String desc) {
+    public Room(String name, String desc) {
+        if (name == null || desc == null) throw new NullPointerException("Room fields can't be null");
         this.name = name;
         this.desc = desc;
-        this.items = new Inventory();
+        this.inventory = new Inventory();
         this.puzzle = new PuzzleDeque();
         this.solvedPuzzle = false;
     }
@@ -39,8 +40,8 @@ public class Room {
         return puzzle;
     }
 
-    public Inventory getRoomItems() {
-        return items;
+    public Inventory getRoomInventory() {
+        return inventory;
     }
 
     public void solvePuzzle() {

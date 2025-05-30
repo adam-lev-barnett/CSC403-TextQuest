@@ -4,8 +4,10 @@ import com.textquest.InputOutput.*;
 import com.textquest.Rooms.GameMap;
 import com.textquest.Utilities.*;
 
+// Interactive player creation 
 public class PlayerCreation {
     
+    private PlayerCreation() {}
 
     public static Player createPlayer() {
         String playerName = InputScanner.strIn("What's your name?");

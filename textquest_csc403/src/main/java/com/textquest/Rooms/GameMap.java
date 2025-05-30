@@ -3,7 +3,7 @@ import com.textquest.Inventory_and_Items.ItemCatalog;
 
 public class GameMap {
     
-    // Add new rooms here
+    // Add new rooms here for easy organization and map connections in future versions
     public final static Room entrance = new Room("Carnival Entrance", "The entrance to the haunted carnival. The gateway to... something?");
     
     // Examples:
@@ -17,9 +17,9 @@ public class GameMap {
         // entrance.items.addItem(ItemCatalog.cottonCandyEternal);
         // entrance.items.addItem(ItemCatalog.cottonCandyPoison);
         // entrance.items.addItem(ItemCatalog.cottonCandyBlessed);
-        entrance.items.addItem(ItemCatalog.duckBill);
-        entrance.items.addItem(ItemCatalog.duckCall);
-        entrance.items.addItem(ItemCatalog.stringFromCandy);
+        entrance.inventory.addItem(ItemCatalog.duckBill);
+        entrance.inventory.addItem(ItemCatalog.duckCall);
+        entrance.inventory.addItem(ItemCatalog.stringFromCandy);
     }
 
     private GameMap() {}

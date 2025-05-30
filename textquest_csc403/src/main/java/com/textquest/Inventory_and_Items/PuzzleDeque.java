@@ -3,17 +3,11 @@ import java.util.ArrayDeque;
 import java.lang.StringBuilder;
 
 
-/* 
- * Items can be added to or removed from the deque at any time, even after leaving an area. When the player indicates they have solved the puzzle
- * For the puzzles (see puzzles) the items are dequeued and compared with the order in which they were supposed to be added
- * Uses ArrayDeque over Queue to undo item insertion (from user input) in constant time
-*/
-
-//! ArrayDeque is wrapped in PuzzleDeque so only certain methods are accessible
+//! ArrayDeque is wrapped in PuzzleDeque so only certain ArrayDeque methods are accessible
 
 public class PuzzleDeque {
     private final ArrayDeque<Item> puzzleDeque;
-    
+
     public PuzzleDeque (){
         this.puzzleDeque = new ArrayDeque<>();
     }

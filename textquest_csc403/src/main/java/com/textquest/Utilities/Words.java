@@ -47,7 +47,7 @@ public class Words {
         System.out.println("• 'Talk to Duckhead'?");
         System.out.println("• Solve the puzzle? ('solve puzzle')");
         System.out.println("• Pick up an item in the room? ('pick up <item name>')");
-        System.out.println(  "    • Available room items: " + GameMap.entrance.getRoomItems());
+        System.out.println(  "    • Available room items: " + GameMap.entrance.getRoomInventory());
         System.out.println("• 'Give up'?");
         System.out.println("");
         

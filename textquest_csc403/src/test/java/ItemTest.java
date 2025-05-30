@@ -15,6 +15,7 @@ public class ItemTest {
 
         assertEquals(testItem1, testItem2);
         assertNotEquals(testItem2, testItem3);
+        assertEquals(testItem1.hashCode(), testItem2.hashCode());
     }
 
     @Test

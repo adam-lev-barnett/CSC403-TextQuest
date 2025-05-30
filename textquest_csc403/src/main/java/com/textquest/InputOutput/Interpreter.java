@@ -62,7 +62,7 @@ public class Interpreter {
             }
 
             else if (playerWords[0].equalsIgnoreCase("roomInventory")) {
-                System.out.println(player.getRoom().getRoomItems());
+                System.out.println(player.getRoom().getRoomInventory());
             }
 
             //^ Show available actions
@@ -88,9 +88,9 @@ public class Interpreter {
                         sbItemName.append(" ").append(playerWords[i]);
                     }
                     String itemName = sbItemName.toString().toLowerCase();
-                    if (player.getRoom().getRoomItems().hasItem(itemName)) {
-                        player.getInventory().addItem(player.getRoom().items.getItem(itemName));
-                        player.getRoom().getRoomItems().removeItem(itemName);
+                    if (player.getRoom().getRoomInventory().hasItem(itemName)) {
+                        player.getInventory().addItem(player.getRoom().getRoomInventory().getItem(itemName));
+                        player.getRoom().getRoomInventory().removeItem(itemName);
                         Words.narrate(player.getInventory().getItem(itemName) + " has been added to your inventory");
                         Words.narrate(player.getInventory().getItem(itemName) + " description: " + player.getInventory().getItem(itemName).getDesc());
                         Words.narrate("Current inventory: " + player.getInventory());
@@ -110,7 +110,7 @@ public class Interpreter {
                     if (player.getInventory().hasItem(itemName)) {
                         Item droppedItem = player.getInventory().getItem(itemName);
                         player.getInventory().removeItem(itemName);
-                        player.getRoom().getRoomItems().addItem(droppedItem);
+                        player.getRoom().getRoomInventory().addItem(droppedItem);
                         System.out.println("You dropped: " + droppedItem);
                     }
                     else System.out.println("There is no " + itemName + " in your inventory!");

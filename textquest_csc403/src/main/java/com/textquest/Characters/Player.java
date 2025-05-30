@@ -13,7 +13,7 @@ public class Player extends GameCharacter {
     //& Player 
     public Player(String name, String desc,Room room) {
         super(name, desc, room);
-        if (room == null || name == null || desc == null) throw new NullPointerException("Player fields"); 
+        if (room == null || name == null || desc == null) throw new NullPointerException("Player fields cannot be null"); 
         this.duckShirt = false; 
     }
     

@@ -3,15 +3,13 @@ package com.textquest;
 import com.textquest.Characters.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
-import com.textquest.Rooms.*;
 
 public class Main {
     //^ Uncomment for testPlayer - Also see Pause class in Utilities for further testing efficiency
-    public static Player player = new Player("Bill", "A big duck", GameMap.entrance);
+    // public static Player player = new Player("Bill", "A big duck", GameMap.entrance);
 
-    //^ Create player from user input - comment out for testing!
-    // public static Player player = PlayerCreation.createPlayer();
-
+    // Create player from user input - comment out for testing!
+    public static Player player = PlayerCreation.createPlayer();
     public static boolean entranceGatesLocked = true;
     public static GameCharacter duckHead = CharacterList.duckHead;
 
