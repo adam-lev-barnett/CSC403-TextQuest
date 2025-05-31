@@ -63,20 +63,19 @@ public class Interpreter {
             else if (playerWords[0].equalsIgnoreCase("roomInventory")) {
                 System.out.println(player.getRoom().getRoomInventory());
             }
-
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //~ help test
             //~ For in-game testing, comment out the next block and uncomment the block following it
 
             //~ Outputs list of available input commands for player
-
-            else if (playerWords[0].equalsIgnoreCase("help")) {
-                Words.printValidActions();
-            }
-
-            //~ Outputs list of available input commands for player as well as developer 
-
             // else if (playerWords[0].equalsIgnoreCase("help")) {
-            //     Words.printValidActionsTest();
+            //     Words.printValidActions();
             // }
+
+            //~ Outputs list of available input commands for player AND developer 
+            else if (playerWords[0].equalsIgnoreCase("help")) {
+                Words.printValidActionsTest();
+            }
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -192,12 +191,15 @@ public class Interpreter {
                                         itemNameSB.append(" " + itemNameParse[i]);
                                     }
                                     String itemString = itemNameSB.toString();
+
                                     // Add new items to the back of the dq to display puzzle order, only if item is in the player inventory
                                     if (player.getInventory().hasItem(itemString)) {
                                         player.getRoom().getPuzzle().add(player.getInventory().getItem(itemString)); 
                                         player.getInventory().removeItem(itemString);
+
                                     // Item is no longer in player inventory and cannot be added again
                                     // Previous item deposit can be undone through "undo" -- use of modified pollLast() through ArrayDeque in PuzzleDeque
+
                                     }
                                     else {
                                         System.out.println(itemString + " is not in your inventory!");
@@ -211,6 +213,7 @@ public class Interpreter {
                             }
                             
                             // Done with building puzzle deque and ready to solve the puzzle
+
                             if (itemNameParse[0].equalsIgnoreCase("done")) {
                                 if (player.getRoom().equals(GameMap.entrance)) {
                                     Puzzles.duckPuzzle(player.getRoom().getPuzzle(), player);
@@ -223,7 +226,9 @@ public class Interpreter {
                             }
 
                         }
-                        // Can't solve the same puzzle twice
+                        
+                        //!Can't solve the same puzzle twice
+
                         else if (player.getRoom().solvedPuzzle == true) System.out.println("You've already solved this puzzle!");
                     }
                     else System.out.println("There is no puzzle in this room!");

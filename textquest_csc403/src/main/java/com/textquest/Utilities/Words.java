@@ -4,7 +4,6 @@ import com.textquest.Rooms.GameMap;
 
 public class Words {
     
-    //! Set millis to 0 for testing
     public static void narrate(String words) { 
         System.out.println(words);
         OutputPause.pause();
@@ -61,12 +60,17 @@ public class Words {
         System.out.println("• 'Give up'?");
         System.out.println("");
         
-        // In-game input testing for getter methods
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~ in game help test
+        //~ In-game input testing for getter methods; use if you want to see player attributes and room/duckhead inventory to check their statuses; 
+        //~ leave top half of method
         Words.narrate("For testing, you can also enter: ");
         System.out.println("• 'Description' - Prints your character's description"); //& Player description changes when you put on your duck shirt! 
         System.out.println("• 'Name' - Prints your character's name");
+        System.out.println("• 'Inventory' - Prints your current inventory");
         System.out.println("• 'DuckheadInventory' - Prints Duckhead's inventory");
         System.out.println("• 'RoomInventory' - Prints room inventory. You can 'pick up' any of these items to solve the puzzle.");
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
     
 }

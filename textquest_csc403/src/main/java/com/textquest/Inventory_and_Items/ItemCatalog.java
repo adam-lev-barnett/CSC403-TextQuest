@@ -5,13 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ItemCatalog {
-    //! internalInventory used to populate the item list; masterInventory returns unmodifiableSet for access to items but no access to the HashSet itself
+    // internalInventory used to populate the item list; masterInventory returns unmodifiableSet for access to items but no access to the HashSet itself
     
     private static final Set<Item> internalInventory = new HashSet<>();
     public static final Set<Item> masterInventory = Collections.unmodifiableSet(internalInventory);
 
     // Full item list - Add new items here!
-    // Uses HashSet over HashMap used for Inventory because it doesn't rely on user String input retrieval
+    // Uses HashSet over HashMap used for Inventory because it doesn't rely on user String input retrieval, so cheaper to use
     // Still has easy O(1) access for population of individual inventories for Room, Player, and GameCharacter
     public static final Item toyFairyWand = new Item("Bloody Wand", "Bloody Toy Fairy Wand", "Not magical, but still somehow dangerous in the wrong (or right?) hands.");
     public static final Item cottonCandyEternal = new Item("Eternal Cotton Candy", "Cotton Candy (Eternal)", "A piece of the neverending and never-depleted pile of bright pink cotton candy.");
@@ -34,7 +34,7 @@ public class ItemCatalog {
         // internalInventory.add(toyFairyWand);
         // internalInventory.add(rope10);
         
-        //& Items not assigned to any Inventory - just implemented for testing larger inventories
+        //& Items not assigned to any Inventory - just implemented for testing larger inventories -- You can keep these uncommented
         internalInventory.add(cottonCandyEternal);
         internalInventory.add(cottonCandyPoison);
         internalInventory.add(cottonCandyBlessed);

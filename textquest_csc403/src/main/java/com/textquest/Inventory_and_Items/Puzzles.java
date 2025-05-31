@@ -6,24 +6,12 @@ import com.textquest.Utilities.Words;
 public class Puzzles {
 
     // In future versions, more puzzles will be added to this class; functionality is similar to CharacterList and GameMap
-
-    /* 
-    Items can be added to or removed from the deque at any time, even after leaving an area until the player indicates they have solved the puzzle
-    For the puzzles (see puzzles) the items are dequeued and compared with the order in which they were supposed to be added
-    Uses ArrayDeque over Queue to undo item insertion (from user input) in constant time
-
-    Items are returned to player inventory and removed from the PuzzleDeque upon failure
-    Items removed from PuzzleDeque and don't go back to player inventory upon success
-    */
-
-    //~ Reasons for ArrayDeque over ArrayList:
-    //& • Removal of items for comparisons is simpler and doesn't require keeping track of shifting indices
-    //& • Puzzles pop items one at a time to avoid iterating through the entire PuzzleDQ and unnecessarily assigning everything to a variable if the puzzle is incorrect before reaching the last item
-    //& • PuzzleDQ pops remaining items directly into the player's inventory with a while loop (takes O(N) based on what's left in the PuzzleDQ)
+    // See PuzzleDeque for overview of mechanics and interaction with inventories
+    // Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
 
     private Puzzles() {}
 
-    public static String duckPuzzle(PuzzleDeque submission, Player player) { //~ Main creates different conditionals based on the String scenarios returned from the puzzle (returning items to inventory, resetting the puzzle queue, success, etc.)
+    public static String duckPuzzle(PuzzleDeque submission, Player player) { 
         
         if (submission == null || submission.contains(null)) throw new NullPointerException("Puzzle and/or contents cannot be null");
         if (player == null) throw new NullPointerException("Player cannot be null");
@@ -131,11 +119,15 @@ public class Puzzles {
 
         // Successful puzzle completion - items no longer in player inventory or puzzle deque
         
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~ puzzle success test
         //~ Ignore the following input request for testing to avoid hangup while testing
             // String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
             // while (!quack.equals("QUACK")) {
             //     quack = InputScanner.strIn("\"QUACK\" like your unlife depends on it!");
             // }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         Words.narrate("Duckhead's mascot head begins to dissapate before your eyes... revealing...");
         Words.narrate("An actual, living duck. Not floating. Flying. Frantically flapping his mortal wings.");
         // CharacterList.duckHead.speak("QUACK! QUACK! Thank you " + this.player + "."); 

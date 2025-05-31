@@ -11,8 +11,8 @@ public class GameMap {
     // public static Room kitchen = new Room("Kitchen", "The kitchen");
 
     static {
-    //~ Room items
-        //^ Carnival Entrance inventory - Items commented out for testing simplicity
+    // Room items
+        // Carnival Entrance inventory - Items commented out for testing simplicity
         // entrance.items.addItem(ItemCatalog.toyFairyWand);
         // entrance.items.addItem(ItemCatalog.cottonCandyEternal);
         // entrance.items.addItem(ItemCatalog.cottonCandyPoison);

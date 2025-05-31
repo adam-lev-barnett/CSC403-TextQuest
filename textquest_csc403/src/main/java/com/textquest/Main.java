@@ -5,26 +5,30 @@ import com.textquest.InputOutput.*;
 import com.textquest.Utilities.Words;
 
 public class Main {
-    //^ Uncomment for testPlayer - Also see Pause class in Utilities for further testing efficiency
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //~ test player test
+    //~ Uncomment for testPlayer 
     // public static Player player = new Player("Bill", "A big duck", GameMap.entrance);
 
-    // Create player from user input - comment out for testing!
+    //~ Create player from user input - comment out for testing!
     public static Player player = PlayerCreation.createPlayer();
     public static boolean entranceGatesLocked = true;
     public static GameCharacter duckHead = CharacterList.duckHead;
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     public static void main(String[] args) {
 
-        // ~~~~~ Game element initialization ~~~~~ //
+        //Game element initialization//
         
-        //^ Game script: Opening ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+        //Game script: Opening
         Words.narrate("Anyway, welcome " + player.getName() + ".");
         Words.narrate("Today, we're going on a little adventure.");
         Words.narrate("Buckle in!");
 
         Words.whoosh();
 
-        //^ Chapter 1: The entrance
+        // Chapter 1: The entrance
         //& Characters in room: Duckhead
 
         Words.narrate("Where once was found fun is now a sprawl of decaying wooden ticket stalls and rusty turnstiles."); 
@@ -33,7 +37,9 @@ public class Main {
         Words.narrate("Floating heads of mascots past wistfully bob to a discordant calliope with bloodstained mouths.");
         Words.narrate("From the lineup, a duck head with bloodshot eyes spots you, pauses, and slowly turns around.");
 
-        //~ Comment out the following Duckhead dialog for testing
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~ duckhead dialog test
+        //~ Comment out the following Duckhead dialog for testing due to user input - nothing to uncomment for testing
         
         String duckQ = duckHead.speakResponse("I'm not a real duck. Are you?");
         while (!duckQ.equalsIgnoreCase("yes") && !duckQ.equalsIgnoreCase("no")) {
@@ -50,7 +56,9 @@ public class Main {
                 duckHead.speak("...");
                 break;
         }
+
         //~ End Duckhead dialog
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
         Interpreter interpreter = new Interpreter(player);

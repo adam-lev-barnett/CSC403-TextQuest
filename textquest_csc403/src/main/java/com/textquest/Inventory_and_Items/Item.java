@@ -1,7 +1,9 @@
 package com.textquest.Inventory_and_Items;
 
 public class Item {
-    String nickName; // Maintains easy user input while allowing more creativity and specificity upon printing the item
+    // In later versions, names will be more specific such as "Candy Necklace (remnants)" or the use of symbols instead of "Candy String" - the name variable is used for output only
+    // Using nickName will maintain easy user input while allowing more creativity and specificity upon actually printing the item
+    String nickName; 
     public String name;
     String desc;
 
@@ -28,9 +30,10 @@ public class Item {
         return desc;
     }
 
-    // Had to update hash function with equals when ignoring case. Decided on to-lower -- It works!
+    // Equals and hash are case insensitive to make user input more straightforward so they don't have to care about case 
+    // Had to update hash function with equals when ignoring case, but there's no method for str.equalsIgnoreCase() that isn't a boolean. Decided on using to-lower -- It works!
 
-    @Override //& Equals is case insensitive to make user input more straightforward so they don't have to care about case
+    @Override 
     public boolean equals(Object o) { // Item retrieval is not case-sensitive
         if (o == null) return false;
         if (this == o) return true;
