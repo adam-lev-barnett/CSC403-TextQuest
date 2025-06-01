@@ -6,7 +6,10 @@ public class Words {
     
     public static void narrate(String words) { 
         System.out.println(words);
-        OutputPause.pause();
+        if (!TestToggle.TESTMODE) {
+            OutputPause.pause();
+        }
+        else OutputPause.pauseTest();
     }
 
     // public static void narrateBlock(String words) {
@@ -18,9 +21,15 @@ public class Words {
 
     public static void whoosh() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        OutputPause.pause();
+        if (!TestToggle.TESTMODE) {
+            OutputPause.pause();
+        }
+        else OutputPause.pauseTest();
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        OutputPause.pause();
+        if (!TestToggle.TESTMODE) {
+            OutputPause.pause();
+        }
+        else OutputPause.pauseTest();
         System.out.println("");
     }
     /* Future versions
@@ -58,6 +67,7 @@ public class Words {
         System.out.println("• Pick up an item in the room? ('pick up <item name>')");
         System.out.println(  "    • Available room items: " + GameMap.entrance.getRoomInventory());
         System.out.println("• 'Give up'?");
+        System.out.println("• 'Help' to repeat these instructions?");
         System.out.println("");
         
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

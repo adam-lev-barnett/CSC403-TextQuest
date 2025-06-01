@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.textquest.Characters.*;
 import com.textquest.Inventory_and_Items.*;
 import com.textquest.Rooms.GameMap;
+import com.textquest.Utilities.TestToggle;
 import com.textquest.Utilities.Words;
 
 import java.lang.StringBuilder;
@@ -24,10 +25,14 @@ public class Interpreter {
     public void getAction() {
         if (player == null) throw new IllegalArgumentException("Player must be instantiated");
         System.out.println("");
-        Words.printValidActions();
+        if (TestToggle.TESTMODE) {
+            Words.printValidActionsTest();
+        }
+        else Words.printValidActions();
         System.out.println("Enter a command: ");
         String command = action.nextLine();
         while (!command.equalsIgnoreCase("give up")) {
+            System.out.println();
             String[] playerWords = command.split(" ");
 
            /* Traversal - Unavailable this version
@@ -68,14 +73,15 @@ public class Interpreter {
             //~ For in-game testing, comment out the next block and uncomment the block following it
 
             //~ Outputs list of available input commands for player
-            // else if (playerWords[0].equalsIgnoreCase("help")) {
-            //     Words.printValidActions();
-            // }
+            else if (playerWords[0].equalsIgnoreCase("help")) {
+                if (TestToggle.TESTMODE) {
+                    Words.printValidActionsTest();
+                }
+                else Words.printValidActions();
+            }
 
             //~ Outputs list of available input commands for player AND developer 
-            else if (playerWords[0].equalsIgnoreCase("help")) {
-                Words.printValidActionsTest();
-            }
+
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -100,6 +106,7 @@ public class Interpreter {
                         player.getRoom().getRoomInventory().removeItem(itemName);
                         Words.narrate(player.getInventory().getItem(itemName) + " has been added to your inventory");
                         Words.narrate(player.getInventory().getItem(itemName) + " description: " + player.getInventory().getItem(itemName).getDesc());
+                        System.out.println("");
                         Words.narrate("Current inventory: " + player.getInventory());
                     }
                     else System.out.println("There is no " + itemName + " to pick up!");
@@ -157,8 +164,8 @@ public class Interpreter {
                     if (player.getRoom().getPuzzle() != null) {
                     //! Boolean check to prevent puzzle access after successful completion
                         if (player.getRoom().solvedPuzzle == false) {
-                            Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
                             String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
+                            // Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());                            
                             while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
                                 
                                 //& Single-word puzzle actions (undo, restart) to avoid outOfBounds
@@ -180,7 +187,7 @@ public class Interpreter {
                                     }
                                     else System.out.println("\"Use\" an item!");
                                     System.out.println(player.getRoom().getPuzzle());
-                                    Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
+                                    // Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
                                     System.out.println("");
                                 }
                                 
@@ -205,11 +212,11 @@ public class Interpreter {
                                         System.out.println(itemString + " is not in your inventory!");
                                     }
                                     System.out.println(player.getRoom().getPuzzle());
-                                    Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
+                                    // Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
                                     System.out.println("");
                                 }
 
-                                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\"").split(" "); 
+                                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
                             }
                             
                             // Done with building puzzle deque and ready to solve the puzzle
@@ -218,7 +225,7 @@ public class Interpreter {
                                 if (player.getRoom().equals(GameMap.entrance)) {
                                     Puzzles.duckPuzzle(player.getRoom().getPuzzle(), player);
                                 }
-                                Words.narrate("There are no other rooms right now, so how can you not be at the entrance??");
+                                // Words.narrate("There are no other rooms right now, so how can you not be at the entrance??");
                             }
 
                             else if (itemNameParse[0].equalsIgnoreCase("leave")) {

@@ -9,7 +9,7 @@ public class PlayerCreation {
     
     private PlayerCreation() {}
 
-    public static Player createPlayer() {
+    public static Player CreatePlayer() {
         String playerName = InputScanner.strIn("What's your name?");
         OutputPause.pause(1000);
         System.out.println(playerName + "? What kind of name is that?");

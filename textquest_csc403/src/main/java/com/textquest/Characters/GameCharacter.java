@@ -43,7 +43,10 @@ public class GameCharacter {
     // Speaking methods just add the character's name before the output
     public void speak(String words) {
         System.out.println(name + ": " + words);
-        OutputPause.pause();
+        if (TestToggle.TESTMODE) {
+            OutputPause.pauseTest();
+        }
+        else OutputPause.pause();
     }
 
     public String speakResponse(String words) {

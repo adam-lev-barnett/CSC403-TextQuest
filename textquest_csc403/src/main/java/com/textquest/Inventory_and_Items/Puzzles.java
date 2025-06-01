@@ -1,5 +1,6 @@
 package com.textquest.Inventory_and_Items;
 import com.textquest.Characters.*;
+import com.textquest.Utilities.TestToggle;
 import com.textquest.Utilities.Words;
 // import com.textquest.Main;
 
@@ -23,7 +24,7 @@ public class Puzzles {
             while (!(submission.isEmpty())) {
                 player.getInventory().addItem(submission.poll());
             }
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "too small";
         }
 
@@ -33,7 +34,7 @@ public class Puzzles {
             while (!(submission.isEmpty())) {
                 player.getInventory().addItem(submission.poll());
             }
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "too large";
         }
 
@@ -52,7 +53,7 @@ public class Puzzles {
                 player.getInventory().addItem(submission.poll());
             }
             player.getInventory().addItem(item1);
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "bill first";
         }
 
@@ -63,7 +64,7 @@ public class Puzzles {
                 player.getInventory().addItem(submission.poll());
             }
             player.getInventory().addItem(item1);
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "call first";
         }
 
@@ -72,7 +73,7 @@ public class Puzzles {
             CharacterList.duckHead.speak("You're a QUACK-ing idiot.");
             player.getInventory().addItem(submission.poll());
             player.getInventory().addItem(item1);
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "idiot";
         }
 
@@ -91,7 +92,7 @@ public class Puzzles {
             player.getInventory().addItem(submission.poll());
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "call second";
         }
 
@@ -101,7 +102,7 @@ public class Puzzles {
             player.getInventory().addItem(submission.poll());
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "idiot";
         }
 
@@ -113,7 +114,7 @@ public class Puzzles {
             player.getInventory().addItem(item1);
             player.getInventory().addItem(item2);
             player.getInventory().addItem(item3);
-            System.out.println("All items have been returned to your inventory.");
+            System.out.println("All items have been returned to your inventory; say 'solve puzzle' to try again or 'help' to view available actions.");
             return "idiot";
         }
 
@@ -122,10 +123,12 @@ public class Puzzles {
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         //~ puzzle success test
         //~ Ignore the following input request for testing to avoid hangup while testing
-            // String quack = InputScanner.strIn("Use your duck call and \"QUACK\" to continue.");
-            // while (!quack.equals("QUACK")) {
-            //     quack = InputScanner.strIn("\"QUACK\" like your unlife depends on it!");
-            // }
+        if (!TestToggle.TESTMODE) {
+            String quack = CharacterList.duckHead.speakResponse("Use your duck call and \"QUACK\" to continue.");
+            while (!quack.equals("QUACK")) {
+                quack = CharacterList.duckHead.speakResponse("\"QUACK\" like your unlife depends on it!");
+            }
+        }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         Words.narrate("Duckhead's mascot head begins to dissapate before your eyes... revealing...");

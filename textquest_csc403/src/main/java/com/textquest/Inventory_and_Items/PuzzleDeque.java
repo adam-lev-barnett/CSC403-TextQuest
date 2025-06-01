@@ -56,6 +56,7 @@ public class PuzzleDeque {
 
     public String toString() {
         if (this.puzzleDeque.isEmpty()) return "Puzzle is empty.";
+        System.out.println("");
         StringBuilder sb = new StringBuilder("Current item order: ");
         for (Item item : puzzleDeque) sb.append(item + "; ");
         return sb.toString();
