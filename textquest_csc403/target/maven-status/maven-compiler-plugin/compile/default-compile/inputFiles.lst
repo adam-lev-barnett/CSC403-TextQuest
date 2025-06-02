@@ -1,0 +1,17 @@
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Characters/CharacterList.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Characters/GameCharacter.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Characters/Player.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Characters/PlayerCreation.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/InputOutput/InputScanner.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/InputOutput/Interpreter.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Inventory_and_Items/Inventory.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Inventory_and_Items/Item.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Inventory_and_Items/ItemCatalog.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Inventory_and_Items/PuzzleDeque.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Inventory_and_Items/Puzzles.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Main.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Rooms/GameMap.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Rooms/Room.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Utilities/OutputPause.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Utilities/TestToggle.java
+/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Utilities/Words.java
