@@ -8,28 +8,30 @@ import com.textquest.Rooms.*;
 
 
 public class Main {
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //~ test player test
-    //~ Uncomment for testPlayer 
+
     
     public static Player player; 
+    // Future feature: solving puzzle unlocks the gates allowing access to different areas
     public static boolean entranceGatesLocked = true;
     public static GameCharacter duckHead = CharacterList.duckHead;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     public static void main(String[] args) {
 
         //Game element initialization//
-        //~ Create player from user input - comment out for testing!
+        //~ Create player from user input
         if (TestToggle.TESTMODE) {
             player = new Player("Bill", "A big duck", GameMap.entrance);
         }
         else player = PlayerCreation.CreatePlayer();
         
         //Game script: Opening
+        Words.narrate("");
         Words.narrate("Anyway, welcome " + player.getName() + ".");
+        Words.narrate("Sorry to tell you this, but you're kind of dead.");
+        Words.narrate("Everyone is kind of dead.");
+        Words.narrate("By \"kind of\" I mean everyone is undead.");
+        Words.narrate("But enough about that!");
         Words.narrate("Today, we're going on a little adventure.");
         Words.narrate("Buckle in!");
 
@@ -44,9 +46,6 @@ public class Main {
         Words.narrate("Floating heads of mascots past wistfully bob to a discordant calliope with bloodstained mouths.");
         Words.narrate("From the lineup, a duck head with bloodshot eyes spots you, pauses, and slowly turns around.");
 
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        //~ duckhead dialog test
-        //~ Comment out the following Duckhead dialog for testing due to user input - nothing to uncomment for testing
         if (TestToggle.TESTMODE) {
             String duckQ = duckHead.speakResponse("I'm not a real duck. Are you?");
             while (!duckQ.equalsIgnoreCase("yes") && !duckQ.equalsIgnoreCase("no")) {
@@ -64,11 +63,8 @@ public class Main {
                     break;
             }
         }
-
-        //~ End Duckhead dialog
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
+        
+        // Input object intended to simplify user input across classes - Main interpreter is perpetual until user inputs "give up"
         Interpreter interpreter = new Interpreter(player);
         interpreter.getAction();
     }

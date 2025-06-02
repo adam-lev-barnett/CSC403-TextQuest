@@ -43,7 +43,7 @@ public class Interpreter {
                 else player.traverse(playerWords[1].toLowerCase());
             } */
 
-            // Player attributes for in-game testing; no need to comment out unless deployed for user
+            // Player attributes for in-game testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             if (playerWords[0].equalsIgnoreCase("description")) {
                 System.out.println(player.getDesc());
             }
@@ -69,8 +69,7 @@ public class Interpreter {
                 System.out.println(player.getRoom().getRoomInventory());
             }
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            //~ help test
-            //~ For in-game testing, comment out the next block and uncomment the block following it
+            //~ Prints list of available actions; description, name, duckheadinventory, roominventory aren't listed in user mode, but you can still type them in
 
             //~ Outputs list of available input commands for player
             else if (playerWords[0].equalsIgnoreCase("help")) {
@@ -80,14 +79,13 @@ public class Interpreter {
                 else Words.printValidActions();
             }
 
-            //~ Outputs list of available input commands for player AND developer 
-
-
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            // Inventory actions
-            //& Pick up item: item moves from area inventory to player inventory
+            // Inventory actions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+            //& Pick up item: item moves from area inventory to player inventory ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //! Cases created for unavailable items as well as incomplete input without throwing errors
+
             else if (playerWords[0].equalsIgnoreCase("pick")) {
                 if (playerWords.length == 1) System.out.println("Pick what? Your nose? Gross!");
                 else if (playerWords.length == 2) {
@@ -113,7 +111,7 @@ public class Interpreter {
                 }
             }
 
-            //& Drop item: item moves from player inventory to area inventory
+            //& Drop item: item moves from player inventory to area inventory ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             else if (playerWords[0].equalsIgnoreCase("drop")) {
                 if (playerWords.length > 1) {
                     StringBuilder sbItemName = new StringBuilder(playerWords[1]);
@@ -135,8 +133,9 @@ public class Interpreter {
                 }
             }
 
-            //& Talk to Duckhead to obtain duck shirt
+            //& Talk to Duckhead to obtain duck shirt ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //! Method in GameCharacter added to prevent repeat of full dialog and item exchange 
+
             else if ((playerWords[0].equalsIgnoreCase("talk"))) {
                 if ((playerWords.length > 2) && (playerWords[1].equalsIgnoreCase("to") && (playerWords[2].equalsIgnoreCase("duckhead")))) {
                     CharacterList.duckHead.speak("I'm not - QUACK - gonna let you go very far unless you present me with three items in the correct order that'll show me you know how to quack with the best of us!");
@@ -156,7 +155,7 @@ public class Interpreter {
                 else System.out.println("The only way you can speak right now is if you \"talk to Duckhead.\"");
             }
 
-            // Puzzles
+            // Puzzles ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
             else if (playerWords[0].equalsIgnoreCase("solve")) {
                 if (playerWords.length > 1 && playerWords[1].equalsIgnoreCase("puzzle")) {
@@ -164,8 +163,8 @@ public class Interpreter {
                     if (player.getRoom().getPuzzle() != null) {
                     //! Boolean check to prevent puzzle access after successful completion
                         if (player.getRoom().solvedPuzzle == false) {
-                            String[] itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
-                            // Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());                            
+                            String[] itemNameParse = InputScanner.strIn("Submit an item from your inventory (use format \"Submit [item name]\"). Type \"done\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
+                            // Words.narrate("You can submit the following items to solve the puzzle: " + player.getInventory());                            
                             while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
                                 
                                 //& Single-word puzzle actions (undo, restart) to avoid outOfBounds
@@ -185,21 +184,21 @@ public class Interpreter {
                                         }
                                         System.out.println("All items have been returned to your inventory, and the puzzle is empty.");
                                     }
-                                    else System.out.println("\"Use\" an item!");
+                                    else System.out.println("\"Submit\" an item!");
                                     System.out.println(player.getRoom().getPuzzle());
-                                    // Words.narrate("You can use the following items to solve the puzzle: " + player.getInventory());
+                                    // Words.narrate("You can submit the following items to solve the puzzle: " + player.getInventory());
                                     System.out.println("");
                                 }
                                 
-                                //& Add an item to PuzzleDeque
-                                else if (itemNameParse[0].equals("use") && itemNameParse.length > 1) {
+                                //& Add an item to PuzzleDeque ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                else if (itemNameParse[0].equals("submit") && itemNameParse.length > 1) {
                                     StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
                                     for (int i = 2; i < itemNameParse.length; i++) {
                                         itemNameSB.append(" " + itemNameParse[i]);
                                     }
                                     String itemString = itemNameSB.toString();
 
-                                    // Add new items to the back of the dq to display puzzle order, only if item is in the player inventory
+                                    // Add new items to the back of the deque to display puzzle order, only if item is in the player inventory
                                     if (player.getInventory().hasItem(itemString)) {
                                         player.getRoom().getPuzzle().add(player.getInventory().getItem(itemString)); 
                                         player.getInventory().removeItem(itemString);
@@ -216,10 +215,10 @@ public class Interpreter {
                                     System.out.println("");
                                 }
 
-                                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Use [item name]\"). Type \"done\" when you want to submit. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
+                                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Submit [item name]\"). Type \\\"done\\\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
                             }
                             
-                            // Done with building puzzle deque and ready to solve the puzzle
+                            // Done with building puzzle deque and ready to solve the puzzle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                             if (itemNameParse[0].equalsIgnoreCase("done")) {
                                 if (player.getRoom().equals(GameMap.entrance)) {
