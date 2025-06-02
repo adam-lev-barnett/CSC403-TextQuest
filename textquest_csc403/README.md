@@ -1,17 +1,18 @@
 # TextQuest?
 
-TextQuest is a text-based adventure game set in a haunted carnival in a world where everyone is assumed dead - well... undead. 
-You succumbed to the same fate and find yourself at the carnival entrance among ghosts and floating mascot heads.
-Duckhead, the disembodied head of a duck costume (the rest of which is nowhere in sight) discovers the player and sends them on a quest to solve a puzzle, after which the gates to the rest of the park unlock, and you can discover what sinister secrets await in this new universe.
+TextQuest is a text-based adventure game set in a haunted carnival in a world where everyone is assumed dead - well... undead.  
+You succumbed to the same fate and find yourself at the carnival entrance among ghosts and floating mascot heads.  
+Duckhead, the disembodied head of a duck costume (the rest of which is nowhere in sight) discovers the player and sends them on a quest to solve a puzzle, after which the gates to the rest of the park unlock, and you can discover what sinister secrets await in this new universe.  
 
-For now, only the first area and puzzle are available for play.
-Items are also instantly available to pick up; in later versions, you'll need to look for them!
+For now, only the first area and puzzle are available for play.  
+Items are also instantly available to pick up; in later versions, you'll need to look for them!  
 
 # Download and run
-Download TextQuest.jar
+Download TextQuest.jar  
 Run the game with
 ```bash
 java -jar TextQuest.jar
+```
 
 # Tutorial
 _Note: All interaction happens through the terminal and is case-insensitive_
@@ -24,14 +25,14 @@ _Note: All interaction happens through the terminal and is case-insensitive_
 6. See if you satisfied his requirements! If you didn't, you have to try again. 
 
 ## Available actions
-a. `Talk to Duckhead` - Talk to Duckhead to find out how to get out of here. He might even give you a present!
-b. `Solve puzzle` - Enter Puzzle Mode! Give Duckhead the items in the order you enter them. Hopefully they're in the correct order!
-c. `Pick up [item name]` - Pick up an item in the room and add it to your inventory. 
-    • Once you pick it up, you can't pick it up again unless you drop it.
-    • Available items at the beginning: Duck Bill; Duck Call; Candy String
-d. `Drop [item name]` - Drop an item if it's in your inventory. _There's no real reason to do this in this version._
-e. `Inventory` - View the items in your inventory
-f. `Give up` - Exit the game and just accept this new reality.
+- `Talk to Duckhead` - Talk to Duckhead to find out how to get out of here. He might even give you a present!
+- `Solve puzzle` - Enter Puzzle Mode! Give Duckhead the items in the order you enter them. Hopefully they're in the correct order!
+- `Pick up [item name]` - Pick up an item in the room and add it to your inventory. 
+    - Once you pick it up, you can't pick it up again unless you drop it.  
+    - Available items at the beginning: Duck Bill; Duck Call; Candy String  
+- `Drop [item name]` - Drop an item if it's in your inventory. _There's no real reason to do this in this version._
+-  `Inventory` - View the items in your inventory  
+-  `Give up` - Exit the game and just accept this new reality.  
 
 ## Pseudo-tests
 You can also enter the following, but these exist to test the game mechanics in the early stages of the game
@@ -41,17 +42,17 @@ You can also enter the following, but these exist to test the game mechanics in 
 - `RoomInventory` - Prints room inventory. You can 'pick up' any of these items to solve the puzzle.
 
 ## Solving the puzzle
-`Submit [item name]` - Add an item to the puzzle; puzzle will be shown to DuckHead in the order you submit items
-`Undo` - Removes the last item submitted to the puzzle and returns it to your inventory
-`Done` - Show DuckHead your completed puzzle
-`Leave` - Leave the puzzle for now; everything will be right where you left it when you return
-`Restart` - Remove all items from the puzzle and return them to your inventory
+`Submit [item name]` - Add an item to the puzzle; puzzle will be shown to DuckHead in the order you submit items  
+`Undo` - Removes the last item submitted to the puzzle and returns it to your inventory  
+`Done` - Show DuckHead your completed puzzle  
+`Leave` - Leave the puzzle for now; everything will be right where you left it when you return  
+`Restart` - Remove all items from the puzzle and return them to your inventory  
 
 # For Developers
 ## Accessing source code
-TextQuest was built in VS Code using Maven with the entire project rooted under the folder 'textquest_csc403'
-The pom file can be accessed directly from this folder: `textquest_csc403/pom.xml`
-**To run the game** execute the `Main.java` class located at: `textquest_csc403/src/main/java/com/textquest/Main.java`
+TextQuest was built in VS Code using Maven with the entire project rooted under the folder 'textquest_csc403'  
+The pom file can be accessed directly from this folder: `textquest_csc403/pom.xml`    
+**To run the game** execute the `Main.java` class located at: `textquest_csc403/src/main/java/com/textquest/Main.java`  
 
 **Main.java** is the game's starting point that:
 - Initiates player creation
@@ -73,7 +74,7 @@ Located under `textquest_csc403/src/test`
 - **Utilities** - Test toggles, output pauses, and output control
 
 ## Testing
-The program can be run in **two modes** that can be toggled by accessing the following class and adjusting the `TESTTOGGLE` boolean variable: 
+The program can be run in **two modes** that can be toggled by accessing the following class and adjusting the `TESTTOGGLE` boolean variable:  
 `textquest_csc403/src/main/java/com/textquest/Utilities/TestToggle.java`
 
 ### To run junit tests as well as for faster in-game testing: 
@@ -88,6 +89,7 @@ Set `TestToggle.TESTTOGGLE` to `true`
 Tests can be run through your IDE if junit compatible, or with the command
 ```bash
 $ mvn test
+```
 
 ### For testing a full playthrough: 
 set `TestToggle.TESTTOGGLE` to `false`
@@ -97,7 +99,3 @@ set `TestToggle.TESTTOGGLE` to `false`
 - Game will begin with input-based Player character creation instead of default test player
 - Includes narrative pauses for output for paced and easier reading for the user
 - Includes additional dialog and story elements for a full player experience
-
-
-
-
