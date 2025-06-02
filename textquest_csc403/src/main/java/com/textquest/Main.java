@@ -46,7 +46,7 @@ public class Main {
         Words.narrate("Floating heads of mascots past wistfully bob to a discordant calliope with bloodstained mouths.");
         Words.narrate("From the lineup, a duck head with bloodshot eyes spots you, pauses, and slowly turns around.");
 
-        if (TestToggle.TESTMODE) {
+        if (!TestToggle.TESTMODE) {
             String duckQ = duckHead.speakResponse("I'm not a real duck. Are you?");
             while (!duckQ.equalsIgnoreCase("yes") && !duckQ.equalsIgnoreCase("no")) {
                 duckQ = duckHead.speakResponse("*QUACK* It's a \"yes\" or \"no\" question *QUACK*");

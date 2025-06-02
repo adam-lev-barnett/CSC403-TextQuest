@@ -4,17 +4,15 @@ package com.textquest.Utilities;
 public class OutputPause {
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // //~ Default pause - comment out when testing for faster read-through
+    // //~ Default pause 
     
     public static void pause(){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
-    // //~ Overloaded pause to specify delay ; comment out when testing
 
     public static void pause(int millis){
         try {
@@ -24,7 +22,7 @@ public class OutputPause {
         }
     }
 
-    //~ Uncomment the following method when testing
+    //~ Testing pauses
 
     public static void pauseTest(){
         try {
@@ -33,7 +31,6 @@ public class OutputPause {
             e.printStackTrace();
         }
     }
-    //~ Uncomment the following method when testing
 
     public static void pauseTest(int millis){
         millis = 0;

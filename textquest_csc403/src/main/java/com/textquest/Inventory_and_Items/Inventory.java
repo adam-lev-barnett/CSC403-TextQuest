@@ -57,6 +57,7 @@ public class Inventory{
     }
 
     // Search for nickName String key instead of Item value because containsValue() would degrade the method to O(N)
+    // addItem uses Item directly for fast ItemCatalog HashSet lookup conditional - doesn't need String nickName like it would need for HashMap based inventory
     public void removeItem(String itemNickname) {
         if (this.items.containsKey(itemNickname)) {
             this.items.remove(itemNickname);

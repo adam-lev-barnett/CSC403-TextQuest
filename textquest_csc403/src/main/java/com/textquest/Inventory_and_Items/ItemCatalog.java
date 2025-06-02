@@ -21,7 +21,7 @@ public class ItemCatalog {
     public static final Item rope10 = new Item("rope", "Rope (nylon cord, 10 ft.)", "Left by some ghouls who tried to break into the gift shop many moons ago. What ended up happening to them? In any case, they forgot their rope.");
     public static final Item stringFromCandy = new Item("candy string", "Candy String", "Ah, to be young again and willing to eat your own jewelry. But you're dead! Besides, someone already ate this. At least they left the string.");
     public static final Item duckCall = new Item("duck call", "Duck Call", "Not your average duck call. It emits a mystical energy you can't quite comprehend, possibly having to do with the fact that you aren't a duck.");
-    public static final Item duckShirt = new Item("duck shirt", "Duck Shirt", "A shirt that reads \"I \\u2665 \\uD83E\\uDD86s\" For die-hard duck fans. Not a duck? You can still support ducks!");
+    public static final Item duckShirt = new Item("duck shirt", "Duck Shirt", "A shirt that reads \"I \u2665 \uD83E\uDD86s\" For die-hard duck fans. Not a duck? You can still support ducks!");
     
     // Can only add or remove items directly through the class
 

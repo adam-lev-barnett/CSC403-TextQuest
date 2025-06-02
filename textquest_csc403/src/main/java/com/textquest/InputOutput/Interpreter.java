@@ -100,12 +100,11 @@ public class Interpreter {
                     }
                     String itemName = sbItemName.toString().toLowerCase();
                     if (player.getRoom().getRoomInventory().hasItem(itemName)) {
-                        player.getInventory().addItem(player.getRoom().getRoomInventory().getItem(itemName));
+                        player.addToInventory(player.getRoom().getRoomInventory().getItem(itemName));
                         player.getRoom().getRoomInventory().removeItem(itemName);
-                        Words.narrate(player.getInventory().getItem(itemName) + " has been added to your inventory");
                         Words.narrate(player.getInventory().getItem(itemName) + " description: " + player.getInventory().getItem(itemName).getDesc());
-                        System.out.println("");
-                        Words.narrate("Current inventory: " + player.getInventory());
+                        System.out.println();
+                        player.printInventory();
                     }
                     else System.out.println("There is no " + itemName + " to pick up!");
                 }
@@ -121,9 +120,11 @@ public class Interpreter {
                     String itemName = sbItemName.toString().toLowerCase();
                     if (player.getInventory().hasItem(itemName)) {
                         Item droppedItem = player.getInventory().getItem(itemName);
-                        player.getInventory().removeItem(itemName);
+                        player.removeFromInventory(itemName);
                         player.getRoom().getRoomInventory().addItem(droppedItem);
                         System.out.println("You dropped: " + droppedItem);
+                        System.out.println();
+                        player.printInventory();
                     }
                     else System.out.println("There is no " + itemName + " in your inventory!");
                 }
@@ -163,7 +164,7 @@ public class Interpreter {
                     if (player.getRoom().getPuzzle() != null) {
                     //! Boolean check to prevent puzzle access after successful completion
                         if (player.getRoom().solvedPuzzle == false) {
-                            String[] itemNameParse = InputScanner.strIn("Submit an item from your inventory (use format \"Submit [item name]\"). Type \"done\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
+                            String[] itemNameParse = InputScanner.strIn("Submit an item from your inventory (use format \"Submit [item name]\"). Type \"done\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can submit: " + player.getInventory()).split(" ");
                             // Words.narrate("You can submit the following items to solve the puzzle: " + player.getInventory());                            
                             while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
                                 
@@ -208,6 +209,7 @@ public class Interpreter {
 
                                     }
                                     else {
+                                        System.out.println();
                                         System.out.println(itemString + " is not in your inventory!");
                                     }
                                     System.out.println(player.getRoom().getPuzzle());
@@ -215,7 +217,7 @@ public class Interpreter {
                                     System.out.println("");
                                 }
 
-                                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Submit [item name]\"). Type \\\"done\\\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can add: " + player.getInventory()).split(" ");
+                                itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Submit [item name]\"). Type \\\"done\\\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can submit: " + player.getInventory()).split(" ");
                             }
                             
                             // Done with building puzzle deque and ready to solve the puzzle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

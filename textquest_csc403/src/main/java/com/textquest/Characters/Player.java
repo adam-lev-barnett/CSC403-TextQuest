@@ -48,6 +48,13 @@ public class Player extends GameCharacter {
         Words.narrate("Your character description has changed.");
     }
 
+    public void takeOffDuckShirt() {
+        this.duckShirt = false;
+        this.desc = this.desc.replace(". You're wearing a brand new " + ItemCatalog.duckShirt, "");
+        CharacterList.duckHead.speak("You're a QUACK-ING idiot! Pick that back up!");
+        Words.narrate("Your character description has changed.");
+    }
+
     public boolean duckShirtStatus() {
         return this.duckShirt;
     }
@@ -63,14 +70,15 @@ public class Player extends GameCharacter {
     
     //& Use the following when you need to print what was added/removed to player inventory
     public void addToInventory(Item item) {
-        inventory.addItem(item);
-        System.out.println(item + "was added to inventory.");
-        printInventory();
+        this.inventory.addItem(item);
+        System.out.println(item + " was added to inventory.");
+        if (item.equals(ItemCatalog.duckShirt)) this.putOnDuckShirt();
     }
 
     public void removeFromInventory(String itemName) {
         this.inventory.removeItem(itemName);
-        System.out.println(itemName + "was removed from inventory.");
+        if (itemName.equals(ItemCatalog.duckShirt.getNickName())) this.takeOffDuckShirt();
+        // System.out.println(itemName + "was removed from inventory.");
     }
 
 
