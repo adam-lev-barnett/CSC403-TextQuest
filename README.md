@@ -8,7 +8,7 @@ For now, only the first area and puzzle are available for play.
 Items are also instantly available to pick up; in later versions, you'll need to look for them!  
 
 # Download and run
-[Download TextQuest.jar](https://github.com/adam-lev-barnett/CSC403-TextQuest/releases/download/csc403/textquest_csc403-1.0.jar)  
+[Download TextQuest.jar](https://github.com/adam-lev-barnett/CSC403-TextQuest/releases/download/csc403/TextQuest.jar)  
   
 Run the game with
 ```bash
