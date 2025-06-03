@@ -1,0 +1,17 @@
+com/textquest/Utilities/TestToggle.class
+com/textquest/InputOutput/Interpreter.class
+com/textquest/Characters/PlayerCreation.class
+com/textquest/Utilities/OutputPause.class
+com/textquest/Rooms/Room.class
+com/textquest/Characters/GameCharacter.class
+com/textquest/InputOutput/InputScanner.class
+com/textquest/Inventory_and_Items/Puzzles.class
+com/textquest/Characters/Player.class
+com/textquest/Inventory_and_Items/PuzzleDeque.class
+com/textquest/Characters/CharacterList.class
+com/textquest/Rooms/GameMap.class
+com/textquest/Main.class
+com/textquest/Inventory_and_Items/Item.class
+com/textquest/Utilities/Words.class
+com/textquest/Inventory_and_Items/Inventory.class
+com/textquest/Inventory_and_Items/ItemCatalog.class
