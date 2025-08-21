@@ -4,7 +4,7 @@ import com.textquest.Characters.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.*;
 import com.textquest.Rooms.*;
-
+import com.textquest.errors.InvalidUserInputException;
 
 
 public class Main {
@@ -16,7 +16,7 @@ public class Main {
     public static GameCharacter duckHead = CharacterList.duckHead;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidUserInputException {
 
         //Game element initialization//
         //~ Create player from user input

@@ -63,9 +63,8 @@ public class Player extends GameCharacter {
     //     return inventory;
     // }
 
-    public void printInventory() {
-        System.out.println("Your inventory: " + getInventory());
-        System.out.println("");
+    public String printInventory() {
+        return "Your inventory: " + getInventory() + "\n";
     }
     
     //& Use the following when you need to print what was added/removed to player inventory

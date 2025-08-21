@@ -7,6 +7,7 @@ import com.textquest.Inventory_and_Items.*;
 import com.textquest.Rooms.GameMap;
 import com.textquest.Utilities.TestToggle;
 import com.textquest.Utilities.Words;
+import com.textquest.errors.InvalidUserInputException;
 
 import java.lang.StringBuilder;
 
@@ -22,7 +23,7 @@ public class Interpreter {
         this.player = player;
     }
 
-    public void getAction() {
+    public void getAction() throws InvalidUserInputException {
         if (player == null) throw new IllegalArgumentException("Player must be instantiated");
         System.out.println("");
         if (TestToggle.TESTMODE) {
@@ -87,51 +88,12 @@ public class Interpreter {
             //! Cases created for unavailable items as well as incomplete input without throwing errors
 
             else if (playerWords[0].equalsIgnoreCase("pick")) {
-                if (playerWords.length == 1) System.out.println("Pick what? Your nose? Gross!");
-                else if (playerWords.length == 2) {
-                    if (playerWords[1].equalsIgnoreCase("up")) System.out.println("Pick up what?");
-                    else System.out.println("Ya gotta \"pick up\" an item. Picking anything else won't work.");
-                }
-
-                else if (playerWords.length > 2 && playerWords[1].equalsIgnoreCase("up")) {
-                    StringBuilder sbItemName = new StringBuilder(playerWords[2]);
-                    for (int i = 3; i < playerWords.length; i++) {
-                        sbItemName.append(" ").append(playerWords[i]);
-                    }
-                    String itemName = sbItemName.toString().toLowerCase();
-                    if (player.getRoom().getRoomInventory().hasItem(itemName)) {
-                        player.addToInventory(player.getRoom().getRoomInventory().getItem(itemName));
-                        player.getRoom().getRoomInventory().removeItem(itemName);
-                        Words.narrate(player.getInventory().getItem(itemName) + " description: " + player.getInventory().getItem(itemName).getDesc());
-                        System.out.println();
-                        player.printInventory();
-                    }
-                    else System.out.println("There is no " + itemName + " to pick up!");
-                }
+                InputLogic.getInstance().pickUpItem(playerWords);
             }
 
             //& Drop item: item moves from player inventory to area inventory ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             else if (playerWords[0].equalsIgnoreCase("drop")) {
-                if (playerWords.length > 1) {
-                    StringBuilder sbItemName = new StringBuilder(playerWords[1]);
-                    for (int i = 2; i < playerWords.length; i++) {
-                        sbItemName.append(" ").append(playerWords[i]);
-                    }
-                    String itemName = sbItemName.toString().toLowerCase();
-                    if (player.getInventory().hasItem(itemName)) {
-                        Item droppedItem = player.getInventory().getItem(itemName);
-                        player.removeFromInventory(itemName);
-                        player.getRoom().getRoomInventory().addItem(droppedItem);
-                        System.out.println("You dropped: " + droppedItem);
-                        System.out.println();
-                        player.printInventory();
-                    }
-                    else System.out.println("There is no " + itemName + " in your inventory!");
-                }
-                else {
-                    System.out.println("Drop what? A phat beat? No problem!");
-                    // StdAudioStereo.play("textquest_csc403/src/main/java/com/textquest/Phat beat.wav");
-                }
+                InputLogic.getInstance().dropItem(playerWords);
             }
 
             //& Talk to Duckhead to obtain duck shirt ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
