@@ -1,0 +1,82 @@
+<html><head><title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: /Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Main.java</h3>
+<SCRIPT>
+defaultStatus = "File: /Users/adambarnett/Classes/CSC 403/Project/textquest_csc403/src/main/java/com/textquest/Main.java";
+top.document.title  = "Main.java";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="keyword">package <a href="dictionary_C.html#6">com</a></span><span class="default">.<a href="dictionary_C.html#7">textquest</a>;</span>
+<a name="2"><font size=-1>2     </font></a><span class="default"></span>
+<a name="3"><font size=-1>3     </font></a><span class="default"></span><span class="keyword">import </span><span class="default">com.textquest.<a href="dictionary_C.html#5">Characters</a>.*;</span>
+<a name="4"><font size=-1>4     </font></a><span class="default"></span><span class="keyword">import </span><span class="default">com.textquest.<a href="dictionary_C.html#45">InputOutput</a>.*;</span>
+<a name="5"><font size=-1>5     </font></a><span class="default"></span><span class="keyword">import </span><span class="default">com.textquest.<a href="dictionary_C.html#46">Utilities</a>.*;</span>
+<a name="6"><font size=-1>6     </font></a><span class="default"></span><span class="keyword">import </span><span class="default">com.textquest.<a href="dictionary_C.html#11">Rooms</a>.*;</span>
+<a name="7"><font size=-1>7     </font></a><span class="default"></span><span class="keyword">import </span><span class="default">com.textquest.<a href="dictionary_C.html#97">errors</a>.<a href="dictionary_C.html#99">InvalidUserInputException</a>;</span>
+<a name="8"><font size=-1>8     </font></a><span class="default"></span>
+<a name="9"><font size=-1>9     </font></a><span class="default"></span>
+<a name="10"><font size=-1>10     </font></a><span class="default"></span><span class="keyword">public class <a href="dictionary_C.html#259">Main</a> </span><span class="default">{</span>
+<a name="11"><font size=-1>11     </font></a><span class="default"></span>
+<a name="12"><font size=-1>12     </font></a><span class="default">    </span>
+<a name="13"><font size=-1>13     </font></a><span class="default">    </span><span class="keyword">public static <a href="dictionary_C.html#50">Player</a> <a href="dictionary_C.html#266">player</a></span><span class="default">; </span>
+<a name="14"><font size=-1>14     </font></a><span class="default">    </span><span class="comment">// Future feature: solving puzzle unlocks the gates allowing access to different areas</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">    </span><span class="keyword">public static boolean <a href="dictionary_C.html#265">entranceGatesLocked</a> </span><span class="default">= </span><span class="keyword">true</span><span class="default">;</span>
+<a name="16"><font size=-1>16     </font></a><span class="default">    </span><span class="keyword">public static <a href="dictionary_C.html#13">GameCharacter</a> <a href="dictionary_C.html#264">duckHead</a> </span><span class="default">= <a href="dictionary_C.html#2">CharacterList</a>.<a href="dictionary_C.html#4">duckHead</a>;</span>
+<a name="17"><font size=-1>17     </font></a><span class="default"></span>
+<a name="18"><font size=-1>18     </font></a><span class="default"></span>
+<a name="19"><font size=-1>19     </font></a><span class="default">    </span><span class="keyword">public static void <a href="dictionary_C.html#260">main</a></span><span class="default">(<a href="dictionary_S.html#44">String</a>[] <a href="dictionary_C.html#261">args</a>) </span><span class="keyword">throws <a href="dictionary_C.html#99">InvalidUserInputException</a> </span><span class="default">{</span>
+<a name="20"><font size=-1>20     </font></a><span class="default"></span>
+<a name="21"><font size=-1>21     </font></a><span class="default">        </span><span class="comment">//Game element initialization//</span>
+<a name="22"><font size=-1>22     </font></a><span class="comment">        //~ Create player from user input</span>
+<a name="23"><font size=-1>23     </font></a><span class="comment">        </span><span class="keyword">if </span><span class="default">(<a href="dictionary_C.html#51">TestToggle</a>.<a href="dictionary_C.html#58">TESTMODE</a>) {</span>
+<a name="24"><font size=-1>24     </font></a><span class="default">            <a href="dictionary_C.html#266">player</a> = </span><span class="keyword">new <a href="dictionary_C.html#50">Player</a></span><span class="default">(</span><span class="string">&quot;Bill&quot;</span><span class="default">, </span><span class="string">&quot;A big duck&quot;</span><span class="default">, <a href="dictionary_C.html#9">GameMap</a>.<a href="dictionary_C.html#14">entrance</a>);</span>
+<a name="25"><font size=-1>25     </font></a><span class="default">        }</span>
+<a name="26"><font size=-1>26     </font></a><span class="default">        </span><span class="keyword">else <a href="dictionary_C.html#266">player</a> </span><span class="default">= <a href="dictionary_C.html#86">PlayerCreation</a>.<a href="dictionary_C.html#87">CreatePlayer</a>();</span>
+<a name="27"><font size=-1>27     </font></a><span class="default">        </span>
+<a name="28"><font size=-1>28     </font></a><span class="default">        </span><span class="comment">//Game script: Opening</span>
+<a name="29"><font size=-1>29     </font></a><span class="comment">        <a href="dictionary_C.html#80">Words</a></span><span class="default">.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;&quot;</span><span class="default">);</span>
+<a name="30"><font size=-1>30     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;Anyway, welcome &quot; </span><span class="default">+ <a href="dictionary_C.html#266">player</a>.<a href="dictionary_C.html#25">getName</a>() + </span><span class="string">&quot;.&quot;</span><span class="default">);</span>
+<a name="31"><font size=-1>31     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;Sorry to tell you this, but you're kind of dead.&quot;</span><span class="default">);</span>
+<a name="32"><font size=-1>32     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;Everyone is kind of dead.&quot;</span><span class="default">);</span>
+<a name="33"><font size=-1>33     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;By \&quot;kind of\&quot; I mean everyone is undead.&quot;</span><span class="default">);</span>
+<a name="34"><font size=-1>34     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;But enough about that!&quot;</span><span class="default">);</span>
+<a name="35"><font size=-1>35     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;Today, we're going on a little adventure.&quot;</span><span class="default">);</span>
+<a name="36"><font size=-1>36     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;Buckle in!&quot;</span><span class="default">);</span>
+<a name="37"><font size=-1>37     </font></a><span class="default"></span>
+<a name="38"><font size=-1>38     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#267">whoosh</a>();</span>
+<a name="39"><font size=-1>39     </font></a><span class="default"></span>
+<a name="40"><font size=-1>40     </font></a><span class="default">        </span><span class="comment">// Chapter 1: The entrance</span>
+<a name="41"><font size=-1>41     </font></a><span class="comment">        //&amp; Characters in room: Duckhead</span>
+<a name="42"><font size=-1>42     </font></a><span class="comment"></span>
+<a name="43"><font size=-1>43     </font></a><span class="comment">        <a href="dictionary_C.html#80">Words</a></span><span class="default">.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;Where once was found fun is now a sprawl of decaying wooden ticket stalls and rusty turnstiles.&quot;</span><span class="default">); </span>
+<a name="44"><font size=-1>44     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;A crowd of ghosts gathers around a mysterious cotton candy cart.&quot;</span><span class="default">);</span>
+<a name="45"><font size=-1>45     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;The gift shop, while broken, looks lively - Everyone is dead, but capitalism is alive and well.&quot;</span><span class="default">);</span>
+<a name="46"><font size=-1>46     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;Floating heads of mascots past wistfully bob to a discordant calliope with bloodstained mouths.&quot;</span><span class="default">);</span>
+<a name="47"><font size=-1>47     </font></a><span class="default">        <a href="dictionary_C.html#80">Words</a>.<a href="dictionary_C.html#84">narrate</a>(</span><span class="string">&quot;From the lineup, a duck head with bloodshot eyes spots you, pauses, and slowly turns around.&quot;</span><span class="default">);</span>
+<a name="48"><font size=-1>48     </font></a><span class="default"></span>
+<a name="49"><font size=-1>49     </font></a><span class="default">        </span><span class="keyword">if </span><span class="default">(!<a href="dictionary_C.html#51">TestToggle</a>.<a href="dictionary_C.html#58">TESTMODE</a>) {</span>
+<a name="50"><font size=-1>50     </font></a><span class="default">            <a href="dictionary_S.html#44">String</a> <a href="dictionary_C.html#262">duckQ</a> = <a href="dictionary_C.html#264">duckHead</a>.<a href="dictionary_C.html#35">speakResponse</a>(</span><span class="string">&quot;I'm not a real duck. Are you?&quot;</span><span class="default">);</span>
+<a name="51"><font size=-1>51     </font></a><span class="default">            </span><span class="keyword">while </span><span class="default">(!<a href="dictionary_C.html#262">duckQ</a>.<a href="dictionary_E.html#110">equalsIgnoreCase</a>(</span><span class="string">&quot;yes&quot;</span><span class="default">) &amp;&amp; !<a href="dictionary_C.html#262">duckQ</a>.<a href="dictionary_E.html#110">equalsIgnoreCase</a>(</span><span class="string">&quot;no&quot;</span><span class="default">)) {</span>
+<a name="52"><font size=-1>52     </font></a><span class="default">                <a href="dictionary_C.html#262">duckQ</a> = <a href="dictionary_C.html#264">duckHead</a>.<a href="dictionary_C.html#35">speakResponse</a>(</span><span class="string">&quot;*QUACK* It's a \&quot;yes\&quot; or \&quot;no\&quot; question *QUACK*&quot;</span><span class="default">);</span>
+<a name="53"><font size=-1>53     </font></a><span class="default">            }</span>
+<a name="54"><font size=-1>54     </font></a><span class="default">            </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_C.html#262">duckQ</a>.<a href="dictionary_T.html#120">toLowerCase</a>()) {</span>
+<a name="55"><font size=-1>55     </font></a><span class="default">                </span><span class="keyword">case </span><span class="string">&quot;yes&quot;</span><span class="default">:</span>
+<a name="56"><font size=-1>56     </font></a><span class="default">                    <a href="dictionary_C.html#264">duckHead</a>.<a href="dictionary_C.html#33">speak</a>(</span><span class="string">&quot;Nice *QUACK* try, but I see who you really are: &quot; </span><span class="default">+ <a href="dictionary_C.html#266">player</a>.<a href="dictionary_C.html#23">getDesc</a>());</span>
+<a name="57"><font size=-1>57     </font></a><span class="default">                    </span><span class="keyword">break</span><span class="default">;</span>
+<a name="58"><font size=-1>58     </font></a><span class="default">                </span><span class="keyword">case </span><span class="string">&quot;no&quot;</span><span class="default">:</span>
+<a name="59"><font size=-1>59     </font></a><span class="default">                    <a href="dictionary_C.html#264">duckHead</a>.<a href="dictionary_C.html#33">speak</a>(</span><span class="string">&quot;You're not *QUACK* going to make it much farther look- *QUACK* -ing like that: &quot; </span><span class="default">+ <a href="dictionary_C.html#266">player</a>.<a href="dictionary_C.html#23">getDesc</a>());</span>
+<a name="60"><font size=-1>60     </font></a><span class="default">                    </span><span class="keyword">break</span><span class="default">;</span>
+<a name="61"><font size=-1>61     </font></a><span class="default">                </span><span class="keyword">default</span><span class="default">:</span>
+<a name="62"><font size=-1>62     </font></a><span class="default">                    <a href="dictionary_C.html#264">duckHead</a>.<a href="dictionary_C.html#33">speak</a>(</span><span class="string">&quot;...&quot;</span><span class="default">);</span>
+<a name="63"><font size=-1>63     </font></a><span class="default">                    </span><span class="keyword">break</span><span class="default">;</span>
+<a name="64"><font size=-1>64     </font></a><span class="default">            }</span>
+<a name="65"><font size=-1>65     </font></a><span class="default">        }</span>
+<a name="66"><font size=-1>66     </font></a><span class="default">        </span>
+<a name="67"><font size=-1>67     </font></a><span class="default">        </span><span class="comment">// Input object intended to simplify user input across classes - Main interpreter is perpetual until user inputs &quot;give up&quot;</span>
+<a name="68"><font size=-1>68     </font></a><span class="comment">        <a href="dictionary_C.html#149">Interpreter</a> <a href="dictionary_C.html#263">interpreter</a> </span><span class="default">= </span><span class="keyword">new <a href="dictionary_C.html#149">Interpreter</a></span><span class="default">(<a href="dictionary_C.html#266">player</a>);</span>
+<a name="69"><font size=-1>69     </font></a><span class="default">        <a href="dictionary_C.html#263">interpreter</a>.<a href="dictionary_C.html#152">getAction</a>();</span>
+<a name="70"><font size=-1>70     </font></a><span class="default">    }</span>
+<a name="71"><font size=-1>71     </font></a><span class="default">}</span>
+<a name="72"><font size=-1>72     </font></a><span class="default"></span>
+</pre></body></html>
