@@ -7,12 +7,30 @@ Duckhead, the disembodied head of a duck costume (the rest of which is nowhere i
 For now, only the first area and puzzle are available for play.  
 Items are also instantly available to pick up; in later versions, you'll need to look for them!  
 
-# Download and run
+# Install
+## Option 1
 [Download TextQuest.jar](https://github.com/adam-lev-barnett/CSC403-TextQuest/releases/download/csc403/TextQuest.jar)  
   
 Run the game with
 ```bash
 java -jar TextQuest.jar
+```
+## Option 2
+### Clone the repository
+```bash
+git clone https://github.com/adam-lev-barnett/CSC403-TextQuest.git
+```
+### Navigate to the project directory
+```bash
+cd CSC403-TextQuest.git
+```
+### Build the project (compiles code and packages jar file)
+```bash
+mvn clean package
+```
+### Run the program from target directory
+```bash
+java -jar target/textquest_csc403-TextQuest-v1.jar
 ```
 
 # Tutorial
