@@ -25,7 +25,7 @@ public class Interpreter {
 
     public void getAction() throws InvalidUserInputException {
         if (player == null) throw new IllegalArgumentException("Player must be instantiated");
-        System.out.println("");
+        System.out.println();
         if (TestToggle.TESTMODE) {
             Words.printValidActionsTest();
         }
@@ -82,21 +82,21 @@ public class Interpreter {
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            // Inventory actions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            // ~~~~~~~~~~~~~~~~~Inventory actions ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-            //& Pick up item: item moves from area inventory to player inventory ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //& Pick up item: item moves from area inventory to player inventory
             //! Cases created for unavailable items as well as incomplete input without throwing errors
 
             else if (playerWords[0].equalsIgnoreCase("pick")) {
                 InputLogic.getInstance().pickUpItem(playerWords);
             }
 
-            //& Drop item: item moves from player inventory to area inventory ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //& Drop item: item moves from player inventory to area inventory
             else if (playerWords[0].equalsIgnoreCase("drop")) {
                 InputLogic.getInstance().dropItem(playerWords);
             }
 
-            //& Talk to Duckhead to obtain duck shirt ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //& Talk to Duckhead to obtain duck shirt ~~~~~~~~~~~~~~~~~~~~~~~~~
             //! Method in GameCharacter added to prevent repeat of full dialog and item exchange 
 
             else if ((playerWords[0].equalsIgnoreCase("talk"))) {
@@ -104,7 +104,7 @@ public class Interpreter {
                     CharacterList.duckHead.speak("I'm not - QUACK - gonna let you go very far unless you present me with three items in the correct order that'll show me you know how to quack with the best of us!");
                     if (CharacterList.duckHead.getInventory().hasItem("duck shirt")) {
                         CharacterList.duckHead.speak("But here's a little something to get you - QUACK - started.");
-                        Words.narrate("Duckhead opens his beak to reveal a t-shirt. It reads \"I \u2665 \uD83E\uDD86s\"");
+                        Words.narrate("Duckhead opens his beak to reveal a t-shirt. It reads \"I ♥ \uD83E\uDD86s\"");
                         String putOnShirt = InputScanner.strIn("Do you put it on?");
                         while (!putOnShirt.equalsIgnoreCase("yes")) {
                             putOnShirt = InputScanner.strIn("I'm just going to keep asking you until you say \"yes\".");
@@ -125,11 +125,11 @@ public class Interpreter {
 
                     if (player.getRoom().getPuzzle() != null) {
                     //! Boolean check to prevent puzzle access after successful completion
-                        if (player.getRoom().solvedPuzzle == false) {
+                        if (!player.getRoom().solvedPuzzle) {
                             String[] itemNameParse = InputScanner.strIn("Submit an item from your inventory (use format \"Submit [item name]\"). Type \"done\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can submit: " + player.getInventory()).split(" ");
                             // Words.narrate("You can submit the following items to solve the puzzle: " + player.getInventory());                            
                             while (!itemNameParse[0].equalsIgnoreCase("done") && !itemNameParse[0].equalsIgnoreCase("leave")) {
-                                
+
                                 //& Single-word puzzle actions (undo, restart) to avoid outOfBounds
                                 if (itemNameParse.length == 1) {
                                     if (itemNameParse[0].equalsIgnoreCase("undo")) {
@@ -152,7 +152,7 @@ public class Interpreter {
                                     // Words.narrate("You can submit the following items to solve the puzzle: " + player.getInventory());
                                     System.out.println("");
                                 }
-                                
+
                                 //& Add an item to PuzzleDeque ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                 else if (itemNameParse[0].equals("submit") && itemNameParse.length > 1) {
                                     StringBuilder itemNameSB = new StringBuilder(itemNameParse[1]);
@@ -163,7 +163,7 @@ public class Interpreter {
 
                                     // Add new items to the back of the deque to display puzzle order, only if item is in the player inventory
                                     if (player.getInventory().hasItem(itemString)) {
-                                        player.getRoom().getPuzzle().add(player.getInventory().getItem(itemString)); 
+                                        player.getRoom().getPuzzle().add(player.getInventory().getItem(itemString));
                                         player.getInventory().removeItem(itemString);
 
                                     // Item is no longer in player inventory and cannot be added again
@@ -181,7 +181,7 @@ public class Interpreter {
 
                                 itemNameParse = InputScanner.strIn("Use an item from your inventory (use format \"Submit [item name]\"). Type \\\"done\\\" when you're ready to give the items to Duckhead. You can also \"undo,\" \"leave,\" or \"restart.\" \n" + "You can submit: " + player.getInventory()).split(" ");
                             }
-                            
+
                             // Done with building puzzle deque and ready to solve the puzzle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                             if (itemNameParse[0].equalsIgnoreCase("done")) {
@@ -199,13 +199,14 @@ public class Interpreter {
                         
                         //!Can't solve the same puzzle twice
 
-                        else if (player.getRoom().solvedPuzzle == true) System.out.println("You've already solved this puzzle!");
+                        else if (player.getRoom().solvedPuzzle) System.out.println("You've already solved this puzzle!");
                     }
                     else System.out.println("There is no puzzle in this room!");
                 }
                 else System.out.println("Solve what?");
             }
-            if (player.getRoom().getSolvedPuzzle() == true) {
+            // If the player solves the puzzle in the current version, it ends the game
+            if (player.getRoom().getSolvedPuzzle()) {
                 System.out.println("You beat the game, kind of! At least the current version. Quack.");
                 break;
             }

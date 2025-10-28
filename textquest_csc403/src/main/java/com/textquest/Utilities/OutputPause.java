@@ -1,10 +1,10 @@
 package com.textquest.Utilities;
 
 
+/** For narrative flow*/
 public class OutputPause {
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // //~ Default pause 
+    //~ Default pause
     
     public static void pause(){
         try {
@@ -40,8 +40,6 @@ public class OutputPause {
             e.printStackTrace();
         }
     }
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
     
 
 }

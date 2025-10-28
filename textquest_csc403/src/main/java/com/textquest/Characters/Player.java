@@ -13,34 +13,8 @@ public class Player extends GameCharacter {
     
     public Player(String name, String desc,Room room) {
         super(name, desc, room);
-        if (room == null || name == null || desc == null) throw new NullPointerException("Player fields cannot be null"); 
-        this.duckShirt = false; 
+        this.duckShirt = false;
     }
-    
-    //& Traversal available in future versions 
-    /* 
-    public void traverse(String direction) {
-        switch (direction) {
-            case "north": 
-                if (room.north == null) System.out.println("There's nothing that way.");
-                else room = room.north;
-                break;
-            case "south":
-                if (room.south == null) System.out.println("There's nothing that way.");
-                else room = room.south;
-                break;
-            case "east":
-                if (room.east == null) System.out.println("There's nothing that way.");
-                else room = room.east;
-                break;
-            case "west":
-                if (room.east == null) System.out.println("There's nothing that way.");
-                else room = room.west;
-                break;
-            default:
-                System.out.println("You cannot go this direction.");
-        }
-    } */
 
     public void putOnDuckShirt() {
         this.duckShirt = true;
@@ -79,6 +53,31 @@ public class Player extends GameCharacter {
         if (itemName.equals(ItemCatalog.duckShirt.getNickName())) this.takeOffDuckShirt();
         // System.out.println(itemName + "was removed from inventory.");
     }
+
+    //& Traversal available in future versions
+    /*
+    public void traverse(String direction) {
+        switch (direction) {
+            case "north":
+                if (room.north == null) System.out.println("There's nothing that way.");
+                else room = room.north;
+                break;
+            case "south":
+                if (room.south == null) System.out.println("There's nothing that way.");
+                else room = room.south;
+                break;
+            case "east":
+                if (room.east == null) System.out.println("There's nothing that way.");
+                else room = room.east;
+                break;
+            case "west":
+                if (room.east == null) System.out.println("There's nothing that way.");
+                else room = room.west;
+                break;
+            default:
+                System.out.println("You cannot go this direction.");
+        }
+    } */
 
 
 

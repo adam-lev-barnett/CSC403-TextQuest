@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="textquest_csc403" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SpookyTextQuest" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

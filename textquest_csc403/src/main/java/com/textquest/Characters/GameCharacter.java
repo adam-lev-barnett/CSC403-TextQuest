@@ -5,12 +5,10 @@ import com.textquest.InputOutput.*;
 import com.textquest.Utilities.*;
 
 // Recommended: create characters in CharacterList for easy organization
-//& Health will be used in later versions
 
 public class GameCharacter {
     private final String name;
     protected String desc;
-    // private final int health; 
     private Room room;
     final Inventory inventory;
 
