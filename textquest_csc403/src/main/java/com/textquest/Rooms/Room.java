@@ -11,7 +11,7 @@ public class Room {
     public Room west; */
     protected final Inventory inventory;
     private final PuzzleDeque puzzle;
-    public boolean solvedPuzzle;
+    private boolean solvedPuzzle;
 
     public Room(String name, String desc) {
         if (name == null || desc == null) throw new NullPointerException("Room fields can't be null");

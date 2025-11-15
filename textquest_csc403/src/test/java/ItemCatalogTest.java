@@ -8,7 +8,7 @@ public class ItemCatalogTest {
     public void noDirectAccessToCatalogTest() {
         assertThrows(UnsupportedOperationException.class, () -> ItemCatalog.masterInventory.add(new Item("test", "test", "test")));
         assertThrows(UnsupportedOperationException.class, () -> ItemCatalog.masterInventory.remove(ItemCatalog.duckBill));
-        assertThrows(UnsupportedOperationException.class, () -> ItemCatalog.masterInventory.clear());
+        assertThrows(UnsupportedOperationException.class, ItemCatalog.masterInventory::clear);
     }
 
 }
