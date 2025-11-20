@@ -14,11 +14,11 @@ public class Inventory{
     // Printing full sets takes O(N)
     
     public String toString() {
-        StringBuilder items = new StringBuilder("");
+        StringBuilder items = new StringBuilder();
         if (this.items.isEmpty()) return "Currently, there are no items.";
         for (Item item : this.items.values()) {
-            if (this.items.values().size() == 1) items.append(item.getName());
-            else items.append(item.getName() + "; ");
+            if (this.items.size() == 1) items.append(item.getName());
+            else items.append(item.getName()).append("; ");
         }
         return items.toString();
     }

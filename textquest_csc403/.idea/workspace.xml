@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73f9e794-ec41-48e3-80b7-799738de2b0e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/InputOutput/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/InputOutput/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/Rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/Rooms/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/errors/BadParameterException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/errors/BadParameterException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ItemCatalogTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ItemCatalogTest.java" afterDir="false" />
+    <list default="true" id="73f9e794-ec41-48e3-80b7-799738de2b0e" name="Changes" comment="Refactor Interpreter">
+      <change afterPath="$PROJECT_DIR$/.idea/betterCommentsSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/textquest/InputOutput/interpreters/PuzzleInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/Characters/GameCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/Characters/GameCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/Characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/Characters/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/InputOutput/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/InputOutput/interpreters/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/Inventory_and_Items/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/Inventory_and_Items/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/textquest/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/textquest/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +28,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
         <option value="Exception" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,6 +74,7 @@
     "JUnit.duckPuzzleTests.testDuckPuzzle.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/adambarnett/Classes/CSC 403/Project/textquest_csc403",
@@ -80,7 +85,8 @@
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="JUnit.ItemTest">
@@ -169,7 +175,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750115657683</updated>
-      <workItem from="1763188994692" duration="1789000" />
+      <workItem from="1763188994692" duration="1876000" />
+      <workItem from="1763664230870" duration="1531000" />
     </task>
     <task id="LOCAL-00001" summary="Switching to IntelliJ">
       <option name="closed" value="true" />
@@ -211,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761676559814</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactor Interpreter">
+      <option name="closed" value="true" />
+      <created>1763190814973</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763190814973</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +254,7 @@
     <MESSAGE value="Switching to IntelliJ" />
     <MESSAGE value="Reorganize Interpreter and InputLogic" />
     <MESSAGE value="Edit some syntax and comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit some syntax and comments" />
+    <MESSAGE value="Refactor Interpreter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Interpreter" />
   </component>
 </project>

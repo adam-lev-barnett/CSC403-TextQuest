@@ -4,21 +4,17 @@ import com.textquest.Rooms.*;
 import com.textquest.InputOutput.*;
 import com.textquest.Utilities.*;
 
-// Recommended: create characters in CharacterList for easy organization
-//& Health will be used in later versions
 
 public class GameCharacter {
     private final String name;
     protected String desc;
-    // private final int health; 
     private Room room;
-    final Inventory inventory;
+    protected final Inventory inventory;
 
     public GameCharacter(String name, String desc,Room room) {
         if (room == null || name == null || desc == null) throw new NullPointerException("Character fields"); 
         this.name = name;
         this.desc = desc;
-        // this.health = health;
         this.room = room;
         inventory = new Inventory();
     }
@@ -53,7 +49,6 @@ public class GameCharacter {
         return InputScanner.strIn(this.name + ": " + "\"" + words + "\"");
     }
 
-    // Inventory methods
     public Inventory getInventory() {
         return inventory;
     }
@@ -77,6 +72,11 @@ public class GameCharacter {
                 player.getInventory().addItem(item);
             }
         }
+    }
+
+    public void printInventory() {
+        System.out.println(name + "'s inventory:");
+        System.out.println(inventory);
     }
 
     

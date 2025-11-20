@@ -1,7 +1,7 @@
 package com.textquest;
 
 import com.textquest.Characters.*;
-import com.textquest.InputOutput.*;
+import com.textquest.InputOutput.interpreters.Interpreter;
 import com.textquest.Utilities.*;
 import com.textquest.Rooms.*;
 
